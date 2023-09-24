@@ -1,5 +1,6 @@
 import Header from '@/components/Layout';
 import Loading from '@/components/Layout/Loading';
+import Wallet from '@/components/Wallet';
 import { Box } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
@@ -14,6 +15,7 @@ export default function Home() {
     <Loading display={display} />
       <Box h="100vh" overflow="scroll" backgroundColor="#171537">
         <Header />
+        <Wallet />
       </Box>
     </>
   )

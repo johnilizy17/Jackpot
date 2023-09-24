@@ -1,4 +1,5 @@
 import '@/styles/App.css'
+import '@/styles/style.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
