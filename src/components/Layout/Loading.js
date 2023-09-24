@@ -5,7 +5,7 @@ import LetterAlpha from './LetterAlpha';
 export default function Loading({ display }) {
 
     return (
-        <Center h="100vh" w="100vw" pos="fixed" top="0px" display={display ? "flex" : "none"} background="#171537" zIndex={2000}>
+        <Center h="100vh" w="100vw" pos="fixed" top="0px" display={display ? "flex" : "none"} background="#171537" zIndex="3000">
             <Box>
                 <Img src="../image/loading.png" alt="loading" w="200px" h="200px" />
                 <Center>
