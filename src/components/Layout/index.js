@@ -55,7 +55,7 @@ export default function Header() {
             <Slide
                 direction="left"
                 in={isOpen}
-                style={ { zIndex: 80,  height: "full", top: "0px" }}
+                style={ { zIndex: 4000,  height: "full", top: "0px" }}
             >
                 <Flex>
                 <Flex
