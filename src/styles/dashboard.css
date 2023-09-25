@@ -139,15 +139,15 @@
 
 .progress-bar.vertical .bar {
     background-color: #716bc7;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border-radius: 1rem;
     width: 100%
 }
 
 .progress-bar {
     width: 100%;
     height: 1rem;
-    background-color: #171537
+    border-radius: 1rem;
+    background-color: #171537;
 }
 
 .progress-bar .bar {
