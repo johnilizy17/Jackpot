@@ -28,19 +28,19 @@ export default function Dashboard() {
                             style={{ transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", zIndex: 0, opacity: 0 }}>
                             <h2 className="title">Minor</h2>
                             <div className="info">
-                                <div className="card"><img src="./Alpha365 Jackpot_files/money_bag.png" alt="" />
+                                <div className="card"><img src="../image/money_bag.png" alt="" />
                                     <div className="texts">
                                         <h4>Jackpot Entry</h4>
                                         <p>320 USDC</p>
                                     </div>
                                 </div>
-                                <div className="card"><img src="./Alpha365 Jackpot_files/trophie.png" alt="" />
+                                <div className="card"><img src="../image/trophie.png" alt="" />
                                     <div className="texts second">
                                         <h4>Current Award</h4>
                                         <p>334 USDC</p>
                                     </div>
                                 </div>
-                                <div className="card"><img src="./Alpha365 Jackpot_files/mesh.png" alt="" />
+                                <div className="card"><img src="../image/mesh.png" alt="" />
                                     <div className="texts">
                                         <h4>Information</h4>
                                         <p>Participants: 3121<br />Bets: 77</p>
@@ -52,7 +52,7 @@ export default function Dashboard() {
                             style={{ transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 }}>
                             <h2 className="title" style={{ color: "rgb(148, 144, 213)", backgroundColor: "rgb(31, 28, 74)" }}>BIG</h2>
                             <div className="info" style={{ backgroundColor: "rgb(46, 42, 111)" }}>
-                                <div className="card"><img src="./Alpha365 Jackpot_files/money_bag.png" alt=""
+                                <div className="card"><img src="../image/money_bag.png" alt=""
                                     style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0px, 0px)" }} />
                                     <div className="texts"
                                         style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
@@ -60,7 +60,7 @@ export default function Dashboard() {
                                         <p>320 USDC</p>
                                     </div>
                                 </div>
-                                <div className="card"><img src="./Alpha365 Jackpot_files/trophie.png" alt=""
+                                <div className="card"><img src="../image/trophie.png" alt=""
                                     style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0px, 0px)" }} />
                                     <div className="texts second"
                                         style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
@@ -68,7 +68,7 @@ export default function Dashboard() {
                                         <p>334 USDC</p>
                                     </div>
                                 </div>
-                                <div className="card"><img src="./Alpha365 Jackpot_files/mesh.png" alt=""
+                                <div className="card"><img src="../image/mesh.png" alt=""
                                     style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0px, 0px)" }} />
                                     <div className="texts"
                                         style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
@@ -81,7 +81,7 @@ export default function Dashboard() {
                         <div className="view game-over pictured view-gameover active"
                             style={{ transform: "translate(0px, 0px)", translate: "none", rotate: "none", scale: "none", opacity: 1, zIndex: 5 }}>
                             <h2 className="title">GAMEOVER</h2>
-                            <div className="info"><img src="./Alpha365 Jackpot_files/coin_stack.png" alt="treasure chest" className="chest"
+                            <div className="info"><img src="../image/coin_stack.png" alt="treasure chest" className="chest"
                                 style={{ transform: "translate3d(0px, 0px, 0px) scale(1.0152, 1.0152)", translate: "none", rotate: "none", scale: "none" }} />
                                 <div className="splash-text">
                                     <div
@@ -98,10 +98,10 @@ export default function Dashboard() {
                         <div className="view bomb-mode view-bomb"
                             style={{ transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 }}>
                             <h2 className="title" style={{ color: "rgb(248, 200, 34)", backgroundColor: "rgb(148, 116, 5)" }}>BOMB 💥</h2><img
-                                src="./Alpha365 Jackpot_files/alpha_bomb.png" alt="Alpha365 Bomb" className="alpha-bomb"
+                                src="../image/alpha_bomb.png" alt="Alpha365 Bomb" className="alpha-bomb"
                                 style={{ translate: "none", rotate: "none", scale: "none", transform: "translate(0%, 0%)" }} />
                             <div className="info" style={{ backgroundColor: "rgb(113, 93, 47)" }}>
-                                <div className="card"><img src="./Alpha365 Jackpot_files/money_bag.png" alt=""
+                                <div className="card"><img src="../image/money_bag.png" alt=""
                                     style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0px, 0px)" }} />
                                     <div className="texts"
                                         style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
@@ -109,7 +109,7 @@ export default function Dashboard() {
                                         <p>320 USDC</p>
                                     </div>
                                 </div>
-                                <div className="card"><img src="./Alpha365 Jackpot_files/trophie.png" alt=""
+                                <div className="card"><img src="../image/trophie.png" alt=""
                                     style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0px, 0px)" }} />
                                     <div className="texts second"
                                         style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
@@ -117,7 +117,7 @@ export default function Dashboard() {
                                         <p>334 USDC</p>
                                     </div>
                                 </div>
-                                <div className="card"><img src="./Alpha365 Jackpot_files/mesh.png" alt=""
+                                <div className="card"><img src="../image/mesh.png" alt=""
                                     style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0px, 0px)" }} />
                                     <div className="texts"
                                         style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
@@ -130,7 +130,7 @@ export default function Dashboard() {
                         <div className="view winner pictured view-win"
                             style={{ transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 }}>
                             <h2 className="title">CASHOUT</h2>
-                            <div className="info"><img src="./Alpha365 Jackpot_files/treasure.svg" alt="treasure chest" className="chest"
+                            <div className="info"><img src="../image/treasure.svg" alt="treasure chest" className="chest"
                                 style={{ translate: "none", rotate: "none", scale: "none", transform: "translate3d(0px, 0px, 0px) scale(1.0998, 1.0998)" }} />
                                 <div className="splash-text">
                                     <div
@@ -145,7 +145,7 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </div>
-                    <div className="bomb-bar"><img src="./Alpha365 Jackpot_files/alpha_bomb.png" alt="" className="bang" />
+                    <div className="bomb-bar"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                         <div className="progress-bar vertical">
                             <div className="bar" style={{ height: "54.596%" }}></div>
                         </div>

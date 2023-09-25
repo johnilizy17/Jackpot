@@ -139,6 +139,8 @@
 
 .progress-bar.vertical .bar {
     background-color: #716bc7;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     width: 100%
 }
 
@@ -150,18 +152,8 @@
 
 .progress-bar .bar {
     background-color: #716bc7;
+    border-radius: 1rem;
     height: 100%
-}
-
-*, :before, :after {
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: #e5e7eb
-}
-
-:before, :after {
-    --tw-content: ""
 }
 
 html {
@@ -172,11 +164,6 @@ html {
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
     font-feature-settings: normal;
     font-variation-settings: normal
-}
-
-body {
-    margin: 0;
-    line-height: inherit
 }
 
 hr {
@@ -549,8 +536,8 @@ nav .name {
     grid-template-areas: "timer timer timer timer timer""view view view view bomb-bar""view view view view bomb-bar""view view view view bomb-bar""minor-bar minor-bar minor-bar minor-bar minor-bar""bets bets bets bets bets"
 }
 
-div {
-    border-radius: 1rem
+.view{
+    border-radius: 1rem;
 }
 
 .timer {
@@ -560,6 +547,7 @@ div {
     padding: 1rem;
     grid-template-columns: 4rem auto 4rem auto 4rem;
     justify-content: center;
+    border-radius: 1rem;
     gap: 10px;
     align-items: center
 }
@@ -614,11 +602,11 @@ div {
     width: 100%;
     min-width: 100%;
     position: relative;
-    height: 100%
+    height: 100%;
 }
 
 .view-swiper .swiper {
-    height: 100%
+    height: 100%;
 }
 
 .view {
@@ -708,6 +696,7 @@ div {
 .minor-bar {
     background-color: #3e3894;
     grid-area: minor-bar;
+    border-radius: 1rem;
     padding: 8px 1rem;
     display: grid;
     grid-template-rows: auto auto
