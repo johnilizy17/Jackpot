@@ -42,7 +42,7 @@ export default function Stake({ setStaking, setToggle }) {
                         <th scope="col">Wallet</th>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody>
                     <tr>
                         <td scope="row" data-label="S/N">1</td>
                         <td data-label="Compound">$21</td>

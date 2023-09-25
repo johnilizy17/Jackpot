@@ -1,3 +1,4 @@
+import Dashboard from '@/components/Dashboard';
 import Header from '@/components/Layout';
 import Loading from '@/components/Layout/Loading';
 import { Box } from '@chakra-ui/react';
@@ -14,6 +15,7 @@ export default function Home() {
     <Loading display={display} />
       <Box h="100vh" overflow="scroll" backgroundColor="#171537">
         <Header />
+        <Dashboard />
       </Box>
     </>
   )
