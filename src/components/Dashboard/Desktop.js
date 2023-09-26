@@ -1,4 +1,5 @@
-import { Box, Center, Flex } from '@chakra-ui/react'
+import { Box, useToast } from '@chakra-ui/react'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Footer from '../Layout/Footer'
 
@@ -6,7 +7,7 @@ export default function DashboardDesktop() {
 
     const [display, setDisplay] = useState({ sec: "00", min: "00", hour: "00" })
     const [time, setTime] = useState(3600)
-
+    const toast = useToast()
     function HourSetter(e) {
         const miner2 = e / 24
         const miner = Math.floor(miner2)
@@ -63,6 +64,53 @@ export default function DashboardDesktop() {
         tester()
     }, 10000)
 
+
+    function SelectedButton(e) {
+
+        var element2 = document.getElementById("5");
+        element2.style.background = ("#1f1c4a");
+
+        var element3 = document.getElementById("10");
+        element3.style.background = ("#1f1c4a");
+
+        var element4 = document.getElementById("20");
+        element4.style.background = ("#1f1c4a");
+
+        var element = document.getElementById(e);
+        element.style.background = ("#4D46B9");
+        if (e === "5") {
+            const newTime = time - (reducer * 60) + (10*60)
+            setTime(newTime)
+            setReducer(10)
+            toast({
+                position: "top-right",
+                description: `Time add 10 min added to the the time`,
+                status: "success",
+                isClosable: true,
+            });
+        } else if (e === "10") {
+            const newTime = time - (reducer * 60) + (5*60)
+            setTime(newTime)
+            setReducer(5)
+            toast({
+                position: "top-right",
+                description: `Time add 5 min added to the the time`,
+                status: "success",
+                isClosable: true,
+            });
+        } else {
+
+            const newTime = time - (reducer * 60) + (2.5*60)
+            setTime(newTime)
+            setReducer(2.5)
+            toast({
+                position: "top-right",
+                description: `Time add 2.5 min added to the the time`,
+                status: "success",
+                isClosable: true,
+            });
+        }
+    }
 
 
     return (
@@ -255,19 +303,19 @@ export default function DashboardDesktop() {
 
                     <Center w="100vw" p="80px">
                         <Box className="bets" w="400px" h="7.2rem" pos="absolute" bottom="50px">
-                            <Box className="bet">
+                            <Box className="bet" id='5' onClick={() => SelectedButton("5")}>
                                 <h2>$5</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>10 min</p>
                                 </Box>
                             </Box>
-                            <Box className="bet">
+                            <Box className="bet" id='10' onClick={() => SelectedButton("10")}>
                                 <h2>$10</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>5 min</p>
                                 </Box>
                             </Box>
-                            <Box className="bet">
+                            <Box className="bet" id='20' onClick={() => SelectedButton("20")}>
                                 <h2>$20</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>2.5 min</p>
