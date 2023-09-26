@@ -1,11 +1,11 @@
 import { Box, Center, Flex } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../Layout/Footer'
 
 export default function DashboardDesktop() {
 
     const [display, setDisplay] = useState({ sec: "00", min: "00", hour: "00" })
-    const [time, setTime] = useState(3600*23)
+    const [time, setTime] = useState(3600)
 
     function HourSetter(e) {
         const miner2 = e / 24
@@ -25,7 +25,7 @@ export default function DashboardDesktop() {
         const miner = Math.ceil(miner2)
         const result = (miner*60) - e
         if (result === 0) {
-            return "00"
+            return "60"
         } else if(Math.sign(result) === 1) {    
             return  (60 - result)
         } else {
@@ -55,6 +55,14 @@ export default function DashboardDesktop() {
         setTime(time - 1)
     }
 
+    useEffect(()=>{
+        tester()
+    },[])
+
+    setInterval(() => {
+        tester()
+    }, 10000)
+
 
 
     return (
@@ -71,7 +79,7 @@ export default function DashboardDesktop() {
                         </Box>
                     </Box>
                     <Box className="timer" w="400px" h="7.2rem">
-                        <Box className="time hour" onClick={() => tester()}>
+                        <Box className="time hour">
                             <h2>{display.hour}</h2>
                             <p>Hour</p>
                         </Box>
