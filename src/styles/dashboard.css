@@ -536,7 +536,7 @@ nav .name {
     grid-template-areas: "timer timer timer timer timer""view view view view bomb-bar""view view view view bomb-bar""view view view view bomb-bar""minor-bar minor-bar minor-bar minor-bar minor-bar""bets bets bets bets bets"
 }
 
-.view{
+.view {
     border-radius: 1rem;
 }
 
@@ -646,7 +646,6 @@ nav .name {
     padding-top: 3rem;
     width: 100%;
     height: 95%;
-    border-radius: 1rem;
     display: grid;
     grid-template-rows: auto auto auto auto;
     justify-content: center;
@@ -709,6 +708,10 @@ nav .name {
     width: 100%;
     font-size: .85rem;
     justify-content: space-between
+}
+
+.info {
+    border-radius: 1rem;
 }
 
 .bets {

@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react'
+import Link from 'next/link'
 import React from 'react'
 
 export default function Dashboard() {
@@ -180,7 +181,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="rules"><a href="https://alpha365-jackpot.vercel.app/rules">Rules</a></div>
+                <div className="rules"><Link href="/rules">Rules</Link></div>
             </section>
         </Box>
     )

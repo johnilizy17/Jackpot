@@ -11,11 +11,11 @@ export default function Header() {
     return (
         <>
             <Box pos="fixed" top="0px" zIndex="2000">
-                <Center justifyContent={"space-between"} w="100vw" p={["5px","5px","5px","20px"]} bg="#4D46B9" >
+                <Center justifyContent={"space-between"} textAlign="center" w="100vw" p={["5px","5px","5px","20px"]} bg="#4D46B9" >
                     <Link href="/">
                     <Img src="../image/logo_alpha.png" h="60px" w="60px" />
                     </Link>
-                    <Box>
+                    <Box mr={["0px", "0px", "0px", "0px", "-110px"]}>
                         <LetterAlpha />
                     </Box>
                     <IconButton display={["flex", "flex", "flex", "flex", "none"]}
@@ -35,7 +35,7 @@ export default function Header() {
                     <Center display={["none", "none", "none", "none", "flex"]}>
                        
                     <Link href="/">
-                        <Box fontSize="22px" color="#9490D5" mr="30px">
+                        <Box fontSize="22px" color="#9490D5" ml="-110px" mr="30px">
                             Game
                         </Box>
                         </Link>
