@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Text, Flex, Slide, useDisclosure } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { advertiserFaqData } from "./FAQData";
 
 const FAQContent = ({ title, content }) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -62,7 +63,7 @@ const FAQ = ({ faqData, show }) => {
       )}
       <Flex justifyContent="center" m="50px auto 100px auto">
         <Box w={["100%", "80%", "60%"]}>
-          {faqData.map((item) => {
+          {advertiserFaqData.map((item) => {
             return <FAQContent title={item.title} content={item.content} />;
           })}
         </Box>
