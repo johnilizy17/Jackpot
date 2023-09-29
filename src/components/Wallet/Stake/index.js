@@ -28,7 +28,7 @@ export default function Stake({ setStaking, setToggle }) {
             <table className="table">
                 <caption >
                     <div style={{ marginBottom: 10, marginTop: 90, fontWeight: "800", fontSize: 20 }}>
-                    Transaction History</div></caption>
+                    Winning History</div></caption>
                 <thead >
                     <tr style={{marginBottom:20}}>
                         <th scope="col">Jackpot id</th>
