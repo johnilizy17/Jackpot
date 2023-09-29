@@ -69,7 +69,7 @@ export default function Footer() {
                         </Link>
                     </Center>
                 </Center>
-                <p>&copy;2021 ALPHA | All Rights Reserved</p>
+              <Box textAlign="center">  <p>&copy;2021 ALPHA | All Rights Reserved</p></Box>
             </footer>
         </div>
     )
