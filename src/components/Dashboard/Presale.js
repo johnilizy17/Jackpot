@@ -2,6 +2,7 @@ import { Box, Center, Flex, IconButton } from '@chakra-ui/react';
 import React from 'react';
 import { BsDiscord, BsFacebook, BsTelegram, BsTwitter } from 'react-icons/bs';
 import { IoLogoTwitter } from 'react-icons/io';
+import Link from 'next/link';
 
 export default function Presale() {
 
@@ -54,9 +55,11 @@ export default function Presale() {
                 <Box mt="10px">
                     Token info
                 </Box>
+                <Link href="/about">
                 <Box mt="10px">
                     About us
                 </Box>
+                </Link>
             </Center>
         </Box>
     )

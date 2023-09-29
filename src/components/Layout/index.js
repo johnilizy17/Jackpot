@@ -44,9 +44,9 @@ export default function Header() {
                             Rules
                         </Box>
                         </Link>
-                        <Link href="/wallet">
+                        <Link href="/history">
                         <Box fontSize="22px" color="#9490D5" mr="50px">
-                            Wallet
+                        Winning History 
                         </Box>
                         </Link>
                     </Center>
@@ -118,7 +118,7 @@ export default function Header() {
 
                         </Center>
                     </Link>
-                    <Link href="/wallet">
+                    <Link href="/history">
 
                         <Center justifyContent="space-between" w="250px" mb="20px">
                             <Text
@@ -129,7 +129,7 @@ export default function Header() {
                                 cursor="pointer"
                                 onClick={onToggle}
                             >
-                                Wallet
+                                Winning History 
                             </Text>
                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0086 6.5L8.59863 7.91L13.1786 12.5L8.59863 17.09L10.0086 18.5L16.0086 12.5L10.0086 6.5Z" fill="#C9C8EA" />
