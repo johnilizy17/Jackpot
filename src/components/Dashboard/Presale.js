@@ -12,29 +12,11 @@ export default function Presale() {
                 <Box fontSize="17px" fontWeight="800">
                     <Box mb="20px">JACKPOT INFO</Box>
                 </Box>
-                <Box>
+                <Box>Participants: 52</Box>
+                <Box>  Duration: 5 mins(Min Buy: $5)</Box>
+                <Box> Duration: 2.5 mins(Max. Buy 20$) </Box>
+                <Box mt="20px">
                     <Box>REWARD DISTRIBUTION</Box>
-                    <Box>JACKPOT BALANCE</Box>
-                </Box>
-                <Box mt="10px">
-                    <Box>NORMAL JACKPOTS(Normal jackpots are jackpots that have 20% of
-                        the previous jackpot as the starting pot)</Box>
-                    <Box>20%</Box>
-                </Box>
-                <Box mt="10px">
-                    <Box>TYPE OF JACKPOT</Box>
-                    <Box>1. 5$ with a 10-minute timer</Box>
-                    <Box>2. 10$ with 5-minute timer</Box>
-                    <Box> 3. 20$ with 2.5 minute timer
-                    </Box>
-                </Box>
-
-                <Box mt="10px">
-                    <Box>NORMAL JACKTOP is WON</Box>
-                    <Box>12H</Box>
-                </Box>
-                <Box mt="10px">
-                    <Box>DIVISION OF PRIZES:</Box>
                     <Box>50% WINNER</Box>
                     <Box>
                         20% NEXT NORMAL JACKPOT
@@ -74,7 +56,7 @@ export default function Presale() {
                         </Box>
                     </Link>
                 </Center>
-            </Box>
-        </Box>
+            </Box >
+        </Box >
     )
 }

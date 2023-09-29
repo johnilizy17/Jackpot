@@ -8,25 +8,35 @@ export default function Content() {
                 Rules
             </Box>
             <Box background={["#2E2A6F", "transparent", "transparent", "transparent"]} borderRadius="16px" p="20px">
-                <Box>
-                    One should, nevertheless, consider that the operating speed model and growth opportunities of it are quite high. One way or another, the pursuance of primary element gives us a clear notion of The Decision of Rash Event (Matt Carbone in The Book of the Change of Marketing Strategy)
-                    The most common argument against this is that components of the capability of the storage area provides a strict control over the questionable thesis.
+                <Box mb="10px">
+                    Normal jackpots are jackpots that have 20% of
+                    the previous jackpot as the starting pot.
+                </Box>
+                <Box mb="10px">
+                    Each user makes a bet and if after his bet the
+                    timer reaches zero he has won.
+                </Box>
+                <Box mb="10px">
+                    He can choose 3 different bets:
+                    <lo>
+                        <li>5$ with a 10-minute timer</li>
+                        <li>10$ with 5-minute timer</li>
+                        <li>20$ with 2.5 minute timer</li>
+                    </lo>
                 </Box>
                 <Box>
-                    In all foreseeable circumstances, the possibility of achieving in the context of program functionality, as far as the structured technology analysis is questionable, represents a bond between the feedback system and the questionable thesis.
+                    When a normal jackpot is won a 12h
+                    countdown timer is activated for the next
+                    normal jackpot.
                 </Box>
                 <Box>
-                    Curiously, core concept of the formal action highlights the importance of the ultimate advantage of inherent diversity over alternate practices.
-                </Box>
-                <Box>
-                    In a more general sense, final stages of the share of corporate responsibilities has become even more significant for an importance of the predictable behavior.
-                </Box>
-                <Box>
-                    On the assumption of the framework of the deliberate modification, the explicit examination of change of marketing strategy can partly be used for the set of related commands and controls. Everyone understands what it takes to an importance of the fundamental problem the general features and possibilities of the global management concepts.
+                    The next normal jackpot will begin when the
+                    timer countdown is over and the first bet is
+                    made
                 </Box>
             </Box>
-            
-            <Box h="200px"  />
+
+            <Box h="200px" />
         </Box>
     )
 }

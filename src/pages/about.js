@@ -15,7 +15,7 @@ export default function Rules() {
   setTimeout(() => { setDisplay(false) }, 2000)
 
   return (
-    <Box h="100%" pt="100px" backgroundColor="#171537">
+    <Box h="100%" p="20px" pt="100px" backgroundColor="#171537">
       <Loading display={display} />
       <Box >
         <Header />
