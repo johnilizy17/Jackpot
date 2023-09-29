@@ -1,5 +1,6 @@
 import ContactFaq from '@/components/Contact/ContactFaq';
 import ContactFrom from '@/components/Contact/ContactForm';
+import Presale from '@/components/Dashboard/Presale';
 import Header from '@/components/Layout';
 import Loading from '@/components/Layout/Loading';
 import Content from '@/components/Rules';
@@ -20,6 +21,7 @@ export default function Rules() {
         <ContactFaq />
         <ContactFrom />
       </Box>
+      <Presale/>
     </Box>
   )
 }

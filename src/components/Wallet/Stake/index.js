@@ -23,7 +23,7 @@ export default function Stake({ setStaking, setToggle }) {
     });
 
     return (
-        <Box p="30px">
+        <Box p="30px" color="#fff">
             <svg
                 onClick={() => {
                     setToggle(false)
@@ -36,24 +36,34 @@ export default function Stake({ setStaking, setToggle }) {
                 <caption style={{ marginBottom: 10 }}>Transaction History</caption>
                 <thead >
                     <tr>
-                        <th scope="col">S/N</th>
-                        <th scope="col">Amount </th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Wallet</th>
+                        <th scope="col">Jackpot id</th>
+                        <th scope="col">Name </th>
+                        <th scope="col">Jackpot Amount</th>
+                        <th scope="col">Winneer Address</th>
+                        <th scope="col">WINNER'S Amount</th>
+                        <th scope="col">PARTICIPANTS SHARE</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Next Jackpot Amount</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td scope="row" data-label="S/N">1</td>
-                        <td data-label="Compound">$21</td>
-                        <td data-label="Rewards">Deposit</td>
-                        <td data-label="Rewards">dnknf93094ke</td>
+                        <td scope="row" data-label="Jackpot id">1</td>
+                        <td data-label="Name">France</td>
+                        <td data-label="Jackpot Amount">$50</td>
+                        <td data-label="Winneer Address">0Xedj23029302jdfjd</td>
+                        <td data-label="PARTICIPANTS SHARE">$0.5</td>
+                        <td data-label="Amount">$5</td>
+                        <td data-label="Next Jackpot Amount">$5</td>
                     </tr>
                     <tr>
-                        <td scope="row" data-label="S/N">1</td>
-                        <td data-label="Compound">$21</td>
-                        <td data-label="Rewards">Deposit</td>
-                        <td data-label="Rewards">dnknf93094ke</td>
+                        <td scope="row" data-label="Jackpot id">1</td>
+                        <td data-label="Name">France</td>
+                        <td data-label="Jackpot Amount">$50</td>
+                        <td data-label="Winneer Address">0Xedj23029302jdfjd</td>
+                        <td data-label="PARTICIPANTS SHARE">$0.5</td>
+                        <td data-label="Amount">$5</td>
+                        <td data-label="Next Jackpot Amount">$5</td>
                     </tr>
                 </tbody>
             </table>

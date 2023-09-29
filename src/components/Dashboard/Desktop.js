@@ -1,7 +1,8 @@
-import { Box, useToast } from '@chakra-ui/react'
+import { Box, useToast, Flex, Center } from '@chakra-ui/react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Footer from '../Layout/Footer'
+import Presale from './Presale'
 
 export default function DashboardDesktop() {
 
@@ -114,7 +115,7 @@ export default function DashboardDesktop() {
 
 
     return (
-        <Box pt="90px">
+        <Box pt="90px" pos='relative'>
             <section>
                 <Flex p="20px" justifyContent="space-between" alignItems="center">
                     <Box className="minor-bar" w="350px" h="60px">
@@ -323,10 +324,8 @@ export default function DashboardDesktop() {
                             </Box>
                         </Box>
                     </Center>
-                    <Footer />
                 </Box>
-
-            </section>
+           </section>
         </Box>
     )
 }

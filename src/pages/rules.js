@@ -1,3 +1,4 @@
+import Presale from '@/components/Dashboard/Presale';
 import Header from '@/components/Layout';
 import Loading from '@/components/Layout/Loading';
 import Content from '@/components/Rules';
@@ -17,6 +18,7 @@ export default function Rules() {
                 <Header />
                 <Content />
             </Box>
+            <Presale/>
         </Box>
     )
 }

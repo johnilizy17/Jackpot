@@ -1,6 +1,7 @@
-import { Box, useToast } from '@chakra-ui/react'
+import { Box, useToast, Flex, Center } from '@chakra-ui/react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import Presale from './Presale'
 
 export default function Dashboard() {
 
@@ -291,7 +292,6 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="rules"><Link href="/rules">Rules</Link></div>
             </section>
         </Box>
     )
