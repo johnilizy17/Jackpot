@@ -17,14 +17,14 @@ export default function Footer() {
                 <Box> Duration: 2.5 mins(Max. Buy 20$) </Box>
                 <Box mt="20px">
                     <Box>REWARD DISTRIBUTION</Box>
-                    <Flex flexWrap="wrap">
-                        <Box mr="10px" mt="10px">50% WINNER</Box>
+                    <Flex flexWrap="wrap" flexDir='column'>
+                        <Box mr="10px" mt="10px">1. 50% WINNER</Box>
                         <Box mr="10px" mt="10px">
-                            20% NEXT NORMAL JACKPOT
+                            2. 20% NEXT NORMAL JACKPOT
                         </Box>
-                        <Box mr="10px" mt="10px">20% BIG JACKPOT</Box>
-                        <Box mr="10px" mt="10px">5% MARKETING</Box>
-                        <Box mr="10px" mt="10px">5% BOMB PRIZ</Box>
+                        <Box mr="10px" mt="10px">2. 20% BIG JACKPOT</Box>
+                        <Box mr="10px" mt="10px">3. 5% MARKETING</Box>
+                        <Box mr="10px" mt="10px">4. 5% BOMB PRIZ</Box>
                     </Flex>
                 </Box>
             </Box>
