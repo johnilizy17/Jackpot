@@ -12,41 +12,41 @@ export default function DashboardDesktop() {
     function HourSetter(e) {
         const miner2 = e / 24
         const miner = Math.floor(miner2)
-        const result = (miner*24) - e
+        const result = (miner * 24) - e
         if (result === 0) {
             return "00"
-        } else if(Math.sign(result) === 1) {    
-            return   result
+        } else if (Math.sign(result) === 1) {
+            return result
         } else {
-           return -1*result
-    }
+            return -1 * result
+        }
     }
 
     function minSetter(e, a) {
         const miner2 = e / 60
         const miner = Math.ceil(miner2)
-        const result = (miner*60) - e
+        const result = (miner * 60) - e
         if (result === 0) {
             return "60"
-        } else if(Math.sign(result) === 1) {    
-            return  (60 - result)
+        } else if (Math.sign(result) === 1) {
+            return (60 - result)
         } else {
-           return -1*result
-    }
+            return -1 * result
+        }
     }
 
     function secSetter(e, a) {
         const miner2 = e / 60
         const miner = miner2.toFixed(0)
-        const result = (miner*60) - e
+        const result = (miner * 60) - e
         if (result === 0) {
             return "00"
-        } else if(Math.sign(result) === 1) {    
-            return  (60 - result)
+        } else if (Math.sign(result) === 1) {
+            return (60 - result)
         } else {
-           return -1*result
+            return -1 * result
+        }
     }
-}
 
     function tester() {
         let hour = Math.floor(time / 3600)
@@ -57,9 +57,9 @@ export default function DashboardDesktop() {
         setTime(time - 1)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         tester()
-    },[])
+    }, [])
 
     setInterval(() => {
         tester()
@@ -80,7 +80,7 @@ export default function DashboardDesktop() {
         var element = document.getElementById(e);
         element.style.background = ("#4D46B9");
         if (e === "5") {
-            const newTime = time - (reducer * 60) + (10*60)
+            const newTime = time - (reducer * 60) + (10 * 60)
             setTime(newTime)
             setReducer(10)
             toast({
@@ -90,7 +90,7 @@ export default function DashboardDesktop() {
                 isClosable: true,
             });
         } else if (e === "10") {
-            const newTime = time - (reducer * 60) + (5*60)
+            const newTime = time - (reducer * 60) + (5 * 60)
             setTime(newTime)
             setReducer(5)
             toast({
@@ -101,7 +101,7 @@ export default function DashboardDesktop() {
             });
         } else {
 
-            const newTime = time - (reducer * 60) + (2.5*60)
+            const newTime = time - (reducer * 60) + (2.5 * 60)
             setTime(newTime)
             setReducer(2.5)
             toast({
@@ -155,7 +155,7 @@ export default function DashboardDesktop() {
                 </Flex>
                 <Box className="body">
                     <Box p="20px">
-                        {/* <Box className="view view-minor"
+                        <Box className="view view-minor"
                             style={{ transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", zIndex: 0, opacity: 0 }}>
                             <h2 className="title">Minor</h2>
                             <Box className="info">
@@ -178,7 +178,7 @@ export default function DashboardDesktop() {
                                     </Box>
                                 </Box>
                             </Box>
-                        </Box> */}
+                        </Box>
                         {/* <Box className="view view-big"
                             style={{ transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 }}>
                             <h2 className="title" style={{ color: "rgb(148, 144, 213)", backgroundColor: "rgb(31, 28, 74)" }}>BIG</h2>
@@ -210,29 +210,29 @@ export default function DashboardDesktop() {
                             </Box>
                         </Box> */}
                         <Flex justifyContent="space-between">
-                            <Box className="view game-over pictured view-gameover active" w="40%" h="calc(50vh - 100px)" pos="relative"
+                            <Box className="view game-over pictured view-gameover active" w="45%" h="calc(80vh - 100px)" pos="relative"
                                 style={{ transform: "translate(0px, 0px)", translate: "none", rotate: "none", scale: "none", opacity: 1, zIndex: 5 }}>
-                                <h2 className="title">GAMEOVER</h2>
-                                <Box className="info" borderRadius="1rem"><img src="../image/coin_stack.png" alt="treasure chest" className="chest"
-                                    style={{ transform: "translate3d(0px, 0px, 0px) scale(1.0152, 1.0152)", translate: "none", rotate: "none", scale: "none" }} />
+                                <h2 className="title">Minor</h2>
+                                <Box className="info"><img src="../image/treasure.svg" alt="treasure chest" className="chest"
+                                    style={{ translate: "none", rotate: "none", scale: "none", transform: "translate3d(0px, 0px, 0px) scale(1.0998, 1.0998)" }} />
                                     <Box className="splash-text">
                                         <Box
-                                            style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(3, 3)", opacity: 0.1, top: "50%" }}>
-                                            <p>You are out of</p>
+                                            style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(5, 5)", opacity: 0.1, top: "50%" }}>
+                                            <p>You Win</p>
                                         </Box>
                                         <Box className="prize-Box"
                                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "skew(-30deg, 0deg)" }}>
-                                            <p className="prize">LUCK!</p>
+                                            <p className="prize">2000 USDC</p>
                                         </Box>
                                     </Box>
                                 </Box>
                             </Box>
-                            <Box className="bomb-bar" h="calc(50vh - 100px)"><img src="../image/alpha_bomb.png" alt="" className="bang" />
+                            <Box className="bomb-bar" h="calc( 60vh - 100px)"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                                 <Box className="progress-bar vertical">
                                     <Box className="bar" style={{ height: "54.596%" }}></Box>
                                 </Box>
                             </Box>
-                            <Box className="view game-over pictured view-gameover active" w="40%" h="calc(50vh - 100px)" pos="relative"
+                            <Box className="view game-over pictured view-gameover active" w="45%" h="calc(80vh - 100px)" pos="relative"
                                 style={{ transform: "translate(0px, 0px)", translate: "none", rotate: "none", scale: "none", opacity: 1, zIndex: 5 }}>
                                 <h2 className="title">GAMEOVER</h2>
                                 <Box className="info" borderRadius="1rem"><img src="../image/coin_stack.png" alt="treasure chest" className="chest"
@@ -325,7 +325,7 @@ export default function DashboardDesktop() {
                         </Box>
                     </Center>
                 </Box>
-           </section>
+            </section>
         </Box>
     )
 }

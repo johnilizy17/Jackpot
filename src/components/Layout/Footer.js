@@ -4,7 +4,7 @@ import React from 'react';
 import { BsDiscord, BsFacebook, BsTelegram, BsTwitter } from 'react-icons/bs';
 import { IoLogoTwitter } from 'react-icons/io';
 
-export default function Footer() {
+export default function Footer() {  
 
     return (
         <div className="footer_container">
