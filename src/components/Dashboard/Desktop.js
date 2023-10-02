@@ -3,68 +3,85 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Footer from '../Layout/Footer'
 import Presale from './Presale'
-
+import { readContract, readContracts } from '@wagmi/core'
+import { contractAddress } from '@/services/NFT'
+import ABI from '@/utils/ABI'
 export default function DashboardDesktop() {
 
     const [display, setDisplay] = useState({ sec: "00", min: "00", hour: "00" })
     const [time, setTime] = useState(3600)
+    const [jackpotData, setJackpotData] = useState([])
     const toast = useToast()
-    function HourSetter(e) {
-        const miner2 = e / 24
-        const miner = Math.floor(miner2)
-        const result = (miner * 24) - e
-        if (result === 0) {
-            return "00"
-        } else if (Math.sign(result) === 1) {
-            return result
-        } else {
-            return -1 * result
+
+    async function jackpotInfo() {
+        try {
+            const data = await readContracts({
+                contracts: [{
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'fetchJackpotInfo',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotBalances',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'startingJackpot',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotMaxBalance',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotMarketingPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake1',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake2',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotType',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake2',
+                }]
+            })
+            setJackpotData(data)
+            console.log(data)
+        } catch (err) {
+            console.log(err)
         }
-    }
-
-    function minSetter(e, a) {
-        const miner2 = e / 60
-        const miner = Math.ceil(miner2)
-        const result = (miner * 60) - e
-        if (result === 0) {
-            return "60"
-        } else if (Math.sign(result) === 1) {
-            return (60 - result)
-        } else {
-            return -1 * result
-        }
-    }
-
-    function secSetter(e, a) {
-        const miner2 = e / 60
-        const miner = miner2.toFixed(0)
-        const result = (miner * 60) - e
-        if (result === 0) {
-            return "00"
-        } else if (Math.sign(result) === 1) {
-            return (60 - result)
-        } else {
-            return -1 * result
-        }
-    }
-
-    function tester() {
-        let hour = Math.floor(time / 3600)
-        let min = Math.ceil(time / 60)
-        let sec = time
-        setDisplay({ hour: HourSetter(hour), min: minSetter(min, "min"), sec: secSetter(sec, "sec") })
-
-        setTime(time - 1)
     }
 
     useEffect(() => {
-        tester()
+        jackpotInfo()
     }, [])
-
-    setInterval(() => {
-        tester()
-    }, 10000)
-
 
     function SelectedButton(e) {
 
@@ -80,9 +97,6 @@ export default function DashboardDesktop() {
         var element = document.getElementById(e);
         element.style.background = ("#4D46B9");
         if (e === "5") {
-            const newTime = time - (reducer * 60) + (10 * 60)
-            setTime(newTime)
-            setReducer(10)
             toast({
                 position: "top-right",
                 description: `Time add 10 min added to the the time`,
@@ -90,9 +104,6 @@ export default function DashboardDesktop() {
                 isClosable: true,
             });
         } else if (e === "10") {
-            const newTime = time - (reducer * 60) + (5 * 60)
-            setTime(newTime)
-            setReducer(5)
             toast({
                 position: "top-right",
                 description: `Time add 5 min added to the the time`,
@@ -101,9 +112,6 @@ export default function DashboardDesktop() {
             });
         } else {
 
-            const newTime = time - (reducer * 60) + (2.5 * 60)
-            setTime(newTime)
-            setReducer(2.5)
             toast({
                 position: "top-right",
                 description: `Time add 2.5 min added to the the time`,
@@ -112,6 +120,8 @@ export default function DashboardDesktop() {
             });
         }
     }
+
+
 
 
     return (
