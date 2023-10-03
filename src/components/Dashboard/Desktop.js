@@ -6,6 +6,7 @@ import Presale from './Presale'
 import { readContract, readContracts } from '@wagmi/core'
 import { contractAddress } from '@/services/NFT'
 import ABI from '@/utils/ABI'
+import { formatEther } from 'viem'
 export default function DashboardDesktop() {
 
     const [display, setDisplay] = useState({ sec: "00", min: "00", hour: "00" })
@@ -20,11 +21,6 @@ export default function DashboardDesktop() {
                     address: contractAddress,
                     abi: ABI,
                     functionName: 'fetchJackpotInfo',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'jackpotBalances',
                 },
                 {
                     address: contractAddress,
@@ -70,7 +66,8 @@ export default function DashboardDesktop() {
                     address: contractAddress,
                     abi: ABI,
                     functionName: 'minStake2',
-                }]
+                }
+                ]
             })
             setJackpotData(data)
             console.log(data)
@@ -81,7 +78,7 @@ export default function DashboardDesktop() {
 
     useEffect(() => {
         jackpotInfo()
-    }, [])
+    },[])
 
     function SelectedButton(e) {
 
@@ -315,19 +312,19 @@ export default function DashboardDesktop() {
                     <Center w="100vw" p="80px">
                         <Box className="bets" w="400px" h="7.2rem" pos="absolute" bottom="50px">
                             <Box className="bet" id='5' onClick={() => SelectedButton("5")}>
-                                <h2>$5</h2>
+                                <h2>${jackpotData[5] && formatEther(jackpotData[5].result)}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>10 min</p>
                                 </Box>
                             </Box>
                             <Box className="bet" id='10' onClick={() => SelectedButton("10")}>
-                                <h2>$10</h2>
+                                <h2>${jackpotData[6] && formatEther(jackpotData[6].result)}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>5 min</p>
                                 </Box>
                             </Box>
                             <Box className="bet" id='20' onClick={() => SelectedButton("20")}>
-                                <h2>$20</h2>
+                                <h2>${jackpotData[7] && formatEther(jackpotData[7].result)}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>2.5 min</p>
                                 </Box>

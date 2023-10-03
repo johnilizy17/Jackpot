@@ -1,10 +1,70 @@
 import Link from 'next/link';
 import { Box, Center, Flex, IconButton } from '@chakra-ui/react';
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { BsDiscord, BsFacebook, BsTelegram, BsTwitter } from 'react-icons/bs';
 import { IoLogoTwitter } from 'react-icons/io';
+import { readContract, readContracts } from '@wagmi/core'
+import { contractAddress } from '@/services/NFT'
 
 export default function Footer() {
+    const [jackpotData, setJackpotData] = useState([])
+   
+    async function jackpotInfo() {
+        try {
+            const data = await readContracts({
+                contracts: [{
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'bigBangMax',
+                }, 
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotWinnerPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotMarketingPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotBigBangPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake1',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake2',
+                }
+                ]
+            })
+            setJackpotData(data)
+            console.log(data, "footer")
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        jackpotInfo()
+        console.log("here")
+    },[true])
 
     return (
         <div className="footer_container">

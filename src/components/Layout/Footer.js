@@ -1,10 +1,72 @@
 import Link from 'next/link';
 import { Box, Center, Flex, IconButton } from '@chakra-ui/react';
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { BsDiscord, BsFacebook, BsTelegram, BsTwitter } from 'react-icons/bs';
 import { IoLogoTwitter } from 'react-icons/io';
+import { readContract, readContracts } from '@wagmi/core'
+import { contractAddress } from '@/services/NFT'
+import ABI from '@/utils/ABI';
+import { formatEther } from 'viem'
 
-export default function Footer() {  
+export default function Footer() {
+    const [jackpotData, setJackpotData] = useState([])
+   
+    async function jackpotInfo() {
+        try {
+            const data = await readContracts({
+                contracts: [{
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'bigBangMax',
+                }, 
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotWinnerPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotMarketingPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'jackpotBigBangPercent',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake1',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'minStake2',
+                }
+                ]
+            })
+            setJackpotData(data)
+            console.log(data, "footer")
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        jackpotInfo()
+        console.log("here")
+    },[true])
 
     return (
         <div className="footer_container">
@@ -13,18 +75,18 @@ export default function Footer() {
                     <Box mb="20px">JACKPOT INFO</Box>
                 </Box>
                 <Box>Participants: 52</Box>
-                <Box>  Duration: 5 mins(Min Buy: $5)</Box>
-                <Box> Duration: 2.5 mins(Max. Buy 20$) </Box>
+                <Box>  Duration: 5 mins(Min Buy: ${jackpotData[5] && formatEther(jackpotData[5].result)})</Box>
+                <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && formatEther(jackpotData[7].result)}) </Box>
                 <Box mt="20px">
                     <Box>REWARD DISTRIBUTION</Box>
                     <Flex flexWrap="wrap" flexDir='column'>
-                        <Box mr="10px" mt="10px">1. 50% WINNER</Box>
+                        <Box mr="10px" mt="10px">1. {jackpotData[1] && formatEther(jackpotData[1].result)}% WINNER</Box>
                         <Box mr="10px" mt="10px">
-                            2. 20% NEXT NORMAL JACKPOT
+                            2. {jackpotData[3] && formatEther(jackpotData[3].result)}% NEXT NORMAL JACKPOT
                         </Box>
-                        <Box mr="10px" mt="10px">2. 20% BIG JACKPOT</Box>
-                        <Box mr="10px" mt="10px">3. 5% MARKETING</Box>
-                        <Box mr="10px" mt="10px">4. 5% BOMB PRIZ</Box>
+                        <Box mr="10px" mt="10px">2. {jackpotData[4] && formatEther(jackpotData[4].result)}% BIG JACKPOT</Box>
+                        <Box mr="10px" mt="10px">3. {jackpotData[2] && formatEther(jackpotData[2].result)}% MARKETING</Box>
+                        <Box mr="10px" mt="10px">4. {jackpotData[1] && formatEther(jackpotData[0].result)}% BOMB PRIZ</Box>
                     </Flex>
                 </Box>
             </Box>
