@@ -24,7 +24,7 @@ export default function Display({data, getCurrentJackpotInfo}) {
                     <Box display="flex"  w="80vw" h="70px" alignItems="center" p="20px" pt="10px" ><img style={{width:40, marginRight:40, height:40}} src="../image/trophie.png" alt="" />
                         <Box className="texts second" mt="20px">
                             <h4>Staked Amount</h4>
-                            <p>{data[0]} USDC</p>
+                            <p className="blink_me">{data[0]} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex"  w="80vw" h="70px" alignItems="center" p="20px" pt="10px" ><img style={{width:40, marginRight:40, height:40}} src="../image/mesh.png" alt="" />

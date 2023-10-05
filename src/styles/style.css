@@ -1617,3 +1617,15 @@
         background-positon-x: 0px;
     }
 }
+
+.blink_me {
+    animation: blinker 1s linear infinite;
+    color: rgb(30, 240, 30);
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+      color: rgb(30, 240, 30);
+    }
+  }
