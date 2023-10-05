@@ -1,18 +1,30 @@
-import { Box, useToast, Flex, Center } from '@chakra-ui/react'
+import { Box, useToast, Flex, Center, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button } from '@chakra-ui/react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Footer from '../Layout/Footer'
 import Presale from './Presale'
 import { readContract, readContracts } from '@wagmi/core'
-import { contractAddress } from '@/services/NFT'
+import { BUSD, contractAddress } from '@/services/NFT'
 import ABI from '@/utils/ABI'
-import { formatEther } from 'viem'
+import { formatEther, parseEther } from 'viem'
+import TimeCounter from './Timer'
+import { prepareWriteContract, writeContract } from '@wagmi/core'
+import ABI_BUSD from '@/utils/ABI_BUSD'
+import { useAccount } from 'wagmi'
+
 export default function DashboardDesktop() {
 
     const [display, setDisplay] = useState({ sec: "00", min: "00", hour: "00" })
     const [time, setTime] = useState(3600)
     const [jackpotData, setJackpotData] = useState([])
+    const [mintApproval, setMintApproval] = useState(false)
+    const [allowed, setAllowed] = useState(0)
+    const { address } = useAccount()
+    const [loading, setLoading] = useState(false)
+    const [amount, setAmount] = useState(false)
     const toast = useToast()
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     async function jackpotInfo() {
         try {
@@ -70,7 +82,6 @@ export default function DashboardDesktop() {
                 ]
             })
             setJackpotData(data)
-            console.log(data)
         } catch (err) {
             console.log(err)
         }
@@ -78,43 +89,95 @@ export default function DashboardDesktop() {
 
     useEffect(() => {
         jackpotInfo()
-    },[])
+    }, [])
 
-    function SelectedButton(e) {
+    async function CheckAllowance() {
 
-        var element2 = document.getElementById("5");
+        const allow = await readContract({
+            address: BUSD,
+            abi: ABI_BUSD,
+            args: [address, contractAddress],
+            functionName: 'allowance',
+        })
+        setAllowed(formatEther(allow))
+    }
+
+    useEffect(() => {
+        CheckAllowance()
+    }, [])
+
+
+    function SelectedButton(e, a) {
+
+        var element2 = document.getElementById("6");
         element2.style.background = ("#1f1c4a");
 
-        var element3 = document.getElementById("10");
+        var element3 = document.getElementById("11");
         element3.style.background = ("#1f1c4a");
 
-        var element4 = document.getElementById("20");
+        var element4 = document.getElementById("21");
         element4.style.background = ("#1f1c4a");
 
         var element = document.getElementById(e);
         element.style.background = ("#4D46B9");
-        if (e === "5") {
-            toast({
-                position: "top-right",
-                description: `Time add 10 min added to the the time`,
-                status: "success",
-                isClosable: true,
-            });
-        } else if (e === "10") {
-            toast({
-                position: "top-right",
-                description: `Time add 5 min added to the the time`,
-                status: "success",
-                isClosable: true,
-            });
-        } else {
+        setAmount(a)
+         if (formatEther(allowed) >= formatEther(a)) {
+            setMintApproval(true)
+            console.log("allowed")
+        }else{
+            setMintApproval(false)
+            console.log("allowed 2")
+        }
+        onOpen()
+       
+        // if (e === "6") {
+        //     toast({
+        //         position: "top-right",
+        //         description: `Time add 10 min added to the the time`,
+        //         status: "success",
+        //         isClosable: true,
+        //     });
+        // } else if (e === "11") {
+        //     toast({
+        //         position: "top-right",
+        //         description: `Time add 5 min added to the the time`,
+        //         status: "success",
+        //         isClosable: true,
+        //     });
+        // } else {
 
-            toast({
-                position: "top-right",
-                description: `Time add 2.5 min added to the the time`,
-                status: "success",
-                isClosable: true,
-            });
+        //     toast({
+        //         position: "top-right",
+        //         description: `Time add 2.5 min added to the the time`,
+        //         status: "success",
+        //         isClosable: true,
+        //     });
+        // }
+    }
+
+    async function ApprovalButton() {
+        try {
+
+            setLoading(true)
+            const config = await prepareWriteContract({
+                address: BUSD,
+                abi: ABI_BUSD,
+                args: [contractAddress, parseEther(amount)],
+                functionName: 'approve',
+                overrides: {
+                    value: 0,
+                    gasLimit: 3010000
+                }
+            })
+
+            const { hash } = await writeContract(config)
+            toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
+            setMintApproval(true)
+            setLoading(false)
+        } catch (err) {
+            toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
+
+            setLoading(false)
         }
     }
 
@@ -123,6 +186,24 @@ export default function DashboardDesktop() {
 
     return (
         <Box pt="90px" pos='relative'>
+
+            <Modal isOpen={isOpen} onClose={onClose} isCentered>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Stake your Jackpot</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody textAlign="center" mb="20px">
+                        Buy a stake with ease
+                    </ModalBody>
+
+                    <ModalFooter display="flex" justifyContent="space-between">
+                        <Button colorScheme='blue' isDisabled={mintApproval} isLoading={loading && !mintApproval} mr={3} onClick={() => ApprovalButton()}>
+                            Approval
+                        </Button>
+                        <Button colorScheme='green' isDisabled={!mintApproval} isLoading={loading && mintApproval}>Stake</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
             <section>
                 <Flex p="20px" justifyContent="space-between" alignItems="center">
                     <Box className="minor-bar" w="350px" h="60px">
@@ -135,20 +216,7 @@ export default function DashboardDesktop() {
                         </Box>
                     </Box>
                     <Box className="timer" w="400px" h="7.2rem">
-                        <Box className="time hour">
-                            <h2>{display.hour}</h2>
-                            <p>Hour</p>
-                        </Box>
-                        <Box className="divide"></Box>
-                        <Box className="time min">
-                            <h2>{display.min}</h2>
-                            <p>Min</p>
-                        </Box>
-                        <Box className="divide"></Box>
-                        <Box className="time sec">
-                            <h2>{display.sec}</h2>
-                            <p>Sec</p>
-                        </Box>
+                        <TimeCounter />
                     </Box>
                     <Box className="minor-bar" w="350px" h="60px" >
                         <Box className="labels">
@@ -311,19 +379,19 @@ export default function DashboardDesktop() {
 
                     <Center w="100vw" p="80px">
                         <Box className="bets" w="400px" h="7.2rem" pos="absolute" bottom="50px">
-                            <Box className="bet" id='5' onClick={() => SelectedButton("5")}>
+                            <Box className="bet" id='6' onClick={() => SelectedButton("6", formatEther(jackpotData[5].result))}>
                                 <h2>${jackpotData[5] && formatEther(jackpotData[5].result)}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>10 min</p>
                                 </Box>
                             </Box>
-                            <Box className="bet" id='10' onClick={() => SelectedButton("10")}>
+                            <Box className="bet" id='11' onClick={() => SelectedButton("11", formatEther(jackpotData[6].result))}>
                                 <h2>${jackpotData[6] && formatEther(jackpotData[6].result)}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>5 min</p>
                                 </Box>
                             </Box>
-                            <Box className="bet" id='20' onClick={() => SelectedButton("20")}>
+                            <Box className="bet" id='21' onClick={() => SelectedButton("21", formatEther(jackpotData[7].result))}>
                                 <h2>${jackpotData[7] && formatEther(jackpotData[7].result)}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>2.5 min</p>
