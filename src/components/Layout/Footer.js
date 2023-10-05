@@ -78,21 +78,21 @@ export default function Footer() {
                 <Box fontSize="17px" fontWeight="800">
                     <Box mb="20px">JACKPOT INFO</Box>
                 </Box>
-                <Box>Participants: {jackpotData[8] && jackpotData[8].result.length}</Box>
-                <Box>  Duration: 5 mins(Min Buy: ${jackpotData[5] && formatEther(jackpotData[5].result)})</Box>
-                <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && formatEther(jackpotData[7].result)}) </Box>
+                {/* <Box>Participants: {jackpotData[8] && jackpotData[8].result && jackpotData[8].result.length}</Box>
+                <Box>  Duration: 5 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
+                <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && jackpotData[8].result && formatEther(jackpotData[7].result)}) </Box>
                 <Box mt="20px">
                     <Box>REWARD DISTRIBUTION</Box>
                     <Flex flexWrap="wrap" flexDir='column'>
-                        <Box mr="10px" mt="10px">1. {jackpotData[1] && formatEther(jackpotData[1].result)*1000000000000000000}% WINNER</Box>
+                        <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result)*1000000000000000000}% WINNER</Box>
                         <Box mr="10px" mt="10px">
-                            2. {jackpotData[3] && formatEther(jackpotData[3].result)*1000000000000000000}% NEXT NORMAL JACKPOT
+                            2. {jackpotData[3] && jackpotData[8].result && formatEther(jackpotData[3].result)*1000000000000000000}% NEXT NORMAL JACKPOT
                         </Box>
-                        <Box mr="10px" mt="10px">2. {jackpotData[4] && formatEther(jackpotData[4].result)*1000000000000000000}% BIG JACKPOT</Box>
-                        <Box mr="10px" mt="10px">3. {jackpotData[2] && formatEther(jackpotData[2].result)*1000000000000000000}% MARKETING</Box>
-                        <Box mr="10px" mt="10px">4. {jackpotData[1] && formatEther(jackpotData[0].result)}% BOMB PRIZ</Box>
+                        <Box mr="10px" mt="10px">2. {jackpotData[4] && jackpotData[8].result && formatEther(jackpotData[4].result)*1000000000000000000}% BIG JACKPOT</Box>
+                        <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result)*1000000000000000000}% MARKETING</Box>
+                        <Box mr="10px" mt="10px">4. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[0].result)}% BOMB PRIZ</Box>
                     </Flex>
-                </Box>
+                </Box> */}
             </Box>
             <footer class="footer">
                 <div class="waves">

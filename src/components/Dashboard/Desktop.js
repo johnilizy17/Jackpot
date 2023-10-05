@@ -19,6 +19,7 @@ export default function DashboardDesktop() {
     const [jackpotData, setJackpotData] = useState([])
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
+    const [refresh, setRefresh] = useState(false)
     const { address } = useAccount()
     const [loading, setLoading] = useState(false)
     const [amount, setAmount] = useState(false)
@@ -81,6 +82,7 @@ export default function DashboardDesktop() {
                 }
                 ]
             })
+            console.log(data)
             setJackpotData(data)
         } catch (err) {
             console.log(err)
@@ -88,8 +90,9 @@ export default function DashboardDesktop() {
     }
 
     useEffect(() => {
+        
         jackpotInfo()
-    }, [])
+    }, [refresh])
 
     async function CheckAllowance() {
 
@@ -123,7 +126,7 @@ export default function DashboardDesktop() {
         setAmount(a)
          if (formatEther(allowed) >= formatEther(a)) {
             setMintApproval(true)
-            console.log("allowed")
+            console.log("allowed", formatEther(allowed), formatEther(a) )
         }else{
             setMintApproval(false)
             console.log("allowed 2")
@@ -171,6 +174,8 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
+                   setAllowed(amount)
+
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
@@ -181,6 +186,33 @@ export default function DashboardDesktop() {
         }
     }
 
+    async function stakeButton() {
+        try {
+
+            setLoading(true)
+            const config = await prepareWriteContract({
+                address: contractAddress,
+                abi: ABI,
+                args: [parseEther(amount)],
+                functionName: 'buyJackpot',
+                overrides: {
+                    value: 0,
+                    gasLimit: 3010000
+                }
+            })
+
+            const { hash } = await writeContract(config)
+                   setAllowed(amount)
+
+            toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
+            setMintApproval(false)
+            setLoading(false)
+        } catch (err) {
+            toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
+
+            setLoading(false)
+        }
+    }
 
 
 
@@ -200,7 +232,7 @@ export default function DashboardDesktop() {
                         <Button colorScheme='blue' isDisabled={mintApproval} isLoading={loading && !mintApproval} mr={3} onClick={() => ApprovalButton()}>
                             Approval
                         </Button>
-                        <Button colorScheme='green' isDisabled={!mintApproval} isLoading={loading && mintApproval}>Stake</Button>
+                        <Button colorScheme='green' isDisabled={!mintApproval} isLoading={loading && mintApproval} onClick={()=>stakeButton()}>Stake</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
