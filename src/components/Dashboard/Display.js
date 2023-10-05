@@ -1,8 +1,9 @@
 import { Box } from '@chakra-ui/react';
 import React from 'react';
 
-export default function Display({name}) {
+export default function Display({data, getCurrentJackpotInfo}) {
 
+    console.log(getCurrentJackpotInfo, data)
     function cardTransition(id){
         var element2 = document.getElementById(id);
         // element2.d
@@ -17,19 +18,19 @@ export default function Display({name}) {
                     <Box display="flex"  w="80vw" h="70px" alignItems="center" p="20px" pt="10px" ><img style={{width:40, marginRight:40, height:40}} src="../image/money_bag.png" alt="" />
                         <Box className="texts" mt="20px">
                             <h4>Jackpot Entry</h4>
-                            <p>320 USDC</p>
+                            <p>{data[1]} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex"  w="80vw" h="70px" alignItems="center" p="20px" pt="10px" ><img style={{width:40, marginRight:40, height:40}} src="../image/trophie.png" alt="" />
                         <Box className="texts second" mt="20px">
                             <h4>Staked Amount</h4>
-                            <p>334 USDC</p>
+                            <p>{data[0]} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex"  w="80vw" h="70px" alignItems="center" p="20px" pt="10px" ><img style={{width:40, marginRight:40, height:40}} src="../image/mesh.png" alt="" />
                         <Box className="texts" mt="20px">
                             <h4>Information</h4>
-                            <p>Participants: 3121<br />Bets: 77</p>
+                            <p>Participants: {getCurrentJackpotInfo.length}<br />Bets: {getCurrentJackpotInfo.length}</p>
                         </Box>
                     </Box>
                 </Box>

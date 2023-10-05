@@ -23,6 +23,7 @@ export default function DashboardDesktop() {
     const [refresh, setRefresh] = useState(false)
     const { address } = useAccount()
     const [loading, setLoading] = useState(false)
+    const [getCurrentJackpotInfo, setGetCurrentJackpotInfo]= useState([])
     const [amount, setAmount] = useState(false)
     const toast = useToast()
 
@@ -33,13 +34,20 @@ export default function DashboardDesktop() {
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                functionName: 'fetchJackpotInfo',
+                functionName: 'fetchJackpotInfo'
 
             })
             const dataParse = data.map((a) => {
               return  formatEther(a)
             })
-            console.log(dataParse)
+            
+            const getjackpot = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                args:[JSON.parse(dataParse[2])],
+                functionName: 'getCurrentJackpotInfo'
+            })
+            setGetCurrentJackpotInfo(getjackpot)
             setJackpotData(dataParse)
         } catch (err) {
             console.log(err)
@@ -195,46 +203,46 @@ export default function DashboardDesktop() {
             </Modal>
             <Box>
                 <section className="page">
-                    <div className="body">
-                        <div className="timer">
+                    <Box className="body">
+                        <Box className="timer">
                             <TimeCounter />
-                        </div>
-                        <Display />
-                        <div className="bomb-bar"><img src="../image/alpha_bomb.png" alt="" className="bang" />
-                            <div className="progress-bar vertical">
-                                <div className="bar" style={{ height: "54.596%" }}></div>
-                            </div>
-                        </div>
-                        <div className="minor-bar">
-                            <div className="labels">
+                        </Box>
+                        <Display data={jackpotData} getCurrentJackpotInfo={getCurrentJackpotInfo } />
+                        <Box  className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
+                            <Box className="progress-bar vertical">
+                                <Box className="bar" style={{ height: "54.596%" }}></Box>
+                            </Box>
+                        </Box>
+                        <Box className="minor-bar">
+                            <Box className="labels">
                                 <p>Normal</p>
                                 <p>Big</p>
-                            </div>
-                            <div className="progress-bar ">
-                                <div className="bar" style={{ width: "13.5803%" }}></div>
-                            </div>
-                        </div>
-                        <div className="bets">
-                            <div className="bet" id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
+                            </Box>
+                            <Box className="progress-bar ">
+                                <Box className="bar" style={{ width: "13.5803%" }}></Box>
+                            </Box>
+                        </Box>
+                        <Box className="bets">
+                            <Box className="bet" id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
                                 <h2>${jackpotData && jackpotData[3] && jackpotData[3]}</h2>
-                                <div className="subinfo"><i className="material-icons-outlined">timer</i>
+                                <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>10 min</p>
-                                </div>
-                            </div>
-                            <div className="bet" id='10' onClick={() => SelectedButton("10", jackpotData[9])}>
+                                </Box>
+                            </Box>
+                            <Box className="bet" id='10' onClick={() => SelectedButton("10", jackpotData[9])}>
                                 <h2>${jackpotData && jackpotData[9] && jackpotData[9]}</h2>
-                                <div className="subinfo"><i className="material-icons-outlined">timer</i>
+                                <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>5 min</p>
-                                </div>
-                            </div>
-                            <div className="bet" id='20' onClick={() => SelectedButton("20", jackpotData[10])}>
+                                </Box>
+                            </Box>
+                            <Box className="bet" id='20' onClick={() => SelectedButton("20", jackpotData[10])}>
                                 <h2>${jackpotData && jackpotData[10] && jackpotData[10]}</h2>
-                                <div className="subinfo"><i className="material-icons-outlined">timer</i>
+                                <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>2.5 min</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </Box>
+                            </Box>
+                        </Box>
+                    </Box>
                 </section>
             </Box>
         </>
