@@ -1,75 +1,73 @@
-import { Box, useToast, Flex, Center } from '@chakra-ui/react'
+import { Box, useToast, Flex, Center, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button } from '@chakra-ui/react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import Footer from '../Layout/Footer'
 import Presale from './Presale'
+import { readContract, readContracts } from '@wagmi/core'
+import { BUSD, contractAddress } from '@/services/NFT'
+import ABI from '@/utils/ABI'
+import { formatEther, parseEther } from 'viem'
 import TimeCounter from './Timer'
+import { prepareWriteContract, writeContract } from '@wagmi/core'
+import ABI_BUSD from '@/utils/ABI_BUSD'
+import { useAccount } from 'wagmi'
 import Display from './Display'
 
-export default function Dashboard() {
+export default function DashboardDesktop() {
 
     const [display, setDisplay] = useState({ sec: "00", min: "00", hour: "00" })
     const [time, setTime] = useState(3600)
+    const [jackpotData, setJackpotData] = useState([])
+    const [mintApproval, setMintApproval] = useState(false)
+    const [allowed, setAllowed] = useState(0)
+    const [refresh, setRefresh] = useState(false)
+    const { address } = useAccount()
+    const [loading, setLoading] = useState(false)
+    const [amount, setAmount] = useState(false)
     const toast = useToast()
-    const [reducer, setReducer] = useState(0)
 
-    function HourSetter(e) {
-        const miner2 = e / 24
-        const miner = Math.floor(miner2)
-        const result = (miner * 24) - e
-        if (result === 0) {
-            return "00"
-        } else if (Math.sign(result) === 1) {
-            return result
-        } else {
-            return -1 * result
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    async function jackpotInfo() {
+        try {
+            const data = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'fetchJackpotInfo',
+
+            })
+            const dataParse = data.map((a) => {
+              return  formatEther(a)
+            })
+            console.log(dataParse)
+            setJackpotData(dataParse)
+        } catch (err) {
+            console.log(err)
         }
-    }
-
-    function minSetter(e, a) {
-        const miner2 = e / 60
-        const miner = Math.ceil(miner2)
-        const result = (miner * 60) - e
-        if (result === 0) {
-            return "00"
-        } else if (Math.sign(result) === 1) {
-            return (60 - result)
-        } else {
-            return -1 * result
-        }
-    }
-
-    function secSetter(e, a) {
-        const miner2 = e / 60
-        const miner = miner2.toFixed(0)
-        const result = (miner * 60) - e
-        if (result === 0) {
-            return "00"
-        } else if (Math.sign(result) === 1) {
-            return (60 - result)
-        } else {
-            return -1 * result
-        }
-    }
-
-    function tester() {
-        let hour = Math.floor(time / 3600)
-        let min = Math.ceil(time / 60)
-        let sec = time
-        setDisplay({ hour: HourSetter(hour), min: minSetter(min, "min"), sec: secSetter(sec, "sec") })
-
-        setTime(time - 1)
     }
 
     useEffect(() => {
-        tester()
+
+        jackpotInfo()
+    }, [refresh])
+
+    async function CheckAllowance() {
+
+        const allow = await readContract({
+            address: BUSD,
+            abi: ABI_BUSD,
+            args: [address, contractAddress],
+            functionName: 'allowance',
+        })
+        setAllowed(formatEther(allow))
+    }
+
+    useEffect(() => {
+        CheckAllowance()
     }, [])
 
-    setInterval(() => {
-        tester()
-    }, 10000)
 
-
-    function SelectedButton(e) {
+    function SelectedButton(e, a) {
 
         var element2 = document.getElementById("5");
         element2.style.background = ("#1f1c4a");
@@ -82,85 +80,163 @@ export default function Dashboard() {
 
         var element = document.getElementById(e);
         element.style.background = ("#4D46B9");
-        if (e === "5") {
-            const newTime = time - (reducer * 60)
-            setTime(newTime)
-            setReducer(10)
-            toast({
-                position: "top-right",
-                description: `Time add 10 min added to the the time`,
-                status: "success",
-                isClosable: true,
-            });
-        } else if (e === "10") {
-            const newTime = time - (reducer * 60)
-            setTime(newTime)
-            setReducer(5)
-            toast({
-                position: "top-right",
-                description: `Time add 5 min added to the the time`,
-                status: "success",
-                isClosable: true,
-            });
+        setAmount(a)
+        if (formatEther(allowed) >= formatEther(a)) {
+            setMintApproval(true)
+            console.log("allowed", formatEther(allowed), formatEther(a))
         } else {
+            setMintApproval(false)
+            console.log("allowed 2")
+        }
+        onOpen()
 
-            const newTime = time - (reducer * 60)
-            setTime(newTime)
-            setReducer(2.5)
-            toast({
-                position: "top-right",
-                description: `Time add 2.5 min added to the the time`,
-                status: "success",
-                isClosable: true,
-            });
+        // if (e === "6") {
+        //     toast({
+        //         position: "top-right",
+        //         description: `Time add 10 min added to the the time`,
+        //         status: "success",
+        //         isClosable: true,
+        //     });
+        // } else if (e === "11") {
+        //     toast({
+        //         position: "top-right",
+        //         description: `Time add 5 min added to the the time`,
+        //         status: "success",
+        //         isClosable: true,
+        //     });
+        // } else {
+
+        //     toast({
+        //         position: "top-right",
+        //         description: `Time add 2.5 min added to the the time`,
+        //         status: "success",
+        //         isClosable: true,
+        //     });
+        // }
+    }
+
+    async function ApprovalButton() {
+        try {
+
+            setLoading(true)
+            const config = await prepareWriteContract({
+                address: BUSD,
+                abi: ABI_BUSD,
+                args: [contractAddress, parseEther(amount)],
+                functionName: 'approve',
+                overrides: {
+                    value: 0,
+                    gasLimit: 3010000
+                }
+            })
+
+            const { hash } = await writeContract(config)
+            setAllowed(amount)
+
+            toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
+            setMintApproval(true)
+            setLoading(false)
+        } catch (err) {
+            toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
+
+            setLoading(false)
+        }
+    }
+
+    async function stakeButton() {
+        try {
+
+            setLoading(true)
+            const config = await prepareWriteContract({
+                address: contractAddress,
+                abi: ABI,
+                args: [parseEther(amount)],
+                functionName: 'buyJackpot',
+                overrides: {
+                    value: 0,
+                    gasLimit: 3010000
+                }
+            })
+
+            const { hash } = await writeContract(config)
+            setAllowed(amount)
+            onClose()
+            toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
+            setMintApproval(false)
+            setLoading(false)
+        } catch (err) {
+            toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
+
+            setLoading(false)
         }
     }
 
 
+
     return (
-        <Box>
-            <section className="page">
-                <div className="body">
-                    <div className="timer">
-                    <TimeCounter />
-                    </div>
-                    <Display/>
-                    <div className="bomb-bar"><img src="../image/alpha_bomb.png" alt="" className="bang" />
-                        <div className="progress-bar vertical">
-                            <div className="bar" style={{ height: "54.596%" }}></div>
+        <>
+
+            <Modal isOpen={isOpen} onClose={onClose} isCentered>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Stake your Jackpot</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody textAlign="center" mb="20px">
+                        Buy a stake with ease
+                    </ModalBody>
+
+                    <ModalFooter display="flex" justifyContent="space-between">
+                        <Button colorScheme='blue' isDisabled={mintApproval} isLoading={loading && !mintApproval} mr={3} onClick={() => ApprovalButton()}>
+                            Approval
+                        </Button>
+                        <Button colorScheme='green' isDisabled={!mintApproval} isLoading={loading && mintApproval} onClick={() => stakeButton()}>Stake</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+            <Box>
+                <section className="page">
+                    <div className="body">
+                        <div className="timer">
+                            <TimeCounter />
                         </div>
-                    </div>
-                    <div className="minor-bar">
-                        <div className="labels">
-                            <p>Normal</p>
-                            <p>Big</p>
-                        </div>
-                        <div className="progress-bar ">
-                            <div className="bar" style={{ width: "13.5803%" }}></div>
-                        </div>
-                    </div>
-                    <div className="bets">
-                        <div className="bet" id='5' onClick={() => SelectedButton("5")}>
-                            <h2>$5</h2>
-                            <div className="subinfo"><i className="material-icons-outlined">timer</i>
-                                <p>10 min</p>
+                        <Display />
+                        <div className="bomb-bar"><img src="../image/alpha_bomb.png" alt="" className="bang" />
+                            <div className="progress-bar vertical">
+                                <div className="bar" style={{ height: "54.596%" }}></div>
                             </div>
                         </div>
-                        <div className="bet" id='10' onClick={() => SelectedButton("10")}>
-                            <h2>$10</h2>
-                            <div className="subinfo"><i className="material-icons-outlined">timer</i>
-                                <p>5 min</p>
+                        <div className="minor-bar">
+                            <div className="labels">
+                                <p>Normal</p>
+                                <p>Big</p>
+                            </div>
+                            <div className="progress-bar ">
+                                <div className="bar" style={{ width: "13.5803%" }}></div>
                             </div>
                         </div>
-                        <div className="bet" id='20' onClick={() => SelectedButton("20")}>
-                            <h2>$20</h2>
-                            <div className="subinfo"><i className="material-icons-outlined">timer</i>
-                                <p>2.5 min</p>
+                        <div className="bets">
+                            <div className="bet" id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
+                                <h2>${jackpotData && jackpotData[3] && jackpotData[3]}</h2>
+                                <div className="subinfo"><i className="material-icons-outlined">timer</i>
+                                    <p>10 min</p>
+                                </div>
+                            </div>
+                            <div className="bet" id='10' onClick={() => SelectedButton("10", jackpotData[9])}>
+                                <h2>${jackpotData && jackpotData[9] && jackpotData[9]}</h2>
+                                <div className="subinfo"><i className="material-icons-outlined">timer</i>
+                                    <p>5 min</p>
+                                </div>
+                            </div>
+                            <div className="bet" id='20' onClick={() => SelectedButton("20", jackpotData[10])}>
+                                <h2>${jackpotData && jackpotData[10] && jackpotData[10]}</h2>
+                                <div className="subinfo"><i className="material-icons-outlined">timer</i>
+                                    <p>2.5 min</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </Box>
+                </section>
+            </Box>
+        </>
     )
 }
