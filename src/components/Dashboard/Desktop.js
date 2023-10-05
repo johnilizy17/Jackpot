@@ -106,8 +106,10 @@ export default function DashboardDesktop() {
     }
 
     useEffect(() => {
+    if(address){
         CheckAllowance()
-    }, [])
+    }
+    }, [address])
 
 
     function SelectedButton(e, a) {

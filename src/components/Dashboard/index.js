@@ -20,10 +20,12 @@ export default function DashboardDesktop() {
     const [jackpotData, setJackpotData] = useState([])
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
+    const [percentage, setPercentage] = useState(0)
     const [refresh, setRefresh] = useState(false)
     const { address } = useAccount()
     const [loading, setLoading] = useState(false)
-    const [getCurrentJackpotInfo, setGetCurrentJackpotInfo]= useState([])
+    const [name, setName] = useState("loss");
+    const [getCurrentJackpotInfo, setGetCurrentJackpotInfo] = useState([])
     const [amount, setAmount] = useState(false)
     const toast = useToast()
 
@@ -38,16 +40,34 @@ export default function DashboardDesktop() {
 
             })
             const dataParse = data.map((a) => {
-              return  formatEther(a)
+                return formatEther(a)
             })
-            
+
             const getjackpot = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                args:[JSON.parse(dataParse[2])],
+                args: [JSON.parse(dataParse[2])],
                 functionName: 'getCurrentJackpotInfo'
             })
             setGetCurrentJackpotInfo(getjackpot)
+            console.log(getjackpot)
+
+            getjackpot.map((a, b) => {
+                if (a.staker === address) {
+
+                } else {
+               const notify =  localStorage.getItem(`{dataParse[2]}{b}`)
+            if(!notify){
+                localStorage.setItem(`{dataParse[2]}{b}`, a.staker)
+                setTimeout(()=>{
+                    toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
+                }, 1000)
+               
+            }   
+            }
+            })
+            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
+            setPercentage(`${percentageStake}%`)
             setJackpotData(dataParse)
         } catch (err) {
             console.log(err)
@@ -71,8 +91,10 @@ export default function DashboardDesktop() {
     }
 
     useEffect(() => {
-        CheckAllowance()
-    }, [])
+        if (address) {
+            CheckAllowance()
+        }
+    }, [address])
 
 
     function SelectedButton(e, a) {
@@ -91,10 +113,8 @@ export default function DashboardDesktop() {
         setAmount(a)
         if (formatEther(allowed) >= formatEther(a)) {
             setMintApproval(true)
-            console.log("allowed", formatEther(allowed), formatEther(a))
         } else {
             setMintApproval(false)
-            console.log("allowed 2")
         }
         onOpen()
 
@@ -207,19 +227,19 @@ export default function DashboardDesktop() {
                         <Box className="timer">
                             <TimeCounter />
                         </Box>
-                        <Display data={jackpotData} getCurrentJackpotInfo={getCurrentJackpotInfo } />
-                        <Box  className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
+                        <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} />
+                        <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
-                                <Box className="bar" style={{ height: "54.596%" }}></Box>
+                                <Box className="bar" style={{ height: "0%" }}></Box>
                             </Box>
                         </Box>
                         <Box className="minor-bar">
                             <Box className="labels">
                                 <p>Normal</p>
-                                <p>Big</p>
+                                <p>{jackpotData[0]}/1000</p>
                             </Box>
                             <Box className="progress-bar ">
-                                <Box className="bar" style={{ width: "13.5803%" }}></Box>
+                                <Box className="bar" style={{ width: percentage }}></Box>
                             </Box>
                         </Box>
                         <Box className="bets">
