@@ -58,7 +58,7 @@ export default function DashboardDesktop() {
                 } else {
                const notify =  localStorage.getItem(`{dataParse[2]}{b}`)
             if(!notify){
-                localStorage.setItem(`{dataParse[2]}{b}`, a.staker)
+                localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
                 setTimeout(()=>{
                     toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
                 }, 1000)
