@@ -75,7 +75,7 @@ export default function DashboardDesktop() {
     }
 
     useEffect(() => {
-
+setRefresh(!refresh)
         jackpotInfo()
     }, [refresh])
 
