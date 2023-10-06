@@ -56,7 +56,7 @@ export default function DashboardDesktop() {
                 if (a.staker === address) {
 
                 } else {
-               const notify =  localStorage.getItem(`{dataParse[2]}{b}`)
+               const notify =  localStorage.getItem(`${dataParse[2]}${b}`)
             if(!notify){
                 localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
                 setTimeout(()=>{
