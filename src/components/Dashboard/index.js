@@ -70,6 +70,12 @@ export default function DashboardDesktop() {
             })
             
         } catch (err) {
+           toast({
+                position: "top-right",
+                description: err,
+                status: "success",
+                 isClosable: true,
+            }); 
             console.log(err)
         }
     }
