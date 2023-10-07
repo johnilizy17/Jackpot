@@ -70,7 +70,8 @@ export default function DashboardDesktop() {
             })
             
         } catch (err) {
-            console.log(err)
+          toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
+  console.log(err)
         }
     }
 
