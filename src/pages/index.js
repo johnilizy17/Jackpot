@@ -21,9 +21,9 @@ export default function Home() {
         <Box display={["inherit", "inherit", "inherit", "inherit", "none"]}>
         <Dashboard />
         </Box>
-        <Box display={["none", "none", "none", "none", "inherit"]}>
+        {/* <Box display={["none", "none", "none", "none", "inherit"]}>
           <DashboardDesktop />
-        </Box>
+        </Box> */}
         <Footer/>
  
       </Box>

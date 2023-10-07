@@ -11,6 +11,7 @@ import TimeCounter from './Timer'
 import { prepareWriteContract, writeContract } from '@wagmi/core'
 import ABI_BUSD from '@/utils/ABI_BUSD'
 import { useAccount } from 'wagmi'
+import Display from './Display'
 
 export default function DashboardDesktop() {
 
@@ -19,78 +20,62 @@ export default function DashboardDesktop() {
     const [jackpotData, setJackpotData] = useState([])
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
+    const [percentage, setPercentage] = useState(0)
     const [refresh, setRefresh] = useState(false)
     const { address } = useAccount()
     const [loading, setLoading] = useState(false)
-    const [amount, setAmount] = useState(false)
-    const toast = useToast()
+    const [name, setName] = useState("start");
+    const [getCurrentJackpotInfo, setGetCurrentJackpotInfo] = useState([]);
+    const [amount, setAmount] = useState(false);
+    const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     async function jackpotInfo() {
         try {
-            const data = await readContracts({
-                contracts: [{
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'fetchJackpotInfo',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'startingJackpot',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'minStake',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'jackpotMaxBalance',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'jackpotMarketingPercent',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'minStake',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'minStake1',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'minStake2',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'jackpotType',
-                },
-                {
-                    address: contractAddress,
-                    abi: ABI,
-                    functionName: 'minStake2',
-                }
-                ]
+            const data = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'fetchJackpotInfo'
+
             })
-            console.log(data)
-            setJackpotData(data)
+            const dataParse = data.map((a) => {
+                return formatEther(a)
+            })
+
+            const getjackpot = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                args: [JSON.parse(dataParse[2])],
+                functionName: 'getCurrentJackpotInfo'
+            })
+            setGetCurrentJackpotInfo(getjackpot)
+            console.log(getjackpot)
+
+            getjackpot.map((a, b) => {
+                if (a.staker === address) {
+
+                } else {
+               const notify =  localStorage.getItem(`{dataParse[2]}{b}`)
+            if(!notify){
+                localStorage.setItem(`{dataParse[2]}{b}`, a.staker)
+                setTimeout(()=>{
+                    toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
+                }, 1000)
+               
+            }   
+            }
+            })
+            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
+            setPercentage(`${percentageStake}%`)
+            setJackpotData(dataParse)
         } catch (err) {
             console.log(err)
         }
     }
 
     useEffect(() => {
-        
+
         jackpotInfo()
     }, [refresh])
 
@@ -106,35 +91,33 @@ export default function DashboardDesktop() {
     }
 
     useEffect(() => {
-    if(address){
-        CheckAllowance()
-    }
+        if (address) {
+            CheckAllowance()
+        }
     }, [address])
 
 
     function SelectedButton(e, a) {
 
-        var element2 = document.getElementById("6");
+        var element2 = document.getElementById("5");
         element2.style.background = ("#1f1c4a");
 
-        var element3 = document.getElementById("11");
+        var element3 = document.getElementById("10");
         element3.style.background = ("#1f1c4a");
 
-        var element4 = document.getElementById("21");
+        var element4 = document.getElementById("20");
         element4.style.background = ("#1f1c4a");
 
         var element = document.getElementById(e);
         element.style.background = ("#4D46B9");
         setAmount(a)
-         if (formatEther(allowed) >= formatEther(a)) {
+        if (formatEther(allowed) >= formatEther(a)) {
             setMintApproval(true)
-            console.log("allowed", formatEther(allowed), formatEther(a) )
-        }else{
+        } else {
             setMintApproval(false)
-            console.log("allowed 2")
         }
         onOpen()
-       
+
         // if (e === "6") {
         //     toast({
         //         position: "top-right",
@@ -176,7 +159,7 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
-                   setAllowed(amount)
+            setAllowed(amount)
 
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
@@ -202,10 +185,9 @@ export default function DashboardDesktop() {
                     gasLimit: 3010000
                 }
             })
-
             const { hash } = await writeContract(config)
-                   setAllowed(amount)
-
+            setAllowed(amount)
+            onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)

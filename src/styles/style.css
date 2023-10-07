@@ -1629,3 +1629,16 @@
       color: rgb(30, 240, 30);
     }
   }
+
+  .popping {
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes popping {
+    50% {
+      opacity: 0;
+    }
+  }
+
+
+  

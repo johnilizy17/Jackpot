@@ -25,9 +25,9 @@ export default function DashboardDesktop() {
     const { address } = useAccount()
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState("start");
-    const [getCurrentJackpotInfo, setGetCurrentJackpotInfo] = useState([])
-    const [amount, setAmount] = useState(false)
-    const toast = useToast()
+    const [getCurrentJackpotInfo, setGetCurrentJackpotInfo] = useState([]);
+    const [amount, setAmount] = useState(false);
+    const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
