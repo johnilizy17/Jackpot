@@ -42,20 +42,20 @@ export default function DashboardDesktop() {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
-
-            const getjackpot = await readContract({
-                address: contractAddress,
-                abi: ABI,
-                args: [JSON.parse(dataParse[2])],
-                functionName: 'getCurrentJackpotInfo'
-            })
-          if(getjackpot){ 
-              setGetCurrentJackpotInfo(getjackpot)
+            setJackpotData(dataParse)
+           // const getjackpot = await readContract({
+             //   address: contractAddress,
+           //     abi: ABI,
+          //      args: [JSON.parse(dataParse[2])],
+         //       functionName: 'getCurrentJackpotInfo'
+         //   })
+         // if(getjackpot){ 
+             // setGetCurrentJackpotInfo(getjackpot)
         
-            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
-            setPercentage(`${percentageStake}%`)
-             }
-           setJackpotData(dataParse)
+       //     const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
+    //   setPercentage(`${percentageStake}%`)
+       //      }
+           
             getjackpot.map((a, b) => {
                 if (a.staker === address) {
 
