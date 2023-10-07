@@ -49,16 +49,18 @@ export default function DashboardDesktop() {
                 args: [JSON.parse(dataParse[2])],
                 functionName: 'getCurrentJackpotInfo'
             })
-            setGetCurrentJackpotInfo(getjackpot)
-            console.log(getjackpot)
-
+          if(getjackpot){  setGetCurrentJackpotInfo(getjackpot)}
+        
+            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
+            setPercentage(`${percentageStake}%`)
+            setJackpotData(dataParse)
             getjackpot.map((a, b) => {
                 if (a.staker === address) {
 
                 } else {
-               const notify =  localStorage.getItem(`{dataParse[2]}{b}`)
+               const notify =  localStorage.getItem(`${dataParse[2]}${b}`)
             if(!notify){
-                localStorage.setItem(`{dataParse[2]}{b}`, a.staker)
+                localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
                 setTimeout(()=>{
                     toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
                 }, 1000)
@@ -66,16 +68,14 @@ export default function DashboardDesktop() {
             }   
             }
             })
-            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
-            setPercentage(`${percentageStake}%`)
-            setJackpotData(dataParse)
+            
         } catch (err) {
             console.log(err)
         }
     }
 
     useEffect(() => {
-
+setRefresh(!refresh)
         jackpotInfo()
     }, [refresh])
 
@@ -192,6 +192,7 @@ export default function DashboardDesktop() {
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
+            jackpotInfo()
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
 
