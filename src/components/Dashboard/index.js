@@ -46,7 +46,7 @@ export default function DashboardDesktop() {
            const getjackpot = await readContract({
                address: contractAddress,
                abi: ABI,
-               args: [dataParse[2]],
+               args: [dataParse[2]*1000000000000000000],
                 functionName: 'getCurrentJackpotInfo'
            })
          if(getjackpot){ 
