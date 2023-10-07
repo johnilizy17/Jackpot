@@ -22,7 +22,7 @@ export default function Home() {
         <Dashboard />
         </Box>
         <Box display={["none", "none", "none", "none", "inherit"]}>
-          <DashboardDesktop />
+         
         </Box>
         <Footer/>
  
