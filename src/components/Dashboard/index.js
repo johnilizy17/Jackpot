@@ -43,12 +43,12 @@ export default function DashboardDesktop() {
                 return formatEther(a)
             })
             setJackpotData(dataParse)
-           // const getjackpot = await readContract({
-             //   address: contractAddress,
-           //     abi: ABI,
-          //      args: [JSON.parse(dataParse[2])],
-         //       functionName: 'getCurrentJackpotInfo'
-         //   })
+           const getjackpot = await readContract({
+               address: contractAddress,
+               abi: ABI,
+               args: [JSON.parse(dataParse[2])],
+                functionName: 'getCurrentJackpotInfo'
+           })
          // if(getjackpot){ 
              // setGetCurrentJackpotInfo(getjackpot)
         
