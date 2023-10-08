@@ -35,7 +35,7 @@ async function jackpotInfo() {
                 functionName: 'getAllStakes'
 
             })
-            alert(data.length)
+            
            // const dataParse = data.map((dataB) => {
             // return   dataB.map((a) => {
               //  return formatEther(a)
@@ -74,8 +74,8 @@ async function jackpotInfo() {
                         { 
                            fetch.map((a,b)=>( 
                         <tr>
-                        <td scope="row" data-label="Jackpot id">1</td>
-                        <td data-label="Name">France</td>
+                        <td scope="row" data-label="Jackpot id">{a[0]}</td>
+                        <td data-label="Name">{a[1]}</td>
                         <td data-label="Jackpot Amount">$50</td>
                         <td data-label="Winneer Address">0Xedj23029302jdfjd</td>
                         <td data-label="PARTICIPANTS SHARE">$0.5</td>
