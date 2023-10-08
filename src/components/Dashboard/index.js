@@ -63,7 +63,7 @@ export default function DashboardDesktop() {
                 localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
                 setTimeout(()=>{
                     toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
-                }, 1000)
+                }, 10000)
                
             }   
             }
