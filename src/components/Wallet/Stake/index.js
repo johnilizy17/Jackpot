@@ -44,7 +44,7 @@ async function jackpotInfo() {
           //  })
            setFetch(data)
             data.map((a)=>{
-                toast({ position: "top-right", title: "Approved Error", description: formatEther(a[0]), status: "error", isClosable: true });
+                toast({ position: "top-right", title: "Approved Error", description: formatEther(a), status: "error", isClosable: true });
             })
         } catch(err){
             alert(err.message)
