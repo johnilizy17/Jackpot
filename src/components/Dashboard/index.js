@@ -42,15 +42,13 @@ export default function DashboardDesktop() {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
-            toast({ position: "top-right", title: "Approved Error", description: dataParse[2]*1000000000000000000 , status: "error", isClosable: true });
-            setJackpotData(dataParse)
+               setJackpotData(dataParse)
            const getjackpot = await readContract({
                address: contractAddress,
                abi: ABI,
                args: [dataParse[2]*1000000000000000000],
                 functionName: 'getCurrentJackpotInfo'
            })
-         alert(JSON.stringify(getjackpot))
                                                                     setGetCurrentJackpotInfo(getjackpot)
            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
       setPercentage(`${percentageStake}%`)
