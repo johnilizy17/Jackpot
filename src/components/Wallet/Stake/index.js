@@ -12,6 +12,7 @@ import { formatEther, parseEther } from 'viem'
 
 export default function Stake({ setStaking, setToggle }) {
 
+    const [fetch, setFetch] = useState([])
     const initiateProfile2 = async (values, { setSubmitting, resetForm }) => {
 
     };
@@ -39,6 +40,7 @@ async function jackpotInfo() {
                 return formatEther(a)
             })
             })
+            alert(dataParse.length)
         } catch(err){
             alert(err.message)
         }
