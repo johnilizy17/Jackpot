@@ -51,6 +51,7 @@ async function jackpotInfo() {
         }
 }
 
+
     useEffect(()=>{
       jackpotInfo()  
     },[])
@@ -65,7 +66,6 @@ async function jackpotInfo() {
                 <thead >
                     <tr style={{marginBottom:20}}>
                         <th scope="col">Jackpot id</th>
-                        <th scope="col">Name </th>
                         <th scope="col">Jackpot Amount</th>
                         <th scope="col">Winneer Address</th>
                         <th scope="col">WINNER'S Amount</th>
@@ -79,9 +79,8 @@ async function jackpotInfo() {
                            fetch.map((a,b)=>( 
                         <tr>
                         <td scope="row" data-label="Jackpot id">1</td>
-                        <td data-label="Name">{JSON.stringify(a)}</td>
                         <td data-label="Jackpot Amount">$50</td>
-                        <td data-label="Winneer Address">0Xedj23029302jdfjd</td>
+                        <td data-label="Winneer Address">{a.staker}</td>
                         <td data-label="PARTICIPANTS SHARE">$0.5</td>
                         <td data-label="Amount">$5</td>
                         <td data-label="Next Jackpot Amount">$5</td>
