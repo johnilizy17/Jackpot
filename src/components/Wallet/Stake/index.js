@@ -35,12 +35,13 @@ async function jackpotInfo() {
                 functionName: 'getAllStakes'
 
             })
-            const dataParse = data.map((dataB) => {
-             return   dataB.map((a) => {
-                return formatEther(a)
-            })
-            })
-            alert(dataParse.length)
+            alert(data.length)
+           // const dataParse = data.map((dataB) => {
+            // return   dataB.map((a) => {
+              //  return formatEther(a)
+          //  })
+          //  })
+           setFetch(data)
         } catch(err){
             alert(err.message)
         }
