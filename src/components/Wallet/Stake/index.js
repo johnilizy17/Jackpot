@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Center, Heading, Box, Button } from '@chakra-ui/react';
 import CustomInput from '../../Contact/CustomInput';
 import { Form, Formik } from 'formik';
 import Lottie from 'lottie-react';
 import * as Yup from "yup";
 import vault from '@/assets/dashboard/vault.json'
+import { readContract, readContracts } from '@wagmi/core'
+import { BUSD, contractAddress } from '@/services/NFT'
+import ABI from '@/utils/ABI'
+import { formatEther, parseEther } from 'viem'
 
 export default function Stake({ setStaking, setToggle }) {
 
@@ -27,11 +31,13 @@ async function jackpotInfo() {
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                functionName: 'fetchJackpotInfo'
+                functionName: 'getAllStakes'
 
             })
-            const dataParse = data.map((a) => {
+            const dataParse = data.map((dataB) => {
+             return   dataB.map((a) => {
                 return formatEther(a)
+            })
             })
         } catch(err){
             alert(err.message)
