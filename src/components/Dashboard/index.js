@@ -49,12 +49,12 @@ export default function DashboardDesktop() {
                args: [dataParse[2]*1000000000000000000],
                 functionName: 'getCurrentJackpotInfo'
            })
-         if(getjackpot){ 
+         
              setGetCurrentJackpotInfo(getjackpot)
         
            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
       setPercentage(`${percentageStake}%`)
-            }
+        
            
             getjackpot.map((a, b) => {
                 if (a.staker === address) {
