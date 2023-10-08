@@ -47,7 +47,7 @@ async function jackpotInfo() {
 }
 
     useEffect(()=>{
-        
+      jackpotInfo()  
     },[])
     
     return (
