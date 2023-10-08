@@ -79,7 +79,7 @@ async function jackpotInfo() {
                            fetch.map((a,b)=>( 
                         <tr>
                         <td scope="row" data-label="Jackpot id">1</td>
-                        <td data-label="Name">{a[1]}</td>
+                        <td data-label="Name">{JSON.stringify(a)}</td>
                         <td data-label="Jackpot Amount">$50</td>
                         <td data-label="Winneer Address">0Xedj23029302jdfjd</td>
                         <td data-label="PARTICIPANTS SHARE">$0.5</td>
