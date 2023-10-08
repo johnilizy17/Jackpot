@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Center, Heading, Box, Button } from '@chakra-ui/react';
+import { Tabs, TabList, useToast, TabPanels, Tab, TabPanel, Center, Heading, Box, Button } from '@chakra-ui/react';
 import CustomInput from '../../Contact/CustomInput';
 import { Form, Formik } from 'formik';
 import Lottie from 'lottie-react';
@@ -13,6 +13,7 @@ import { formatEther, parseEther } from 'viem'
 export default function Stake({ setStaking, setToggle }) {
 
     const [fetch, setFetch] = useState([])
+   const toast = useToast()
     const initiateProfile2 = async (values, { setSubmitting, resetForm }) => {
 
     };
@@ -42,6 +43,9 @@ async function jackpotInfo() {
           //  })
           //  })
            setFetch(data)
+            data.map((a)=>{
+                toast({ position: "top-right", title: "Approved Error", description: JSON.stringify(a), status: "error", isClosable: true });
+            })}
         } catch(err){
             alert(err.message)
         }
@@ -74,7 +78,7 @@ async function jackpotInfo() {
                         { 
                            fetch.map((a,b)=>( 
                         <tr>
-                        <td scope="row" data-label="Jackpot id">{alert(JSON.stringify(a))}</td>
+                        <td scope="row" data-label="Jackpot id">1</td>
                         <td data-label="Name">{a[1]}</td>
                         <td data-label="Jackpot Amount">$50</td>
                         <td data-label="Winneer Address">0Xedj23029302jdfjd</td>
