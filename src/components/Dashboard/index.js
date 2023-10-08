@@ -49,7 +49,7 @@ export default function DashboardDesktop() {
                args: [dataParse[2]*1000000000000000000],
                 functionName: 'getCurrentJackpotInfo'
            })
-         alert(dataParse[2]*1000000000000000000, JSON.stringify(getjackpot)
+         alert(dataParse[2]*1000000000000000000) alert(JSON.stringify(getjackpot)
              setGetCurrentJackpotInfo(getjackpot)
         
            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
