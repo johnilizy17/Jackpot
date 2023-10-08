@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Center, Heading, Box, Button } from '@chakra-ui/react';
 import CustomInput from '../../Contact/CustomInput';
 import { Form, Formik } from 'formik';
@@ -22,6 +22,26 @@ export default function Stake({ setStaking, setToggle }) {
         amount: Yup.string().required("amount is required"),
     });
 
+async function jackpotInfo() {
+        try {
+            const data = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'fetchJackpotInfo'
+
+            })
+            const dataParse = data.map((a) => {
+                return formatEther(a)
+            })
+        } catch(err){
+            alert(err.message)
+        }
+}
+
+    useEffect(()=>{
+        
+    },[])
+    
     return (
         <Box p="60px" color="#fff">
            
