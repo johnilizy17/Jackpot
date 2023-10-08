@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Tabs, TabList, useToast, TabPanels, Tab, TabPanel, Center, Heading, Box, Button } from '@chakra-ui/react';
-import CustomInput from '../../Contact/CustomInput';
-import { Form, Formik } from 'formik';
-import Lottie from 'lottie-react';
-import * as Yup from "yup";
-import vault from '@/assets/dashboard/vault.json'
-import { readContract, readContracts } from '@wagmi/core'
 import { BUSD, contractAddress } from '@/services/NFT'
 import ABI from '@/utils/ABI'
 import { formatEther, parseEther } from 'viem'
+import { useAccount } from 'wagmi'
 
 export default function Stake({ setStaking, setToggle }) {
 
     const [fetch, setFetch] = useState([])
    const toast = useToast()
-    const initiateProfile2 = async (values, { setSubmitting, resetForm }) => {
+   const { address } = useAccount()
+
+ const initiateProfile2 = async (values, { setSubmitting, resetForm }) => {
 
     };
 
@@ -44,8 +40,10 @@ async function jackpotInfo() {
           //  })
            setFetch(data)
             data.map((a)=>{
-                toast({ position: "top-right", title: "Approved Error", description: formatEther(a[2]), status: "error", isClosable: true });
-            })
+                if(a.staker == address) {
+                   return a
+                 }
+                })
         } catch(err){
             alert(err.message)
         }
@@ -71,7 +69,7 @@ async function jackpotInfo() {
                         <th scope="col">WINNER'S Amount</th>
                         <th scope="col">PARTICIPANTS SHARE</th>
                         <th scope="col">Amount</th>
-                        <th scope="col">Next Jackpot Amount</th>
+                        <th scope="col">Next Jackpot Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,10 +82,3 @@ async function jackpotInfo() {
                         <td data-label="PARTICIPANTS SHARE">${a.jackpotShare}</td>
                         <td data-label="Amount">${a.amountStaked}</td>
                         <td data-label="Winning Status">${a.win}</td>
-                    </tr>
-))}
-                </tbody>
-            </table>
-        </Box>
-    )
-}
