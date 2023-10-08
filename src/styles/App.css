@@ -17,8 +17,8 @@ body {
 
   .table {
     border: 0;
-    width: 100%;
-    overflow: scroll;
+    width: 80%;
+    overflow: scroll; margin: 60px;
   }
   
   .table caption {
@@ -39,13 +39,15 @@ body {
   .table tr {
     border-bottom: 3px solid #ddd;
     display: block;
-    margin-bottom: .625em;
+    margin-bottom: 1.625em;
   }
   
   .table td {
     border-bottom: 1px solid #ddd;
     display: block;
     font-size: .8em;
+    margin-bottom: 10px;
+    padding: 5px;
     text-align: right;
   }
   
@@ -57,6 +59,8 @@ body {
     content: attr(data-label);
     float: left;
     font-weight: bold;
+    font-size: 15px;
+    top:10px;
     text-transform: uppercase;
   }
   

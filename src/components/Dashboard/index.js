@@ -42,40 +42,41 @@ export default function DashboardDesktop() {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
-
+            setJackpotData(dataParse)
             const getjackpot = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                args: [JSON.parse(dataParse[2])],
+                args: [dataParse[2] * 1000000000000000000],
                 functionName: 'getCurrentJackpotInfo'
             })
-          if(getjackpot){  setGetCurrentJackpotInfo(getjackpot)}
-        
+            setGetCurrentJackpotInfo(getjackpot)
             const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
             setPercentage(`${percentageStake}%`)
-            setJackpotData(dataParse)
+
+
             getjackpot.map((a, b) => {
                 if (a.staker === address) {
 
                 } else {
-               const notify =  localStorage.getItem(`${dataParse[2]}${b}`)
-            if(!notify){
-                localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
-                setTimeout(()=>{
-                    toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
-                }, 10000)
-               
-            }   
-            }
+                    const notify = localStorage.getItem(`${dataParse[2]}${b}`)
+                    if (!notify) {
+                        localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
+                        setTimeout(() => {
+                            toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
+                        }, 1000)
+
+                    }
+                }
             })
-            
+
         } catch (err) {
+            toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
             console.log(err)
         }
     }
 
     useEffect(() => {
-setRefresh(!refresh)
+        // setRefresh(!refresh)
         jackpotInfo()
     }, [refresh])
 
@@ -237,7 +238,7 @@ setRefresh(!refresh)
                         <Box className="minor-bar">
                             <Box className="labels">
                                 <p>Normal</p>
-                                <p>{jackpotData[0]}/1000</p>
+                                <p>${jackpotData[0]}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
                                 <Box className="bar" style={{ width: percentage }}></Box>

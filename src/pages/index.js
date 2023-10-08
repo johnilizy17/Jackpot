@@ -4,7 +4,7 @@ import Presale from '@/components/Dashboard/Presale';
 import Header from '@/components/Layout';
 import Footer from '@/components/Layout/Footer';
 import Loading from '@/components/Layout/Loading';
-import { Box } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 export default function Home() {
@@ -18,12 +18,11 @@ export default function Home() {
     <Loading display={display} />
       <Box h="100vh" overflow="scroll" backgroundColor="#171537">
         <Header />
-        <Box display={["inherit", "inherit", "inherit", "inherit", "none"]}>
+        <Center  >
+          <Box w={["100%", "600px"]}>
         <Dashboard />
         </Box>
-        {/* <Box display={["none", "none", "none", "none", "inherit"]}>
-          <DashboardDesktop />
-        </Box> */}
+        </Center>
         <Footer/>
  
       </Box>

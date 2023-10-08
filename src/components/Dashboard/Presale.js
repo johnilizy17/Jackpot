@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import { Box, Center, Flex, IconButton } from '@chakra-ui/react';
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsDiscord, BsFacebook, BsTelegram, BsTwitter } from 'react-icons/bs';
 import { IoLogoTwitter } from 'react-icons/io';
 import { readContract, readContracts } from '@wagmi/core'
 import { contractAddress } from '@/services/NFT'
+import ABI from '@/utils/ABI';
+import { formatEther } from 'viem'
 
 export default function Footer() {
     const [jackpotData, setJackpotData] = useState([])
-   
+
     async function jackpotInfo() {
         try {
             const data = await readContracts({
@@ -16,7 +18,7 @@ export default function Footer() {
                     address: contractAddress,
                     abi: ABI,
                     functionName: 'bigBangMax',
-                }, 
+                },
                 {
                     address: contractAddress,
                     abi: ABI,
@@ -51,11 +53,16 @@ export default function Footer() {
                     address: contractAddress,
                     abi: ABI,
                     functionName: 'minStake2',
+                },
+                {
+                    address: contractAddress,
+                    abi: ABI,
+                    functionName: 'getAllStakes',
                 }
                 ]
             })
+            console.log(data)
             setJackpotData(data)
-            console.log(data, "footer")
         } catch (err) {
             console.log(err)
         }
@@ -64,27 +71,27 @@ export default function Footer() {
     useEffect(() => {
         jackpotInfo()
         console.log("here")
-    },[true])
+    }, [true])
 
     return (
         <div className="footer_container">
-            <Box pos="absolute" top="0px" p="20px" zIndex="1000" color="#fff" w="100vw">
+            <Box pos="absolute" top="0px" p="20px" zIndex="44" color="#fff" w="100vw">
                 <Box fontSize="17px" fontWeight="800">
                     <Box mb="20px">JACKPOT INFO</Box>
                 </Box>
-                <Box>Participants: 52</Box>
-                <Box>  Duration: 5 mins(Min Buy: $5)</Box>
-                <Box> Duration: 2.5 mins(Max. Buy 20$) </Box>
+                <Box>Participants: {jackpotData[8] && jackpotData[8].result && jackpotData[8].result.length}</Box>
+                <Box>  Duration: 5 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
+                <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && jackpotData[8].result && formatEther(jackpotData[7].result)}) </Box>
                 <Box mt="20px">
                     <Box>REWARD DISTRIBUTION</Box>
-                    <Flex flexWrap="wrap">
-                        <Box mr="10px" mt="10px">50% WINNER</Box>
+                    <Flex flexWrap="wrap" flexDir='column'>
+                        <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
                         <Box mr="10px" mt="10px">
-                            20% NEXT NORMAL JACKPOT
+                            2. {jackpotData[3] && jackpotData[8].result && formatEther(jackpotData[3].result) * 1000000000000000000}% NEXT NORMAL JACKPOT
                         </Box>
-                        <Box mr="10px" mt="10px">20% BIG JACKPOT</Box>
-                        <Box mr="10px" mt="10px">5% MARKETING</Box>
-                        <Box mr="10px" mt="10px">5% BOMB PRIZ</Box>
+                        <Box mr="10px" mt="10px">2. {jackpotData[4] && jackpotData[8].result && formatEther(jackpotData[4].result) * 1000000000000000000}% BIG JACKPOT</Box>
+                        <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result) * 1000000000000000000}% MARKETING</Box>
+                        <Box mr="10px" mt="10px">4. {jackpotData[1] && jackpotData[8].result && jackpotData[0].result}% BOMB PRIZ</Box>
                     </Flex>
                 </Box>
             </Box>
@@ -112,7 +119,7 @@ export default function Footer() {
                         </IconButton>
                     </Flex>
                     <Center flexWrap="wrap">
-                        
+
                         <Box mt="10px" mr="10px">
                             Features
                         </Box>
@@ -129,7 +136,7 @@ export default function Footer() {
                         </Link>
                     </Center>
                 </Center>
-              <Box textAlign="center">  <p>&copy;2021 ALPHA | All Rights Reserved</p></Box>
+                <Box textAlign="center">  <p>&copy;2021 ALPHA | All Rights Reserved</p></Box>
             </footer>
         </div>
     )
