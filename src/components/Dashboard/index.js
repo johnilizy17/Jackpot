@@ -51,8 +51,6 @@ export default function DashboardDesktop() {
            })
          alert(JSON.stringify(getjackpot))
              toast({ position: "top-right", title: "Approved Error", description:dataParse[2]*1000000000000000000 , status: "error", isClosable: true });
-  toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
-
                                                        setGetCurrentJackpotInfo(getjackpot)
         
            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
