@@ -71,7 +71,9 @@ async function jackpotInfo() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                        { 
+                           fetch.map((a,b)=>( 
+                        <tr>
                         <td scope="row" data-label="Jackpot id">1</td>
                         <td data-label="Name">France</td>
                         <td data-label="Jackpot Amount">$50</td>
@@ -80,15 +82,7 @@ async function jackpotInfo() {
                         <td data-label="Amount">$5</td>
                         <td data-label="Next Jackpot Amount">$5</td>
                     </tr>
-                    <tr>
-                        <td scope="row" data-label="Jackpot id">1</td>
-                        <td data-label="Name">France</td>
-                        <td data-label="Jackpot Amount">$50</td>
-                        <td data-label="Winneer Address">0Xedj23029302jdfjd</td>
-                        <td data-label="PARTICIPANTS SHARE">$0.5</td>
-                        <td data-label="Amount">$5</td>
-                        <td data-label="Next Jackpot Amount">$5</td>
-                    </tr>
+))}
                 </tbody>
             </table>
         </Box>
