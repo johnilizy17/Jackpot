@@ -33,9 +33,16 @@ export default function TimeCounter() {
 
         // Update the count down every 1 second
         setInterval(function () {
-
+            let selectedTime = 0
             // Get today's date and time
-            var now = new Date().getTime();
+            if (typeof window !== 'undefined' ) {
+            if( localStorage.getItem("timer")){
+                selectedTime = JSON.parse(localStorage.getItem("timer"))
+            }}
+
+            let newDateObj = new Date().getTime();
+
+            var now = new Date(newDateObj + selectedTime * 60000);
 
             // Find the distance between now and the count down date
             var distance = countDownDate - now;

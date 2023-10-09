@@ -63,7 +63,7 @@ export default function DashboardDesktop() {
                         localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
                         setTimeout(() => {
                             toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
-                        }, 1000)
+                        }, 5000)
 
                     }
                 }
@@ -137,7 +137,7 @@ export default function DashboardDesktop() {
 
             const { hash } = await writeContract(config)
             setAllowed(amount)
-
+            localStorage.setItem(`timer`, amount)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)

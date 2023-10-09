@@ -21,7 +21,7 @@ export default function Award() {
                 }
             })
 
-            const { hash } = await writeContract(config)
+            // const { hash } = await writeContract(config)
       
         } catch (err) {
             console.log(err)
