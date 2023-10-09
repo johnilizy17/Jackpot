@@ -118,30 +118,6 @@ export default function DashboardDesktop() {
             setMintApproval(false)
         }
         onOpen()
-
-        // if (e === "6") {
-        //     toast({
-        //         position: "top-right",
-        //         description: `Time add 10 min added to the the time`,
-        //         status: "success",
-        //         isClosable: true,
-        //     });
-        // } else if (e === "11") {
-        //     toast({
-        //         position: "top-right",
-        //         description: `Time add 5 min added to the the time`,
-        //         status: "success",
-        //         isClosable: true,
-        //     });
-        // } else {
-
-        //     toast({
-        //         position: "top-right",
-        //         description: `Time add 2.5 min added to the the time`,
-        //         status: "success",
-        //         isClosable: true,
-        //     });
-        // }
     }
 
     async function ApprovalButton() {

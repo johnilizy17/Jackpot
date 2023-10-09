@@ -8,7 +8,7 @@ import { formatEther } from 'viem'
 export default function TimeCounter() {
 
     const [date, setDate] = useState()
-    const [timeSteamp, setTimeSteamp] = useState()
+    const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
 
@@ -29,26 +29,36 @@ export default function TimeCounter() {
     }
 
     async function Timing2() {
-        const data = timeSteamp + 1000
-        setTimeSteamp(data)
-        var today = new Date(data);
-        const hour = 24 - today.getHours()
-        const min = 60 - today.getMinutes()
-        const sec = 60 - today.getSeconds()
-        setNumberOfTime({ hour: hour, min: min, sec: sec })
+        var countDownDate = new Date("Oct 10, 2023 20:37:25").getTime();
+
+        // Update the count down every 1 second
+        setInterval(function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
+
+        }, 1000);
+
     }
     useEffect(() => {
-        Timing()
-        setTimeout(() => {
-            setInterval(() => {
-                Timing2()
-            }, 1000)
-        }, 4000)
+        Timing2()
+
     }, [])
 
     return (
         <>
-            <Box className="time hour" onClick={() => Timing2()}>
+            <Box className="time hour">
                 <h2>{NumberOfTime.hour < 10 ? `0${NumberOfTime.hour}` : NumberOfTime.hour}</h2>
                 <p>Hour</p>
             </Box>
