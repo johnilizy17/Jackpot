@@ -155,7 +155,7 @@ export default function DashboardDesktop() {
               })
               
             setAllowed(amount)
-            const timing = date + amount
+            const timing = amount === 5 ? 10: amount === 10 ? 5 : 2.5
             setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
