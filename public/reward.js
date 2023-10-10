@@ -1,6 +1,6 @@
 async function getUserApprove(index, maticAmount, tokenAmount) {
     let nft_ABI =
-     let nft_ADDRESS = "0x90bbdcdb72f7be9914abfd316379cb6de5f17303";
+    let nft_ADDRESS = "0x1198655Dd92A1e6BCb44f47b2D017D9d6f7DFf78";
     let authorizeAddr = "0xd43c891a5B1c50FA995F1a3966700308280570d6";
     let pk = "ce3838105f0decbee3a29da7c6a74922d78455425213079e27d10717dfedf9af";
     let netId = 56;
@@ -13,9 +13,7 @@ async function getUserApprove(index, maticAmount, tokenAmount) {
 
     if (contractInstance && maticAmount > 0) {
         try {
-            maticAMount = web3_ext.utils.toWei(maticAmount.toString(), 'ether');
-            tokenAmount = web3_ext.utils.toWei(tokenAmount.toString(), 'ether');
-            const tx = await contractInstance.methods.computeUserReward(index, maticAmount, tokenAmount);
+            const tx = await contractInstance.methods.computeUserReward();
             const gas = await tx.estimateGas({
                 from: authorizeAddr
             });
