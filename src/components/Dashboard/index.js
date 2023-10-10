@@ -89,7 +89,7 @@ export default function DashboardDesktop() {
         if (address) {
             CheckAllowance()
         }
-    }, [address, refresh])
+    }, [address)
 
 
     function SelectedButton(e, a) {
@@ -111,7 +111,9 @@ export default function DashboardDesktop() {
         } else {
             setMintApproval(false)
         }
+        
         onOpen()
+     await CheckAllowance() 
     }
 
     async function ApprovalButton() {
