@@ -20,7 +20,8 @@ export default function TimeCounter({ date, setDate }) {
             functionName: 'getAllJackpot',
         })
          const datalength = data2.length -1
-        setDownDate(data2[datalength].endTime)
+         const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
+        setDownDate(timingData)
      } catch(err){
          alert(err.message)
      }
