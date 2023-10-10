@@ -91,7 +91,7 @@ export default function DashboardDesktop() {
     useEffect(() => {
         setRefresh(!refresh)
         jackpotInfo()
-    }, [refresh])
+    }, [])
 
     async function CheckAllowance() {
 
@@ -160,6 +160,7 @@ export default function DashboardDesktop() {
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
+      await jackpotInfo()
         } catch (err) {
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
 
