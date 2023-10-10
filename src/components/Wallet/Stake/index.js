@@ -21,14 +21,7 @@ export default function Stake({ setStaking, setToggle }) {
                 functionName: 'getAllStakes'
 
             })
-
-            const filter = data.filter((a) => {
-                if (a.staker == address) {
-                    return a
-                }
-            })
-
-            setFetch(filter)
+            setFetch(data)
         } catch (err) {
             alert(err.message)
         }
