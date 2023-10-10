@@ -72,7 +72,7 @@ export default function DashboardDesktop() {
     useEffect(() => {
         setRefresh(!refresh)
         jackpotInfo()
-    }, [refresh])
+    }, [])
 
     async function CheckAllowance() {
 
@@ -170,7 +170,7 @@ export default function DashboardDesktop() {
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
-            jackpotInfo()
+          await jackpotInfo()
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
 
