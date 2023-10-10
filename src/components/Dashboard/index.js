@@ -8,7 +8,7 @@ import { BUSD, contractAddress } from '@/services/NFT'
 import ABI from '@/utils/ABI'
 import { formatEther, parseEther } from 'viem'
 import TimeCounter from './Timer'
-import { prepareWriteContract, writeContract } from '@wagmi/core'
+import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core'
 import ABI_BUSD from '@/utils/ABI_BUSD'
 import { useAccount } from 'wagmi'
 import Display from './Display'
@@ -34,24 +34,31 @@ export default function DashboardDesktop() {
 
     async function jackpotInfo() {
         try {
+            
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
                 functionName: 'fetchJackpotInfo'
 
             })
+
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
+
             setJackpotData(dataParse)
+            
             const getjackpot = await readContract({
                 address: contractAddress,
                 abi: ABI,
                 args: [dataParse[2] * 1000000000000000000],
                 functionName: 'getCurrentJackpotInfo'
             })
+            
             setGetCurrentJackpotInfo(getjackpot)
+            
             const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
+            
             setPercentage(`${percentageStake}%`)
 
 
@@ -61,17 +68,21 @@ export default function DashboardDesktop() {
                 } else {
                     const notify = localStorage.getItem(`${dataParse[2]}${b}`)
                     if (!notify) {
+                        
                         localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
+                        
                         setTimeout(() => {
                             toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
-                        }, 5000)
-
+                        }, 2000*(b+1))
+                    
                     }
                 }
             })
 
         } catch (err) {
+            
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
+            
             console.log(err)
         }
     }
@@ -137,6 +148,11 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
+            
+            const data = await waitForTransaction({
+                hash: hash,
+              })
+              
             setAllowed(amount)
             setDate(amount)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });

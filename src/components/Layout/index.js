@@ -73,8 +73,8 @@ export default function Header() {
                                         <MenuButton fontSize={["12px", "14px"]} colorScheme={"green"} isActive={isOpen} as={Button} rightIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" /></svg>}>
                                             {userAddress}
                                         </MenuButton>
-                                        <MenuList bg={"#fff"}>
-                                            <MenuItem bg={"#fff"} h={"40px"} onClick={async () => { await disconnect(); setUserAddress(""); open(); }}>Disconnect</MenuItem>
+                                        <MenuList bg={"red"}>
+                                            <MenuItem bg={"red"} h={"40px"} onClick={async () => { await disconnect(); setUserAddress(""); open(); }}>Disconnect</MenuItem>
                                         </MenuList>
                                     </>
                                 )}
@@ -212,8 +212,8 @@ export default function Header() {
                                             <MenuButton fontSize={["12px", "14px"]} colorScheme={"green"} isActive={isOpen} as={Button} rightIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" /></svg>}>
                                                 {userAddress}
                                             </MenuButton>
-                                            <MenuList bg={"#fff"}>
-                                                <MenuItem bg={"#fff"} h={"40px"} onClick={async () => { await disconnect(); setUserAddress(""); open(); }}>Disconnect</MenuItem>
+                                            <MenuList bg={"red"} borderColor={"red"}>
+                                                <MenuItem bg={"red"} h={"40px"} onClick={async () => { await disconnect(); setUserAddress(""); open(); }}>Disconnect</MenuItem>
                                             </MenuList>
                                         </>
                                     )}
