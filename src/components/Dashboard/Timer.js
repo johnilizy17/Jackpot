@@ -20,6 +20,12 @@ export default function TimeCounter({ date, setDate }) {
         })
         data = formatEther(data) * 1000000000000000000
         setDownDate(data);
+        let data2 = await readContract({
+            address: contractAddress,
+            abi: ABI,
+            functionName: 'getAllJackpot',
+        })
+        alert(data2.endTime)
     }
 
     async function Timing2() {
