@@ -89,7 +89,7 @@ export default function DashboardDesktop() {
         if (address) {
             CheckAllowance()
         }
-    }, [address)
+    }, [address])
 
 
  async function SelectedButton(e, a) {
