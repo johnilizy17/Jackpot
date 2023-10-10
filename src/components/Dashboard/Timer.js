@@ -26,7 +26,7 @@ export default function TimeCounter({ date, setDate }) {
             abi: ABI,
             functionName: 'getAllJackpot',
         })
-        alert("hello")
+        alert(data2[0].endTime)
      } catch(err){
          alert(err.message)
      }
