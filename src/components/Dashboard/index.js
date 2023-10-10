@@ -91,7 +91,7 @@ export default function DashboardDesktop() {
     useEffect(() => {
         setRefresh(!refresh)
         jackpotInfo()
-    }, [])
+    }, [refresh])
 
     async function CheckAllowance() {
 
@@ -108,7 +108,7 @@ export default function DashboardDesktop() {
         if (address) {
             CheckAllowance()
         }
-    }, [address])
+    }, [address, refresh])
 
 
     function SelectedButton(e, a) {
