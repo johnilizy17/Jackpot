@@ -55,7 +55,7 @@ export default function Stake({ setStaking, setToggle }) {
                     </thead>
                     <tbody>
                         {fetch.map((a, b) => (
-                            <tr>
+                            <tr style={a.staker === address? {}: {display:"none"}}>
                                 <td scope="row" data-label="id">{formatEther(a.id) * 1000000000000000000}</td>
                                 <td scope="row" data-label="Jackpot id">{formatEther(a.jackpotId) * 1000000000000000000}</td>
                                 <td data-label="Jackpot Amount">${formatEther(a.stakerShare) * 1000000000000000000}</td>
