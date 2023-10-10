@@ -92,7 +92,7 @@ export default function DashboardDesktop() {
     }, [address)
 
 
-    function SelectedButton(e, a) {
+ async function SelectedButton(e, a) {
 
         var element2 = document.getElementById("5");
         element2.style.background = ("#1f1c4a");
