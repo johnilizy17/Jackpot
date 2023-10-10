@@ -5,9 +5,8 @@ import { contractAddress } from '@/services/NFT'
 import ABI from '@/utils/ABI'
 import { formatEther } from 'viem'
 
-export default function TimeCounter() {
+export default function TimeCounter({date, setDate}) {
 
-    const [date, setDate] = useState()
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
@@ -29,23 +28,17 @@ export default function TimeCounter() {
     }
 
     async function Timing2() {
-        var countDownDate = new Date("Oct 10, 2023 20:37:25").getTime();
+        var countDownDate = 1696866988;
 
         // Update the count down every 1 second
-        setInterval(function () {
-            let selectedTime = 0
-            // Get today's date and time
-            if (typeof window !== 'undefined' ) {
-            if( localStorage.getItem("timer")){
-                selectedTime = JSON.parse(localStorage.getItem("timer"))
-            }}
-
-            let newDateObj = new Date().getTime();
-
-            var now = new Date(newDateObj + selectedTime * 60000);
-
+       
             // Find the distance between now and the count down date
-            var distance = countDownDate - now;
+            let now = new Date().getTime();
+
+            var countDownDate = new Date(countDownDate + date * 60000);
+ 
+            console.log(date)
+            var distance = now - countDownDate;
 
             // Time calculations for days, hours, minutes and seconds
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -54,18 +47,17 @@ export default function TimeCounter() {
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-
-        }, 1000);
-
     }
+
     useEffect(() => {
+        setRefresh(!refresh)
         Timing2()
 
-    }, [])
+    }, [refresh])
 
     return (
         <>
-            <Box className="time hour">
+            <Box className="time hour" onClick={()=>Timing2()}>
                 <h2>{NumberOfTime.hour < 10 ? `0${NumberOfTime.hour}` : NumberOfTime.hour}</h2>
                 <p>Hour</p>
             </Box>

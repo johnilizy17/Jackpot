@@ -21,6 +21,7 @@ export default function DashboardDesktop() {
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
     const [percentage, setPercentage] = useState(0)
+    const [date, setDate ] = useState(0);
     const [refresh, setRefresh] = useState(false)
     const { address } = useAccount()
     const [loading, setLoading] = useState(false)
@@ -137,7 +138,7 @@ export default function DashboardDesktop() {
 
             const { hash } = await writeContract(config)
             setAllowed(amount)
-            localStorage.setItem(`timer`, amount)
+            setDate(amount)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
@@ -203,7 +204,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter />
+                            <TimeCounter date={date} setDate={setDate}/>
                         </Box>
                         <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
