@@ -31,9 +31,9 @@ export default function TimeCounter({ date, setDate }) {
         // Update the count down every 1 second
 
         // Find the distance between now and the count down date
-        let now = new Date(new Date().getTime() + date * 60000);
+        let now = new Date().getTime()
 
-        var countDownDate = DownDate;
+        var countDownDate = new Date( DownDate + date * 60000);
 
         console.log(date)
         var distance = now - countDownDate;
