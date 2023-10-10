@@ -60,7 +60,7 @@ export default function TimeCounter({ date, setDate }) {
 
     return (
         <>
-            <Box className="time hour" onClick={() => setDate(10)}>
+            <Box className="time hour">
                 <h2>{NumberOfTime.hour < 10 ? `0${NumberOfTime.hour}` : NumberOfTime.hour}</h2>
                 <p>Hour</p>
             </Box>
