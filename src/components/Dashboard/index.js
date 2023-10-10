@@ -61,25 +61,6 @@ export default function DashboardDesktop() {
             
             setPercentage(`${percentageStake}%`)
 
-
-            getjackpot.map((a, b) => {
-                if (a.staker === address) {
-
-                } else {
-                    const notify = localStorage.getItem(`${dataParse[2]}${b}`)
-
-                    if (!notify) {
-                        
-                        localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
-                        
-                        setTimeout(() => {
-                            toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
-                        }, 2000*(b+1))
-                    
-                    }
-                }
-            })
-
         } catch (err) {
             
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
