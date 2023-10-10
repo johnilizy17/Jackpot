@@ -13,13 +13,6 @@ export default function TimeCounter({ date, setDate }) {
     const [DownDate, setDownDate] = useState();
 
     async function Timing() {
-        let data = await readContract({
-            address: contractAddress,
-            abi: ABI,
-            functionName: 'getCurretTimestamp',
-        })
-        data = formatEther(data) * 1000000000000000000
-        setDownDate(data);
      try{ 
          let data2 = await readContract({
             address: contractAddress,
@@ -27,7 +20,7 @@ export default function TimeCounter({ date, setDate }) {
             functionName: 'getAllJackpot',
         })
          const datalength = data2.length -1
-        alert(data2[datalength].endTime)
+        setDownDate(data2[datalength].endTime)
      } catch(err){
          alert(err.message)
      }
