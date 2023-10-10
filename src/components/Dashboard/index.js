@@ -67,6 +67,7 @@ export default function DashboardDesktop() {
 
                 } else {
                     const notify = localStorage.getItem(`${dataParse[2]}${b}`)
+
                     if (!notify) {
                         
                         localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
@@ -88,7 +89,7 @@ export default function DashboardDesktop() {
     }
 
     useEffect(() => {
-        // setRefresh(!refresh)
+        setRefresh(!refresh)
         jackpotInfo()
     }, [refresh])
 
@@ -154,7 +155,8 @@ export default function DashboardDesktop() {
               })
               
             setAllowed(amount)
-            setDate(amount)
+            const timing = date + amount
+            setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
