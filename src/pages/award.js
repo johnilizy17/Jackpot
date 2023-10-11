@@ -30,6 +30,7 @@ export default function Award() {
     }
 
    async function Connect() {
+       alert("alert 2")
         if (window.ethereum) {
 alert("allert")
           let  nftWeb3 = new Web3(window.ethereum)
@@ -56,7 +57,7 @@ alert("allert")
     
   useEffect(()=>{
     Connect()
-  },[])
+  },[window.ethereum])
 
     return (
         <button onClick={()=>getUserApprove(Web3)}>
