@@ -11,9 +11,17 @@ export default function TimeCounter({ date, setDate }) {
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
     const [DownDate, setDownDate] = useState();
-
+const [DownDate2, setDownDate2] = useState();
+    
     async function Timing() {
      try{ 
+       let data = await readContract({
+            address: contractAddress,
+            abi: ABI,
+            functionName: 'getCurretTimestamp',
+        })
+        data = formatEther(data) * 1000000000000000000
+        setDownDate2(data);
          let data2 = await readContract({
             address: contractAddress,
             abi: ABI,
@@ -31,11 +39,8 @@ export default function TimeCounter({ date, setDate }) {
         // Update the count down every 1 second
 
         // Find the distance between now and the count down date
-        let now = new Date().getTime()
-
+        let now = DownDate2
         var countDownDate = new Date( DownDate + date * 60000);
-
-        console.log(date)
         var distance = now - countDownDate;
 
         // Time calculations for days, hours, minutes and seconds
