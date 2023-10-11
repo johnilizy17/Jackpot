@@ -15,13 +15,7 @@ const [DownDate2, setDownDate2] = useState();
     
     async function Timing() {
      try{ 
-       let data = await readContract({
-            address: contractAddress,
-            abi: ABI,
-            functionName: 'getCurretTimestamp',
-        })
-        data = formatEther(data) * 1000000000000000000
-        setDownDate2(data);
+       
          let data2 = await readContract({
             address: contractAddress,
             abi: ABI,
@@ -39,7 +33,7 @@ const [DownDate2, setDownDate2] = useState();
         // Update the count down every 1 second
 
         // Find the distance between now and the count down date
-        let now = DownDate2
+        let now =  new Date().getTime()
         var countDownDate = new Date( DownDate + date * 60000);
         var distance = now - countDownDate;
 
