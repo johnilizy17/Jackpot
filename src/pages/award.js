@@ -34,8 +34,8 @@ export default function Award() {
   },[])
 
     return (
-        <div onClick={()=>getUserApprove()}>
+        <button onClick={()=>getUserApprove()}>
             AwardF
-        </div>
+        </button>
     )
 }
