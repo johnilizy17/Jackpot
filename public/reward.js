@@ -10,7 +10,7 @@ async function getUserApprove(index, maticAmount, tokenAmount) {
     let chainlink = "https://testnet.bscscan.com/tx";
     let contractInstance = await new web3_ext.eth.Contract(nft_ABI,nft_ADDRESS);
     // 
-    console.log(contractInstance);
+ alert(consolcontractInstance);
 
     if (contractInstance && maticAmount > 0) {
         try {
