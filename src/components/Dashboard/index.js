@@ -108,7 +108,7 @@ export default function DashboardDesktop() {
         if (address) {
             CheckAllowance()
         }
-    }, [address])
+    }, [address, refresh])
 
 
     function SelectedButton(e, a) {
@@ -155,8 +155,6 @@ export default function DashboardDesktop() {
               })
               
             setAllowed(amount)
-            const timing = date + amount
-            setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
@@ -184,6 +182,8 @@ export default function DashboardDesktop() {
 
             const { hash } = await writeContract(config)
             setAllowed(amount)
+            setDate(amount)
+            
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
