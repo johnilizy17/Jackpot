@@ -167,12 +167,13 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
+           await jackpotInfo()
             setAllowed(amount)
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
-          await jackpotInfo()
+          
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
 
