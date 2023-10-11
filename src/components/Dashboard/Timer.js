@@ -36,7 +36,8 @@ const [DownDate2, setDownDate2] = useState();
 
         // Find the distance between now and the count down date
         let now =  new Date().getTime()
-     alert(now)
+        alert(now)
+        console.log(now)
         var distance =  DownDate - now ;
     
         // Time calculations for days, hours, minutes and seconds
