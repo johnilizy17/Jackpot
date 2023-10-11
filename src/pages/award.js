@@ -60,7 +60,7 @@ export default function Award() {
   },[[]])
 
     return (
-        <button onClick={()=>getUserApprove(Web3)}>
+        <button onClick={()=>getUserApprove()}>
             AwardF
         </button>
     )
