@@ -23,7 +23,8 @@ const [DownDate2, setDownDate2] = useState();
         })
          const datalength = data2.length -1
          const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
-        setDownDate(timingData)
+       alert(timingData)
+         setDownDate(timingData)
      } catch(err){
          alert(err.message)
      }
