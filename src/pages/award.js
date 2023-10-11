@@ -37,9 +37,10 @@ export default function Award() {
 
             try {
                 await window.ethereum.request({ method: "eth_requestAccounts" });
-
+alert("connect")
                 let accounts = await window.ethereum.request({ method: 'eth_accounts' });
-               let currentAddr = accounts[0];
+               
+                let currentAddr = accounts[0];
               alert(currentAddr)
                 window.ethereum.on('chainChanged', (chainId) => {
                     window.location.reload();
