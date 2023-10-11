@@ -181,7 +181,21 @@ export default function DashboardDesktop() {
     }
 
 
+async function notification(){
+          getCurrentJackpotInfo.map((a, b) => {
+                if (a.staker === address) {
 
+                } else {
+                    const notify = localStorage.getItem(`${dataParse[2]}${b}`)
+                    const notificationNumber = getCurrentJackpotInfo.length -2;
+                    if (!notify && b > notificationNumber ) {
+
+                        localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
+                            toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
+                    }
+                }
+            }) 
+}
     return (
         <>
 
