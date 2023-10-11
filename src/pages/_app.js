@@ -28,7 +28,8 @@ export default function App({ Component, pageProps }) {
         <script src="https://unpkg.com/web3@1.6.0/dist/web3.min.js"></script>
         <script src="https://unpkg.com/@walletconnect/web3-provider@1.6.5/dist/umd/index.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
-      </Head>
+    <script src="../reward.js" />
+    </Head>
 
       <WagmiConfig config={wagmiConfig}>
         <ChakraProvider><Component {...pageProps} /> </ChakraProvider>

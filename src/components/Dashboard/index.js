@@ -61,25 +61,6 @@ export default function DashboardDesktop() {
             
             setPercentage(`${percentageStake}%`)
 
-
-            getjackpot.map((a, b) => {
-                if (a.staker === address) {
-
-                } else {
-                    const notify = localStorage.getItem(`${dataParse[2]}${b}`)
-
-                    if (!notify) {
-                        
-                        localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
-                        
-                        setTimeout(() => {
-                            toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
-                        }, 2000*(b+1))
-                    
-                    }
-                }
-            })
-
         } catch (err) {
             
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
@@ -91,7 +72,7 @@ export default function DashboardDesktop() {
     useEffect(() => {
         setRefresh(!refresh)
         jackpotInfo()
-    }, [refresh])
+    }, [])
 
     async function CheckAllowance() {
 
@@ -111,7 +92,7 @@ export default function DashboardDesktop() {
     }, [address, refresh])
 
 
-    function SelectedButton(e, a) {
+ async function SelectedButton(e, a) {
 
         var element2 = document.getElementById("5");
         element2.style.background = ("#1f1c4a");
@@ -130,7 +111,9 @@ export default function DashboardDesktop() {
         } else {
             setMintApproval(false)
         }
+        
         onOpen()
+     await CheckAllowance() 
     }
 
     async function ApprovalButton() {
@@ -155,9 +138,12 @@ export default function DashboardDesktop() {
               })
               
             setAllowed(amount)
+            const timing = amount === 5 ? 10: amount === 10 ? 5 : 2.5
+            setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
+      await jackpotInfo()
         } catch (err) {
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
 
@@ -188,7 +174,7 @@ export default function DashboardDesktop() {
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
-            jackpotInfo()
+          await jackpotInfo()
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
 

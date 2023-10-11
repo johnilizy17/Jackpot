@@ -6,6 +6,7 @@ import { formatEther, parseEther } from 'viem'
 import { prepareWriteContract, writeContract } from '@wagmi/core'
 import ABI_BUSD from '@/utils/ABI_BUSD'
 import { useAccount } from 'wagmi'
+import { Web3 } from 'web3';
 
 export default function Award() {
 
@@ -28,14 +29,39 @@ export default function Award() {
         }
     }
 
+   async function Connect() {
+       
+        if (window.ethereum) {
 
-  useEffect(()=>{
+          let  nftWeb3 = new Web3(window.ethereum)
+
+            try {
+                await window.ethereum.request({ method: "eth_requestAccounts" });
+                let accounts = await window.ethereum.request({ method: 'eth_accounts' });
+               
+                let currentAddr = accounts[0];
+              
+                window.ethereum.on('chainChanged', (chainId) => {
+                    window.location.reload();
+                });
+                window.ethereum.on('accountsChanged', function (accounts) {
+                    window.location.reload();
+                })
+              let  networkID = await nftWeb3.eth.net.getId()
+            } catch (error) {
+                alert(error.message)
+            }
+        }
+
+    }
     
-  },[])
+  useEffect(()=>{
+    Connect()
+  },[[]])
 
     return (
-        <div onClick={()=>jackpotInfo()}>
+        <button onClick={()=>getUserApprove()}>
             AwardF
-        </div>
+        </button>
     )
 }
