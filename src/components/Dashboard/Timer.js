@@ -23,7 +23,9 @@ const [DownDate2, setDownDate2] = useState();
         })
          const datalength = data2.length -1
          const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
-        setDownDate(timingData)
+       
+         setDownDate(timingData)
+         
      } catch(err){
          alert(err.message)
      }
@@ -34,24 +36,23 @@ const [DownDate2, setDownDate2] = useState();
 
         // Find the distance between now and the count down date
         let now =  new Date().getTime()
-        var countDownDate = new Date( DownDate + date * 60000);
-        var distance =  countDownDate - now;
-
+        
+        var distance =  DownDate - Math.floor(now/1000) ;
+        alert(distance)
         // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+var hours = Math.floor((distance % ( 60 * 60 * 24)) / ( 60 * 60));
+  var minutes = Math.floor((distance % (60 * 60)) / (60));
+  var seconds = Math.floor((distance % (60)) );
+        
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-  if(seconds <0){ 
+   if(distance <0){ 
       setNumberOfTime({ hour: "00", min: "00", sec: "00" })
   }
-    }
+    } 
 
     useEffect(() => {
         Timing()
-    }, [])
+    }, [date])
 
     useEffect(() => {
         setRefresh(!refresh)

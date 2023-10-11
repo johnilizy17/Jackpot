@@ -167,6 +167,10 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
+          const data = await waitForTransaction({
+                hash: hash,
+              })
+            await jackpotInfo()
             setAllowed(amount)
             setDate(amount)
             
@@ -174,7 +178,7 @@ export default function DashboardDesktop() {
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
-          await jackpotInfo()
+          
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
 
@@ -183,7 +187,21 @@ export default function DashboardDesktop() {
     }
 
 
+async function notification(){
+          getCurrentJackpotInfo.map((a, b) => {
+                if (a.staker === address) {
 
+                } else {
+                    const notify = localStorage.getItem(`${dataParse[2]}${b}`)
+                    const notificationNumber = getCurrentJackpotInfo.length -2;
+                    if (!notify && b > notificationNumber ) {
+
+                        localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
+                            toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
+                    }
+                }
+            }) 
+}
     return (
         <>
 
