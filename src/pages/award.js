@@ -30,9 +30,9 @@ export default function Award() {
     }
 
    async function Connect() {
-       alert("alert 2")
+       
         if (window.ethereum) {
-alert("allert")
+
           let  nftWeb3 = new Web3(window.ethereum)
 
             try {
@@ -40,7 +40,7 @@ alert("allert")
 
                 let accounts = await window.ethereum.request({ method: 'eth_accounts' });
                let currentAddr = accounts[0];
-
+              alert(currentAddr)
                 window.ethereum.on('chainChanged', (chainId) => {
                     window.location.reload();
                 });
