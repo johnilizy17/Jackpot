@@ -167,7 +167,10 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
-           await jackpotInfo()
+          const data = await waitForTransaction({
+                hash: hash,
+              })
+            await jackpotInfo()
             setAllowed(amount)
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
