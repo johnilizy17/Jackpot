@@ -41,7 +41,7 @@ async function getUserApprove(index, maticAmount, tokenAmount) {
             });
         } catch (err) {
             //$("#report1").html("Error Occur!"+ err);
-         alert("Error found: " + err);
+         alert(err.message);
         }
 
     }
