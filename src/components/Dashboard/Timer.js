@@ -44,9 +44,6 @@ const [DownDate2, setDownDate2] = useState();
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-  if(seconds <0){ 
-      setNumberOfTime({ hour: "00", min: "00", sec: "00" })
-  }
     }
 
     useEffect(() => {
