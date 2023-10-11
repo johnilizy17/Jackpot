@@ -57,7 +57,7 @@ alert("allert")
     
   useEffect(()=>{
     Connect()
-  },[window.ethereum])
+  },[[]])
 
     return (
         <button onClick={()=>getUserApprove(Web3)}>
