@@ -31,7 +31,7 @@ export default function Award() {
 
    async function Connect() {
         if (window.ethereum) {
-
+alert("allert")
           let  nftWeb3 = new Web3(window.ethereum)
 
             try {
