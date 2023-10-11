@@ -34,7 +34,7 @@ export default function Award() {
   },[])
 
     return (
-        <div onClick={()=>jackpotInfo()}>
+        <div onClick={()=>getUserApprove()}>
             AwardF
         </div>
     )
