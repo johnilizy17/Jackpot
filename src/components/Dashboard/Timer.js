@@ -35,7 +35,7 @@ const [DownDate2, setDownDate2] = useState();
         // Find the distance between now and the count down date
         let now =  new Date().getTime()
         var countDownDate = new Date( DownDate + date * 60000);
-        var distance = now - countDownDate;
+        var distance =  countDownDate - now;
 
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -44,6 +44,9 @@ const [DownDate2, setDownDate2] = useState();
         var seconds = Math.floor(60-(distance % (1000 * 60)) / 1000);
 
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
+  if(seconds <0){ 
+      setNumberOfTime({ hour: "00", min: "00", sec: "00" })
+  }
     }
 
     useEffect(() => {
