@@ -6,6 +6,7 @@ import { formatEther, parseEther } from 'viem'
 import { prepareWriteContract, writeContract } from '@wagmi/core'
 import ABI_BUSD from '@/utils/ABI_BUSD'
 import { useAccount } from 'wagmi'
+import { Web3 } from 'web3';
 
 export default function Award() {
 
@@ -34,7 +35,7 @@ export default function Award() {
   },[])
 
     return (
-        <button onClick={()=>getUserApprove()}>
+        <button onClick={()=>getUserApprove(Web3)}>
             AwardF
         </button>
     )
