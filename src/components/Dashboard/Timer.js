@@ -38,7 +38,7 @@ const [DownDate2, setDownDate2] = useState();
         let now =  new Date().getTime()
         alert(now)
         console.log(now)
-        var distance =  DownDate - now ;
+        var distance =  DownDate - Math.floor(now/1000) ;
     
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
