@@ -1,4 +1,4 @@
-async function getUserApprove(Web3) {
+async function getUserApprove() {
   alert("working")
     try {
         
