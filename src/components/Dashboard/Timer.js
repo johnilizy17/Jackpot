@@ -23,7 +23,7 @@ const [DownDate2, setDownDate2] = useState();
         })
          const datalength = data2.length -1
          const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
-       alert(timingData)
+       
          setDownDate(timingData)
      } catch(err){
          alert(err.message)
@@ -36,6 +36,7 @@ const [DownDate2, setDownDate2] = useState();
         // Find the distance between now and the count down date
         let now =  new Date().getTime()
         var countDownDate = new Date( DownDate + date * 60000).getTime();
+     alert(now, countDownDate)
         var distance =   now - countDownDate ;
 
         // Time calculations for days, hours, minutes and seconds
