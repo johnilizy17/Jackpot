@@ -99,6 +99,10 @@ alert('done')
         Timing()
     }, [date])
 
+   setInterval(() => {
+        Timing()
+    ), 10000) 
+
     useEffect(() => {
         setRefresh(!refresh)
         if (DownDate) {
