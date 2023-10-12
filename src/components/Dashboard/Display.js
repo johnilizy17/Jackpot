@@ -50,7 +50,7 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                         </Box>
                     </Box>
                 </Box>
-                                <Flex mt="430px">
+                                <Flex mt="430px" w="full">
                                 <Button color="#fff" bg="#F8C822" mr="20px">  Play Again </Button>
                                 </Flex>
                                 </Box>
