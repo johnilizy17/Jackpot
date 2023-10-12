@@ -21,7 +21,7 @@ export default function DashboardDesktop() {
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
     const [percentage, setPercentage] = useState(0)
-    const [date, setDate ] = useState(0);
+    const [date, setDate] = useState(0);
     const [refresh, setRefresh] = useState(false)
     const { address } = useAccount()
     const [loading, setLoading] = useState(false)
@@ -34,7 +34,7 @@ export default function DashboardDesktop() {
 
     async function jackpotInfo() {
         try {
-            
+
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
@@ -47,24 +47,24 @@ export default function DashboardDesktop() {
             })
 
             setJackpotData(dataParse)
-            
+
             const getjackpot = await readContract({
                 address: contractAddress,
                 abi: ABI,
                 args: [dataParse[2] * 1000000000000000000],
                 functionName: 'getCurrentJackpotInfo'
             })
-            
+
             setGetCurrentJackpotInfo(getjackpot)
-            
+
             const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
-            
+
             setPercentage(`${percentageStake}%`)
 
         } catch (err) {
-            
+
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
-            
+
             console.log(err)
         }
     }
@@ -92,7 +92,7 @@ export default function DashboardDesktop() {
     }, [address, refresh])
 
 
- async function SelectedButton(e, a) {
+    async function SelectedButton(e, a) {
 
         var element2 = document.getElementById("5");
         element2.style.background = ("#1f1c4a");
@@ -111,9 +111,9 @@ export default function DashboardDesktop() {
         } else {
             setMintApproval(false)
         }
-        
+
         onOpen()
-     await CheckAllowance() 
+        await CheckAllowance()
     }
 
     async function ApprovalButton() {
@@ -132,18 +132,18 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
-            
+
             const data = await waitForTransaction({
                 hash: hash,
-              })
-              
+            })
+
             setAllowed(amount)
-            const timing = amount === 5 ? 10: amount === 10 ? 5 : 2.5
+            const timing = amount === 5 ? 10 : amount === 10 ? 5 : 2.5
             setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
-      await jackpotInfo()
+            await jackpotInfo()
         } catch (err) {
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
 
@@ -167,18 +167,18 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
-          const data = await waitForTransaction({
+            const data = await waitForTransaction({
                 hash: hash,
-              })
+            })
             await jackpotInfo()
             setAllowed(amount)
             setDate(amount)
-            
+
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
-          
+
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
 
@@ -187,21 +187,47 @@ export default function DashboardDesktop() {
     }
 
 
-async function notification(){
-          getCurrentJackpotInfo.map((a, b) => {
-                if (a.staker === address) {
+    async function notification() {
+        const data = await readContract({
+            address: contractAddress,
+            abi: ABI,
+            functionName: 'fetchJackpotInfo'
+        })
 
-                } else {
-                    const notify = localStorage.getItem(`${dataParse[2]}${b}`)
-                    const notificationNumber = getCurrentJackpotInfo.length -2;
-                    if (!notify && b > notificationNumber ) {
+        const dataParse = data.map((a) => {
+            return formatEther(a)
+        })
 
-                        localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
-                            toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked here bet`, status: "success", isClosable: true });
-                    }
+        setJackpotData(dataParse)
+
+        const getjackpot = await readContract({
+            address: contractAddress,
+            abi: ABI,
+            args: [dataParse[2] * 1000000000000000000],
+            functionName: 'getCurrentJackpotInfo'
+        })
+        const jackputNumber = getjackpot.length - 1
+        getjackpot.map((a, b) => {
+            if (a.staker === address && b === jackputNumber) {
+                // const notify = localStorage.getItem(`${dataParse[2]}${b}`)
+                // if (!notify) {
+                    localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
+                    toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
                 }
-            }) 
-}
+            // }
+        })
+        setGetCurrentJackpotInfo(getjackpot)
+
+        const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
+
+        setPercentage(`${percentageStake}%`)
+
+    }
+    setTimeout(()=>{
+   notification
+    },10000)
+
+
     return (
         <>
 
@@ -225,8 +251,8 @@ async function notification(){
             <Box>
                 <section className="page">
                     <Box className="body">
-                        <Box className="timer">
-                            <TimeCounter date={date} setDate={setDate}/>
+                        <Box className="timer" onClick={()=>notification()}>
+                            <TimeCounter date={date} setDate={setDate} />
                         </Box>
                         <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
