@@ -99,7 +99,7 @@ export default function TimeCounter({ date, setName, setDate }) {
         if (DownDate) {
             Timing2()
         }
-    }, refresh)
+    }, [refresh])
 
     return (
         <>
