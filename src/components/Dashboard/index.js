@@ -253,7 +253,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter date={date} setDate={setDate} />
+                            <TimeCounter date={date} setName={setName} setDate={setDate} />
                         </Box>
                         <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />

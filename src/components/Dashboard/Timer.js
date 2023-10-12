@@ -4,8 +4,9 @@ import { readContract, readContracts } from '@wagmi/core'
 import { contractAddress } from '@/services/NFT'
 import ABI from '@/utils/ABI'
 import { formatEther } from 'viem'
+import { useAccount } from 'wagmi'
 
-export default function TimeCounter({ date, setDate }) {
+export default function TimeCounter({ date, setName, setDate }) {
 
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
@@ -14,7 +15,8 @@ export default function TimeCounter({ date, setDate }) {
     const [DownDate2, setDownDate2] = useState();
     const [reward, setReward] = useState(true)
     const [jackInfo, setJackInfo] = useState({ status: true })
-
+    const { address } = useAccount()
+    
     async function Timing() {
         try {
 
@@ -26,10 +28,17 @@ export default function TimeCounter({ date, setDate }) {
             const datalength = data2.length - 1
             const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
             setJackInfo(data2[datalength])
+            if(formatEther(data2[datalength].endTime) * 1000000000000000000 === 0){
+            if(data2[datalength-1].winner === address){
+                 setName("win")
+            }else{
+                setName("loss")
+            }
+        }
             setDownDate(timingData)
 
         } catch (err) {
-            alert(err.message)
+            console.log(err.message)
         }
     }
 
