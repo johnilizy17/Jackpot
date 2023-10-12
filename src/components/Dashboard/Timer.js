@@ -85,7 +85,12 @@ export default function TimeCounter({ date, setName, setDate }) {
               const data = await waitForTransaction({
                 hash: hash,
             })
-                setDate('date')
+alert('done')
+               setTimeout(()=>{
+              alert('set')
+                   setDate('date')
+               }, 6000)
+                
             }
         }
     }
