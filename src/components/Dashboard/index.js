@@ -72,7 +72,7 @@ export default function DashboardDesktop() {
     useEffect(() => {
         setRefresh(!refresh)
         jackpotInfo()
-    }, [])
+    }, [date])
 
     async function CheckAllowance() {
 
@@ -188,45 +188,48 @@ export default function DashboardDesktop() {
 
 
     async function notification() {
-        const data = await readContract({
-            address: contractAddress,
-            abi: ABI,
-            functionName: 'fetchJackpotInfo'
-        })
+        try {
+            const data = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'fetchJackpotInfo'
+            })
 
-        const dataParse = data.map((a) => {
-            return formatEther(a)
-        })
+            const dataParse = data.map((a) => {
+                return formatEther(a)
+            })
 
-        const getjackpot = await readContract({
-            address: contractAddress,
-            abi: ABI,
-            args: [dataParse[2] * 1000000000000000000],
-            functionName: 'getCurrentJackpotInfo'
-        })
-        const jackputNumber = getjackpot.length - 1
-        getjackpot.map((a, b) => {
-            if (a.staker !== address && b === jackputNumber) {
-                const notify = localStorage.getItem(`${dataParse[2]}${b}`)
-                if (!notify) {
-                    localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
-                    toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
+            const getjackpot = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                args: [dataParse[2] * 1000000000000000000],
+                functionName: 'getCurrentJackpotInfo'
+            })
+            const jackputNumber = getjackpot.length - 1
+            getjackpot.map((a, b) => {
+                if (a.staker !== address && b === jackputNumber) {
+                    const notify = localStorage.getItem(`${dataParse[2]}${b}`)
+                    if (!notify) {
+                        localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
+                        toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
+                    }
                 }
-            }
-        })
-        setGetCurrentJackpotInfo(getjackpot)
+            })
+            setGetCurrentJackpotInfo(getjackpot)
 
-        const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
+            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
 
-        setPercentage(`${percentageStake}%`)
-
+            setPercentage(`${percentageStake}%`)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    setInterval(()=>{
-        if(address){
-        notification()
+    setInterval(() => {
+        if (address) {
+            notification()
         }
-    },10000)
+    }, 10000)
 
 
     return (
@@ -255,7 +258,7 @@ export default function DashboardDesktop() {
                         <Box className="timer">
                             <TimeCounter date={date} setName={setName} setDate={setDate} />
                         </Box>
-                        <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName}/>
+                        <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
                                 <Box className="bar" style={{ height: "0%" }}></Box>

@@ -61,6 +61,7 @@ export default function TimeCounter({ date, setName, setDate }) {
             if (DownDate > 0 && jackInfo.status === false && reward) {
                 setReward(false)
                 await getUserApprove(ABI, contractAddress)
+                setDate('date')
             }
         }
     }
@@ -69,12 +70,12 @@ export default function TimeCounter({ date, setName, setDate }) {
         Timing()
     }, [date])
 
-    useEffect(() => {
-        setRefresh(!refresh)
+    setInterval(()=>{
+        setRefresh(!refresh) 
         if (DownDate) {
             Timing2()
         }
-    }, [refresh])
+    }, 1000)
 
     return (
         <>
