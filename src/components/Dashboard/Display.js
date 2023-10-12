@@ -39,8 +39,8 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                <h2 className="title">GAMEOVER</h2>
                 <Box className="info"  w={["100%", "600px"]} ><img src="../image/coin_stack.png" alt="treasure chest" className="chest popping"
                     style={{ transform: "translate3d(0px, 0px, 0px) scale(1.0152, 1.0152)", translate: "none", rotate: "none", scale: "none", width:200, height: 200 }} />
-                    <Box className="splash-text">
-                        <Box  w="100%"
+                    <Box className="splash-text" w={["100%", "500px"]} >
+                        <Box  w={["100%", "500px"]}
                             style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(3, 3)", opacity: 0.1, top: "50%" }}>
                             <p>You are out of</p>
                         </Box>
@@ -50,7 +50,7 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                         </Box>
                     </Box>
                 </Box>
-                                <Flex mt="400px">
+                                <Flex mt="430px">
                                 <Button color="#fff" bg="#F8C822" mr="20px">  Play Again </Button>
                                 </Flex>
                                 </Box>
