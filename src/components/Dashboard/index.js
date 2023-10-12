@@ -255,7 +255,7 @@ export default function DashboardDesktop() {
                         <Box className="timer">
                             <TimeCounter date={date} setName={setName} setDate={setDate} />
                         </Box>
-                        <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} />
+                        <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName}/>
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
                                 <Box className="bar" style={{ height: "0%" }}></Box>

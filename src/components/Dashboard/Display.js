@@ -11,7 +11,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName }) 
     return (
         <Box className="view-swiper">
             <Box className="view game-over pictured view-gameover active" h="450px"
-                style={name !== "start" ? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
+                style={name !== "start" ? {  rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title">Minor</h2>
                 <Box className="info" w={["100%", "600px"]}>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/money_bag.png" alt="" />
