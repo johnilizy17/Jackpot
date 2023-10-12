@@ -16,7 +16,7 @@ export default function TimeCounter({ date, setName, setDate }) {
     const [reward, setReward] = useState(true)
     const [jackInfo, setJackInfo] = useState({ status: true })
     const { address } = useAccount()
-    
+
     async function Timing() {
         try {
 
@@ -28,13 +28,26 @@ export default function TimeCounter({ date, setName, setDate }) {
             const datalength = data2.length - 1
             const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
             setJackInfo(data2[datalength])
-            if(formatEther(data2[datalength].endTime) * 1000000000000000000 === 0){
-            if(data2[datalength-1].winner === address){
-                 setName("win")
-            }else{
-                setName("loss")
+
+            let data = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                arg: [data2[datalength] - 1],
+                functionName: 'getCurrentJackpotInfo',
+            })
+            const exist = data.filter((a, b) => {
+                if (a.staker === address) {
+                    return true
+                }
+            })
+            console.log(exist, "exist")
+            if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0) {
+                if (data2[datalength - 1].winner === address) {
+                    setName("win")
+                } else {
+                    setName("loss")
+                }
             }
-        }
             setDownDate(timingData)
 
         } catch (err) {
@@ -57,7 +70,7 @@ export default function TimeCounter({ date, setName, setDate }) {
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
         if (distance < 0) {
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
-            
+
             if (DownDate > 0 && jackInfo.status === false && reward) {
                 setReward(false)
                 await getUserApprove(ABI, contractAddress)
@@ -70,8 +83,8 @@ export default function TimeCounter({ date, setName, setDate }) {
         Timing()
     }, [date])
 
-    setInterval(()=>{
-        setRefresh(!refresh) 
+    setInterval(() => {
+        setRefresh(!refresh)
         if (DownDate) {
             Timing2()
         }
