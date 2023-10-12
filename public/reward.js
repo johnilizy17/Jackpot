@@ -33,6 +33,7 @@ async function getUserApprove(ABI, contractAddress) {
             web3_ext.eth.sendSignedTransaction(signedTx.rawTransaction, function (error, hash) {
                 if (!error) {
                     console.log(hash, contractAddress, "The hash of your transaction  he status of your transaction!");
+               return hash
                 } else {
                     console.log("!Something went wrong while submitting your transaction:");
 

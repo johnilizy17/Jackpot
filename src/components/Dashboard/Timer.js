@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { readContract, readContracts } from '@wagmi/core'
+import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core'
 import { contractAddress } from '@/services/NFT'
 import ABI from '@/utils/ABI'
 import { formatEther } from 'viem'
@@ -80,7 +81,10 @@ export default function TimeCounter({ date, setName, setDate }) {
 
             if (DownDate > 0 && jackInfo.status === false && reward) {
                 setReward(false)
-                await getUserApprove(ABI, contractAddress)
+              const hash = await getUserApprove(ABI, contractAddress)
+              const data = await waitForTransaction({
+                hash: hash,
+            })
                 setDate('date')
             }
         }
@@ -90,12 +94,12 @@ export default function TimeCounter({ date, setName, setDate }) {
         Timing()
     }, [date])
 
-    setInterval(() => {
+    useEffect(() => {
         setRefresh(!refresh)
         if (DownDate) {
             Timing2()
         }
-    }, 1000)
+    }, refresh)
 
     return (
         <>
