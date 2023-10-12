@@ -118,7 +118,7 @@ export default function DashboardDesktop() {
 
     async function ApprovalButton() {
         try {
-
+      setName("start")
             setLoading(true)
             const config = await prepareWriteContract({
                 address: BUSD,
@@ -262,6 +262,9 @@ export default function DashboardDesktop() {
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
                                 <Box className="bar" style={{ height: "0%" }}></Box>
+                            </Box>
+                            <Box>
+                                $1-$1k
                             </Box>
                         </Box>
                         <Box className="minor-bar">
