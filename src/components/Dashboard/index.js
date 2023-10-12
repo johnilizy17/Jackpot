@@ -28,6 +28,7 @@ export default function DashboardDesktop() {
     const [name, setName] = useState("start");
     const [getCurrentJackpotInfo, setGetCurrentJackpotInfo] = useState([]);
     const [amount, setAmount] = useState(false);
+    const [bigBang, setBigBang] = useState(0)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -42,6 +43,13 @@ export default function DashboardDesktop() {
 
             })
 
+
+            const bigBangBalance = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'bigBangBalance'
+            })
+            if(bigBangBalance) setBigBang(formatEther(bigBangBalance)*100/1000)
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
@@ -118,7 +126,7 @@ export default function DashboardDesktop() {
 
     async function ApprovalButton() {
         try {
-      setName("start")
+            setName("start")
             setLoading(true)
             const config = await prepareWriteContract({
                 address: BUSD,
@@ -261,9 +269,9 @@ export default function DashboardDesktop() {
                         <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
-                                <Box className="bar" style={{ height: "0%" }}></Box>
+                                <Box className="bar" style={{ height: `${bigBang}%` }}></Box>
                             </Box>
-                            <Box>
+                            <Box color="#fff" fontSize="10px">
                                 $1-$1k
                             </Box>
                         </Box>

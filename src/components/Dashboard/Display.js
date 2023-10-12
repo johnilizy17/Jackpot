@@ -4,8 +4,6 @@ import React from 'react';
 export default function Display({ data, getCurrentJackpotInfo, name, setName }) {
 
     function cardTransition(id) {
-        var element2 = document.getElementById(id);
-        // element2.d
     }
 
     return (
@@ -71,7 +69,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName }) 
                         </Box>
                         <Box className="prize-Box"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "skew(-30deg, 0deg)" }}>
-                            <p className="prize">2000 USDC</p>
+                            <p className="prize">Jackpot Winner</p>
                         </Box>
                     </Box>
                 </Box>
