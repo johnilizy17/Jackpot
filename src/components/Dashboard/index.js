@@ -198,8 +198,6 @@ export default function DashboardDesktop() {
             return formatEther(a)
         })
 
-        setJackpotData(dataParse)
-
         const getjackpot = await readContract({
             address: contractAddress,
             abi: ABI,
@@ -223,10 +221,12 @@ export default function DashboardDesktop() {
         setPercentage(`${percentageStake}%`)
 
     }
-    
-    // setInterval(()=>{
-    //     notification()
-    // },10000)
+
+    setInterval(()=>{
+        if(address){
+        notification()
+        }
+    },10000)
 
 
     return (
