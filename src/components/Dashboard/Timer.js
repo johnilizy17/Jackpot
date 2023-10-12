@@ -11,43 +11,50 @@ export default function TimeCounter({ date, setDate }) {
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
     const [DownDate, setDownDate] = useState();
-const [DownDate2, setDownDate2] = useState();
-    
+    const [DownDate2, setDownDate2] = useState();
+    const [reward, setReward] = useState(true)
+    const [jackInfo, setJackInfo] = useState({ status: true })
+
     async function Timing() {
-     try{ 
-       
-         let data2 = await readContract({
-            address: contractAddress,
-            abi: ABI,
-            functionName: 'getAllJackpot',
-        })
-         const datalength = data2.length -1
-         const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
-       
-         setDownDate(timingData)
-         
-     } catch(err){
-         alert(err.message)
-     }
+        try {
+
+            let data2 = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'getAllJackpot',
+            })
+            const datalength = data2.length - 1
+            const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
+            setJackInfo(data2[datalength])
+            setDownDate(timingData)
+
+        } catch (err) {
+            alert(err.message)
+        }
     }
 
     async function Timing2() {
         // Update the count down every 1 second
 
         // Find the distance between now and the count down date
-        let now =  new Date().getTime()
-        
-        var distance =  DownDate - Math.floor(now/1000) ;
-         // Time calculations for days, hours, minutes and seconds
-var hours = Math.floor((distance % ( 60 * 60 * 24)) / ( 60 * 60));
-  var minutes = Math.floor((distance % (60 * 60)) / (60));
-  var seconds = Math.floor((distance % (60)) );
-        
+        let now = new Date().getTime()
+
+        var distance = DownDate - Math.floor(now / 1000);
+        // Time calculations for days, hours, minutes and seconds
+        var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
+        var minutes = Math.floor((distance % (60 * 60)) / (60));
+        var seconds = Math.floor((distance % (60)));
+
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-   if(distance <0){ 
-      setNumberOfTime({ hour: "00", min: "00", sec: "00" })
-  }
-    } 
+        if (distance < 0) {
+            setNumberOfTime({ hour: "00", min: "00", sec: "00" })
+            
+            if (DownDate > 0 && jackInfo.status === false && reward) {
+                setReward(false)
+                await getUserApprove(ABI, contractAddress)
+            }
+        }
+    }
 
     useEffect(() => {
         Timing()
@@ -63,17 +70,17 @@ var hours = Math.floor((distance % ( 60 * 60 * 24)) / ( 60 * 60));
     return (
         <>
             <Box className="time hour">
-                <h2>{NumberOfTime.hour === "00"? NumberOfTime.hour : NumberOfTime.hour < 10 ? `0${NumberOfTime.hour}` : NumberOfTime.hour}</h2>
+                <h2>{NumberOfTime.hour === "00" ? NumberOfTime.hour : NumberOfTime.hour < 10 ? `0${NumberOfTime.hour}` : NumberOfTime.hour}</h2>
                 <p>Hour</p>
             </Box>
             <Box className="divide"></Box>
             <Box className="time min">
-                <h2>{NumberOfTime.hour === "00"? NumberOfTime.hour : NumberOfTime.min < 10 ? `0${NumberOfTime.min}` : NumberOfTime.min}</h2>
+                <h2>{NumberOfTime.hour === "00" ? NumberOfTime.hour : NumberOfTime.min < 10 ? `0${NumberOfTime.min}` : NumberOfTime.min}</h2>
                 <p>Min</p>
             </Box>
             <Box className="divide"></Box>
             <Box className="time sec">
-                <h2>{NumberOfTime.hour === "00"? NumberOfTime.hour : NumberOfTime.sec < 10 ? `0${NumberOfTime.sec}` : NumberOfTime.sec}</h2>
+                <h2>{NumberOfTime.hour === "00" ? NumberOfTime.hour : NumberOfTime.sec < 10 ? `0${NumberOfTime.sec}` : NumberOfTime.sec}</h2>
                 <p>Sec</p>
             </Box>
         </>)
