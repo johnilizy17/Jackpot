@@ -1,32 +1,32 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Button, Flex } from '@chakra-ui/react';
 import React from 'react';
 
-export default function Display({data, getCurrentJackpotInfo, name}) {
+export default function Display({ data, getCurrentJackpotInfo, name, setName }) {
 
-    function cardTransition(id){
+    function cardTransition(id) {
         var element2 = document.getElementById(id);
         // element2.d
     }
 
     return (
         <Box className="view-swiper">
-            <Box className="view game-over pictured view-gameover active"  h="450px"
-                style={name !== "start"? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 }:{ transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
+            <Box className="view game-over pictured view-gameover active" h="450px"
+                style={name !== "start" ? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title">Minor</h2>
                 <Box className="info" w={["100%", "600px"]}>
-                    <Box display="flex"  w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{width:40, marginRight:40, height:40}} src="../image/money_bag.png" alt="" />
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/money_bag.png" alt="" />
                         <Box className="texts" mt="20px">
                             <h4>Jackpot Entry</h4>
                             <p >{data[1]} USDC</p>
                         </Box>
                     </Box>
-                    <Box display="flex"  w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{width:40, marginRight:40, height:40}} src="../image/trophie.png" alt="" />
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/trophie.png" alt="" />
                         <Box className="texts second" mt="20px">
                             <h4>Staked Amount</h4>
-                            <p  className="blink_me" style={{color:"rgb(30, 240, 30)"}}>{data[0]} USDC</p>
+                            <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }}>{data[0]} USDC</p>
                         </Box>
                     </Box>
-                    <Box display="flex"  w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{width:40, marginRight:40, height:40}} src="../image/mesh.png" alt="" />
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/mesh.png" alt="" />
                         <Box className="texts" mt="20px">
                             <h4>Information</h4>
                             <p>Participants: {getCurrentJackpotInfo.length}<br />Bets: {getCurrentJackpotInfo.length}</p>
@@ -35,12 +35,12 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                 </Box>
             </Box>
             <Box className="view game-over pictured  view-gameover active" h="450px"
-               style={name !== "loss"? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 }:{ transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
-               <h2 className="title">GAMEOVER</h2>
-                <Box className="info" top="-5px"  w="140%" h='120px'><img src="../image/coin_stack.png" alt="treasure chest" className="chest popping"
-                    style={{ transform: "translate3d(0px, 0px, 0px) scale(1.0152, 1.0152)", translate: "none", rotate: "none", scale: "none", width:200, height: 200 }} />
-                    <Box className="splash-text">
-                        <Box  w="100%"
+                style={name !== "loss" ? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
+                <h2 className="title" style={{ marginTop: -60 }}>GAMEOVER</h2>
+                <Box className="info" style={{ top: "-40px", width: "140%", height: '500px' }}><img src="../image/coin_stack.png" alt="treasure chest" className="chest popping"
+                    style={{ transform: "translate3d(0px, 0px, 0px) scale(1.0152, 1.0152)", translate: "none", rotate: "none", scale: "none", width: 200, height: 200 }} />
+                    <Box className="splash-text" >
+                        <Box
                             style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(3, 3)", opacity: 0.1, top: "50%" }}>
                             <p>You are out of</p>
                         </Box>
@@ -50,13 +50,20 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                         </Box>
                     </Box>
                 </Box>
+                <Flex mt="510px" w="140%" onClick={() => setName("start")}>
+                    <Button color="#fff" bg="#F8C822" mr="20px">  Play Again </Button>
+                </Flex>
             </Box>
             <Box className="view game-over pictured view-gameover active" h="450px"
-               style={name !== "win"? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 }:{ transform: "scale(-0.2px, -0.2px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
-               <h2 className="title">CASHOUT</h2>
-                <Box className="info"  w="100%"><img src="../image/treasure.svg" alt="treasure chest" className="chest popping"
-                    style={{ translate: "none", rotate: "none", scale: "none", transform: "translate3d(0px, 0px, 0px) scale(1.0998, 1.0998)", width:200, height:200 }} />
-                    <Box  className="splash-text">
+                style={name !== "win" ? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(-0.2px, -0.2px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
+                <h2 className="title" style={{ marginTop: -60 }}>CASHOUT</h2>
+                 <Flex mt="510px" w="140%">
+                    <Button color="#fff" bg="#F8C822" mr="20px">  Play Again </Button>
+                </Flex>
+                <Box className="info" style={{ top: "-40px", width: "140%", height: '500px' }}>
+                    <img src="../image/treasure.svg" alt="treasure chest" className="chest popping"
+                        style={{ translate: "none", rotate: "none", scale: "none", transform: "translate3d(0px, 0px, 0px) scale(1.0998, 1.0998)", width: 200, height: 200 }} />
+                    <Box className="splash-text" >
                         <Box
                             style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(5, 5)", opacity: 0.1, top: "50%" }}>
                             <p>You Win</p>
@@ -67,7 +74,9 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                         </Box>
                     </Box>
                 </Box>
+               
             </Box>
+
         </Box>
     )
 }
