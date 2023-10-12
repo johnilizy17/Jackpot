@@ -101,7 +101,7 @@ alert('done')
 
    setInterval(() => {
         Timing()
-    ), 10000) 
+   }  ), 10000) 
 
     useEffect(() => {
         setRefresh(!refresh)
