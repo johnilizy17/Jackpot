@@ -50,15 +50,17 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                         </Box>
                     </Box>
                 </Box>
-                                <Button> Play Again </Button>
-            </Box>
+                                <Flex mt="400px" >
+                                <Button mr="20px">  Play Again </Button>
+                                </Flex>
+                                </Box>
             <Box className="view game-over pictured view-gameover active" h="450px"
                style={name !== "win"? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 }:{ transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                <h2 className="title">CASHOUT</h2>
                 <Box className="info" w={["100%", "600px"]}>
                    <img src="../image/treasure.svg" alt="treasure chest" className="chest popping"
                     style={{ translate: "none", rotate: "none", scale: "none", transform: "translate3d(0px, 0px, 0px) scale(1.0998, 1.0998)", width:200, height:200 }} />
-                    <Box  className="splash-text">
+                    <Box  className="splash-text" >
                         <Box
                             style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(5, 5)", opacity: 0.1, top: "50%" }}>
                             <p>You Win</p>
