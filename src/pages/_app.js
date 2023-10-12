@@ -3,10 +3,11 @@ import '@/styles/style.css'
 import '@/styles/dashboard.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
-import { WagmiConfig } from 'wagmi' 
+import { WagmiConfig } from 'wagmi'
 import { bscTestnet } from 'wagmi/chains'
 import Head from 'next/head'
-  
+import Script from 'next/script'
+
 const chains = [bscTestnet]
 const projectId = 'fef8ac1aafdd98a96a0ed53388f95372'
 const metadata = {
@@ -28,8 +29,8 @@ export default function App({ Component, pageProps }) {
         <script src="https://unpkg.com/web3@1.6.0/dist/web3.min.js"></script>
         <script src="https://unpkg.com/@walletconnect/web3-provider@1.6.5/dist/umd/index.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
-    <script src="../reward.js" />
-    </Head>
+        <script src="../reward.js" />
+      </Head>
 
       <WagmiConfig config={wagmiConfig}>
         <ChakraProvider><Component {...pageProps} /> </ChakraProvider>

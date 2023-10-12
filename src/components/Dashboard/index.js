@@ -208,13 +208,13 @@ export default function DashboardDesktop() {
         })
         const jackputNumber = getjackpot.length - 1
         getjackpot.map((a, b) => {
-            if (a.staker === address && b === jackputNumber) {
-                // const notify = localStorage.getItem(`${dataParse[2]}${b}`)
-                // if (!notify) {
+            if (a.staker !== address && b === jackputNumber) {
+                const notify = localStorage.getItem(`${dataParse[2]}${b}`)
+                if (!notify) {
                     localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
                     toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
                 }
-            // }
+            }
         })
         setGetCurrentJackpotInfo(getjackpot)
 
@@ -223,9 +223,10 @@ export default function DashboardDesktop() {
         setPercentage(`${percentageStake}%`)
 
     }
-    setTimeout(()=>{
-   notification
-    },10000)
+    
+    // setInterval(()=>{
+    //     notification()
+    // },10000)
 
 
     return (
@@ -251,7 +252,7 @@ export default function DashboardDesktop() {
             <Box>
                 <section className="page">
                     <Box className="body">
-                        <Box className="timer" onClick={()=>notification()}>
+                        <Box className="timer">
                             <TimeCounter date={date} setDate={setDate} />
                         </Box>
                         <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} />

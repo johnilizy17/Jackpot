@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { readContract, readContracts } from '@wagmi/core'
 import { BUSD, contractAddress } from '@/services/NFT'
 import ABI from '@/utils/ABI'
@@ -23,44 +23,42 @@ export default function Award() {
             })
 
             // const { hash } = await writeContract(config)
-      
+
         } catch (err) {
             console.log(err)
         }
     }
 
-   async function Connect() {
-       
+    async function Connect() {
+
         if (window.ethereum) {
 
-          let  nftWeb3 = new Web3(window.ethereum)
+            let nftWeb3 = new Web3(window.ethereum)
 
             try {
                 await window.ethereum.request({ method: "eth_requestAccounts" });
                 let accounts = await window.ethereum.request({ method: 'eth_accounts' });
-               
+
                 let currentAddr = accounts[0];
-              
+
                 window.ethereum.on('chainChanged', (chainId) => {
                     window.location.reload();
                 });
                 window.ethereum.on('accountsChanged', function (accounts) {
                     window.location.reload();
                 })
-              let  networkID = await nftWeb3.eth.net.getId()
+                let networkID = await nftWeb3.eth.net.getId()
             } catch (error) {
                 alert(error.message)
             }
         }
 
     }
+
     
-  useEffect(()=>{
-    Connect()
-  },[[]])
 
     return (
-        <button onClick={()=>getUserApprove()}>
+        <button onClick={() => getUserApprove(ABI, contractAddress)}>
             AwardF
         </button>
     )
