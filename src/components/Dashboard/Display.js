@@ -1,4 +1,4 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Flex } from '@chakra-ui/react';
 import React from 'react';
 
 export default function Display({data, getCurrentJackpotInfo, name}) {
