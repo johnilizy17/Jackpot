@@ -91,7 +91,7 @@ export default function Footer() {
                         </Box>
                         <Box mr="10px" mt="10px">2. {jackpotData[4] && jackpotData[8].result && formatEther(jackpotData[4].result) * 1000000000000000000}% BIG JACKPOT</Box>
                         <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result) * 1000000000000000000}% MARKETING</Box>
-                        <Box mr="10px" mt="10px">4. {jackpotData[1] && jackpotData[8].result && jackpotData[0].result}% BOMB PRIZ</Box>
+                        <Box mr="10px" mt="10px">4. 10% BOMB PRIZ</Box>
                     </Flex>
                 </Box>
             </Box>

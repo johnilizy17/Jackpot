@@ -29,23 +29,30 @@ export default function TimeCounter({ date, setName, setDate }) {
             const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
             setJackInfo(data2[datalength])
 
-            let data = await readContract({
-                address: contractAddress,
-                abi: ABI,
-                arg: [data2[datalength] - 1],
-                functionName: 'getCurrentJackpotInfo',
-            })
-            const exist = data.filter((a, b) => {
-                if (a.staker === address) {
-                    return true
-                }
-            })
-            console.log(exist, "exist")
-            if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0) {
-                if (data2[datalength - 1].winner === address) {
-                    setName("win")
-                } else {
-                    setName("loss")
+            const current = datalength - 1
+            if (current >= 0) {
+                let data = await readContract({
+                    address: contractAddress,
+                    abi: ABI,
+                    args: [current],
+                    functionName: 'getCurrentJackpotInfo',
+                })
+                const exist = data.filter((a, b) => {
+                    if (a.staker === address) {
+                        return true
+                    }
+                })
+                const notify = localStorage.getItem(`${current}${contractAddress}`)
+                if (notify) {
+
+                } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
+                    localStorage.setItem(`${current}${contractAddress}`, "true")
+                        
+                    if (data2[datalength - 1].winner === address) {
+                        setName("win")
+                    } else {
+                        setName("loss")
+                    }
                 }
             }
             setDownDate(timingData)
