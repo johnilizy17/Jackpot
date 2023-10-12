@@ -39,7 +39,7 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                <h2 className="title">GAMEOVER</h2>
                 <Box className="info"  w="100%"><img src="../image/coin_stack.png" alt="treasure chest" className="chest popping"
                     style={{ transform: "translate3d(0px, 0px, 0px) scale(1.0152, 1.0152)", translate: "none", rotate: "none", scale: "none", width:200, height: 200 }} />
-                    <Box className="splash-text">
+                    <Box className="splash-text" w={["100%", "600px"]}>
                         <Box  w="100%"
                             style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(3, 3)", opacity: 0.1, top: "50%" }}>
                             <p>You are out of</p>
@@ -56,7 +56,7 @@ export default function Display({data, getCurrentJackpotInfo, name}) {
                <h2 className="title">CASHOUT</h2>
                 <Box className="info"  w="100%"><img src="../image/treasure.svg" alt="treasure chest" className="chest popping"
                     style={{ translate: "none", rotate: "none", scale: "none", transform: "translate3d(0px, 0px, 0px) scale(1.0998, 1.0998)", width:200, height:200 }} />
-                    <Box  className="splash-text">
+                    <Box  className="splash-text" w={["100%", "600px"]} >
                         <Box
                             style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(5, 5)", opacity: 0.1, top: "50%" }}>
                             <p>You Win</p>
