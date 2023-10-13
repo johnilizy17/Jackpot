@@ -206,7 +206,7 @@ export default function DashboardDesktop() {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
-
+            setJackpotData(dataParse)
             const getjackpot = await readContract({
                 address: contractAddress,
                 abi: ABI,

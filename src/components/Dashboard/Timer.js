@@ -82,7 +82,7 @@ export default function TimeCounter({ date, setName, setDate }) {
                 setReward(false)
                 setTimeout(()=>{
                    setDate('date')
-               }, 11000)
+               }, 13000)
               const hash = await getUserApprove(ABI, contractAddress) 
             }
         }
