@@ -220,6 +220,7 @@ export default function DashboardDesktop() {
                     const notify = localStorage.getItem(`${dataParse[2]}${b}`)
                     if (!notify) {
                         localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
+                        setDate(date + 2)
                         toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
                     }
                 }
