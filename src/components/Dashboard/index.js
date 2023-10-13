@@ -1,4 +1,4 @@
-import { Box, useToast, Flex, Center, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button } from '@chakra-ui/react'
+import { Box, useToast, Flex, Center, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, Spinner } from '@chakra-ui/react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Footer from '../Layout/Footer'
@@ -243,8 +243,8 @@ export default function DashboardDesktop() {
 
     return (
         <>
-            <Center pos="fixed" display={loading2?"none":"fixed"} top="0px" h="100vh" w="100vw" >
-                < Spinner size="xl" />
+            <Center pos="fixed" zIndex="3000" display={loading2?"none":"fixed"} bg="#2b202036" left="0px" top="0px" h="100vh" w="100vw" >
+                < Spinner size="xl" color="#fff" />
             </Center>
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
                 <ModalOverlay />
