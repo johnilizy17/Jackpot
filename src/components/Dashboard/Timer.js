@@ -29,7 +29,7 @@ export default function TimeCounter({ date, setName, setDate }) {
             const datalength = data2.length - 1
             const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
             setJackInfo(data2[datalength])
-
+            setDownDate(timingData)
             const current = datalength - 1
             if (current >= 0) {
                 let data = await readContract({
@@ -56,8 +56,7 @@ export default function TimeCounter({ date, setName, setDate }) {
                     }
                 }
             }
-            setDownDate(timingData)
-
+           
         } catch (err) {
             console.log(err.message)
         }
@@ -81,16 +80,10 @@ export default function TimeCounter({ date, setName, setDate }) {
 
             if (DownDate > 0 && jackInfo.status === false && reward) {
                 setReward(false)
-              const hash = await getUserApprove(ABI, contractAddress)
-              const data = await waitForTransaction({
-                hash: hash,
-            })
-alert('done')
-               setTimeout(()=>{
-              alert('set')
+                setTimeout(()=>{
                    setDate('date')
-               }, 6000)
-                
+               }, 11000)
+              const hash = await getUserApprove(ABI, contractAddress) 
             }
         }
     }
@@ -98,10 +91,6 @@ alert('done')
     useEffect(() => {
         Timing()
     }, [date])
-
-   setInterval(() => {
-        Timing()
-   }, 10000) 
 
     useEffect(() => {
         setRefresh(!refresh)

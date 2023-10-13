@@ -180,7 +180,7 @@ export default function DashboardDesktop() {
             })
             await jackpotInfo()
             setAllowed(amount)
-            setDate(amount)
+            setDate(amount+2)
 
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
