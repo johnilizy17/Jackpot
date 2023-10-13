@@ -28,7 +28,7 @@ export default function DashboardDesktop() {
     const [name, setName] = useState("start");
     const [getCurrentJackpotInfo, setGetCurrentJackpotInfo] = useState([]);
     const [amount, setAmount] = useState(false);
-    const [loading2, setLoading2] = useState(false);
+    const [loading2, setLoading2] = useState(true);
     const [bigBang, setBigBang] = useState(0)
     const toast = useToast();
 
