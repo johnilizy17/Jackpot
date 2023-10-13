@@ -28,6 +28,7 @@ export default function DashboardDesktop() {
     const [name, setName] = useState("start");
     const [getCurrentJackpotInfo, setGetCurrentJackpotInfo] = useState([]);
     const [amount, setAmount] = useState(false);
+    const [loading2, setLoading2] = useState(false);
     const [bigBang, setBigBang] = useState(0)
     const toast = useToast();
 
@@ -49,7 +50,7 @@ export default function DashboardDesktop() {
                 abi: ABI,
                 functionName: 'bigBangBalance'
             })
-            if(bigBangBalance) setBigBang(formatEther(bigBangBalance)*100/1000)
+            if (bigBangBalance) setBigBang(formatEther(bigBangBalance) * 100 / 1000)
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
@@ -180,7 +181,7 @@ export default function DashboardDesktop() {
             })
             await jackpotInfo()
             setAllowed(amount)
-            setDate(amount+2)
+            setDate(amount + 2)
 
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
@@ -242,7 +243,9 @@ export default function DashboardDesktop() {
 
     return (
         <>
-
+            <Center pos="fixed" display={loading2?"none":"fixed"} top="0px" h="100vh" w="100vw" >
+                < Spinner size="xl" />
+            </Center>
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
                 <ModalOverlay />
                 <ModalContent>
@@ -264,7 +267,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter date={date} setName={setName} setDate={setDate} />
+                            <TimeCounter date={date} setLoading2={setLoading2} setName={setName} setDate={setDate} />
                         </Box>
                         <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />

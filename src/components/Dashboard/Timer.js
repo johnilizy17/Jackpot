@@ -7,7 +7,7 @@ import ABI from '@/utils/ABI'
 import { formatEther } from 'viem'
 import { useAccount } from 'wagmi'
 
-export default function TimeCounter({ date, setName, setDate }) {
+export default function TimeCounter({ date, setName, setDate, setLoading2 }) {
 
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
@@ -48,7 +48,7 @@ export default function TimeCounter({ date, setName, setDate }) {
 
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
                     localStorage.setItem(`${current}${contractAddress}`, "true")
-                        
+                    setLoading2(true)
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
@@ -80,6 +80,7 @@ export default function TimeCounter({ date, setName, setDate }) {
 
             if (DownDate > 0 && jackInfo.status === false && reward) {
                 setReward(false)
+                setLoading2(false)
                 setTimeout(()=>{
                    setDate('date')
                }, 13000)
