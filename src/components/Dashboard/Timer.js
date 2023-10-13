@@ -27,8 +27,13 @@ export default function TimeCounter({ date, setName, setDate, setLoading2 }) {
                 functionName: 'getAllJackpot',
             })
             const datalength = data2.length - 1
-            const timingData = formatEther(data2[datalength].endTime) * 1000000000000000000
+            const endData = formatEther(data2[datalength].endTime) * 1000000000000000000
+            console.log(data2[datalength].startTime, "START")
+            const startData = formatEther(data2[datalength].startTime) * 1000000000000000000
             setJackInfo(data2[datalength])
+            let now = new Date().getTime()
+            var distance = startData - Math.floor(now / 1000);
+            const timingData = distance >= 1 ? startData : endData
             setDownDate(timingData)
             const current = datalength - 1
             if (current >= 0) {
@@ -56,7 +61,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2 }) {
                     }
                 }
             }
-           
+
         } catch (err) {
             console.log(err.message)
         }
@@ -81,10 +86,10 @@ export default function TimeCounter({ date, setName, setDate, setLoading2 }) {
             if (DownDate > 0 && jackInfo.status === false && reward) {
                 setReward(false)
                 setLoading2(false)
-                setTimeout(()=>{
-                   setDate('date')
-               }, 13000)
-              const hash = await getUserApprove(ABI, contractAddress) 
+                setTimeout(() => {
+                    setDate('date')
+                }, 13000)
+                const hash = await getUserApprove(ABI, contractAddress)
             }
         }
     }
@@ -95,7 +100,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2 }) {
 
     useEffect(() => {
         setRefresh(!refresh)
-        if (DownDate) {
+        if (DownDate && refresh) {
             Timing2()
         }
     }, [refresh])

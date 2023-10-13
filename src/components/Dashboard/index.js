@@ -176,9 +176,6 @@ export default function DashboardDesktop() {
             })
 
             const { hash } = await writeContract(config)
-            const data = await waitForTransaction({
-                hash: hash,
-            })
             await jackpotInfo()
             setAllowed(amount)
             setDate(amount + 2)
@@ -270,7 +267,7 @@ export default function DashboardDesktop() {
                         <Box className="timer">
                             <TimeCounter date={date} setLoading2={setLoading2} setName={setName} setDate={setDate} />
                         </Box>
-                        <Display data={jackpotData} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
+                        <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
                                 <Box className="bar" style={{ height: `${bigBang}%` }}></Box>
@@ -290,7 +287,7 @@ export default function DashboardDesktop() {
                         </Box>
                         <Box className="bets">
                             <Box className="bet" id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
-                                <h2>${jackpotData && jackpotData[3] && jackpotData[3]}</h2>
+                                <h2>${jackpotData && jackpotData[3] && jackpotData[3]*1000000000000000000}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>10 min</p>
                                 </Box>

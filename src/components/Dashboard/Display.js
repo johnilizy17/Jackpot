@@ -1,7 +1,7 @@
 import { Box, Button, Flex } from '@chakra-ui/react';
 import React from 'react';
 
-export default function Display({ data, getCurrentJackpotInfo, name, setName }) {
+export default function Display({ data, getCurrentJackpotInfo, name, setName, bigBang }) {
 
     function cardTransition(id) {
     }
@@ -14,8 +14,8 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName }) 
                 <Box className="info" w={["100%", "600px"]}>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/money_bag.png" alt="" />
                         <Box className="texts" mt="20px">
-                            <h4>Jackpot Entry</h4>
-                            <p >{data[1]} USDC</p>
+                            <h4>Big Bang Balance</h4>
+                            <p >{bigBang*10} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/trophie.png" alt="" />
