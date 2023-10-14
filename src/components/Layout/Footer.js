@@ -80,7 +80,7 @@ export default function Footer() {
                     <Box mb="20px">JACKPOT INFO</Box>
                 </Box>
                 <Box>Participants: {jackpotData[8] && jackpotData[8].result && jackpotData[8].result.length}</Box>
-                <Box>  Duration: 5 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
+                <Box>  Duration: 10 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
                 <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && jackpotData[8].result && formatEther(jackpotData[7].result)}) </Box>
                 <Box mt="20px">
                     <Box>REWARD DISTRIBUTION</Box>
