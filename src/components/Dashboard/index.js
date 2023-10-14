@@ -284,7 +284,7 @@ export default function DashboardDesktop() {
                                 <Box className="bar" style={{ height: `${bigBang}%` }}></Box>
                             </Box>
                             <Box color="#fff" fontSize="10px">
-                                $1-$1k
+                                1-{bigBang}
                             </Box>
                         </Box>
                         <Box className="minor-bar">
