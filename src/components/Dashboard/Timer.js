@@ -39,7 +39,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
             setJackInfo(data2[datalength])
             let now = new Date().getTime()
             var distance = startData - Math.floor(now / 1000);
-            setChecker(endData);
+            setChecker(endData)
             const timingData = distance >= 1 ? startData : endData
             if(distance >= 1){
                 setDisable(true)
