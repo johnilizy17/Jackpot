@@ -1642,3 +1642,29 @@
 
 
   
+  .bomb { 
+    animation: Shake 0.5s linear infinite; 
+} 
+  
+/*Using keyframes for shaking an image*/
+@keyframes Shake { 
+    0% { 
+        transform: rotate(5deg); 
+    } 
+  
+    25% { 
+        transform: rotate(-6deg); 
+    } 
+  
+    50% { 
+        transform: rotate(5deg); 
+    } 
+  
+    75% { 
+        transform: rotate(-6deg); 
+    } 
+  
+    100% { 
+        transform: rotate(5deg); 
+    } 
+}

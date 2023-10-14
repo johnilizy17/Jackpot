@@ -104,23 +104,23 @@ export default function DashboardDesktop() {
 
     async function SelectedButton(e, a) {
         if (!disable) {
-        var element2 = document.getElementById("5");
-        element2.style.background = ("#1f1c4a");
+            var element2 = document.getElementById("5");
+            element2.style.background = ("#1f1c4a");
 
-        var element3 = document.getElementById("10");
-        element3.style.background = ("#1f1c4a");
+            var element3 = document.getElementById("10");
+            element3.style.background = ("#1f1c4a");
 
-        var element4 = document.getElementById("20");
-        element4.style.background = ("#1f1c4a");
+            var element4 = document.getElementById("20");
+            element4.style.background = ("#1f1c4a");
 
-        var element = document.getElementById(e);
-        element.style.background = ("#4D46B9");
-        setAmount(a)
-        if (formatEther(allowed) >= formatEther(a)) {
-            setMintApproval(true)
-        } else {
-            setMintApproval(false)
-        }
+            var element = document.getElementById(e);
+            element.style.background = ("#4D46B9");
+            setAmount(a)
+            if (formatEther(allowed) >= formatEther(a)) {
+                setMintApproval(true)
+            } else {
+                setMintApproval(false)
+            }
             onOpen()
             await CheckAllowance()
         } else {
@@ -207,6 +207,14 @@ export default function DashboardDesktop() {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
+            const number = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'bombMaxNum'
+            })
+            if (formatEther(number) * 1000000000000000000 === 200) {
+                setName("bomb")
+            }
             setJackpotData(dataParse)
             const getjackpot = await readContract({
                 address: contractAddress,
