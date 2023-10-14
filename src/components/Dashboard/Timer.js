@@ -104,6 +104,8 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                     setDate(date+1)
                 }, 13000)
                 const hash = await getUserApprove(ABI, contractAddress)
+            } else if (DownDate > 0 && jackInfo.status === false && reward){
+             setDisable(false)
             }
         }
     }
