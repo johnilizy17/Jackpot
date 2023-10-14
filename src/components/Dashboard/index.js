@@ -31,7 +31,7 @@ export default function DashboardDesktop() {
     const [loading2, setLoading2] = useState(true);
     const [bigBang, setBigBang] = useState(0)
     const [bigBangPrice, setBigBangPrice] = useState(0)
-    const [disable, setDisable] = useState(false)
+    const [disable, setDisable] = useState(false);
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -46,20 +46,18 @@ export default function DashboardDesktop() {
 
             })
 
-
             const bigBangBalance = await readContract({
                 address: contractAddress,
                 abi: ABI,
                 functionName: 'bigBangBalance'
             })
-            if (bigBangBalance){
-                 setBigBang(dataParse[2] * 10000000000000000000 / 200)
-                 setBigBangPrice(bigBangBalance)
-                }
-                 const dataParse = data.map((a) => {
+            const dataParse = data.map((a) => {
                 return formatEther(a)
             })
-
+            if (bigBangBalance) {
+                setBigBang(dataParse[2] * 100000000000000000000 / 200)
+                setBigBangPrice(formatEther(bigBangBalance))
+            }
             setJackpotData(dataParse)
 
             const getjackpot = await readContract({
@@ -288,7 +286,7 @@ export default function DashboardDesktop() {
                                 <Box className="bar" style={{ height: `${bigBang}%` }}></Box>
                             </Box>
                             <Box color="#fff" fontSize="10px">
-                                1-{bigBang}
+                                1-200
                             </Box>
                         </Box>
                         <Box className="minor-bar">
