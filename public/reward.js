@@ -35,7 +35,7 @@ async function getUserApprove(ABI, contractAddress) {
                     console.log(hash, contractAddress, "The hash of your transaction  he status of your transaction!");
                return hash
                 } else {
-                    console.log("!Something went wrong while submitting your transaction:");
+                    console.log("!Something went wrong while submitting your transaction:", error);
 
                 }
             });
