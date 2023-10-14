@@ -30,6 +30,7 @@ export default function DashboardDesktop() {
     const [amount, setAmount] = useState(false);
     const [loading2, setLoading2] = useState(true);
     const [bigBang, setBigBang] = useState(0)
+    const [bigBangPrice, setBigBangPrice] = useState(0)
     const [disable, setDisable] = useState(false)
     const toast = useToast();
 
@@ -51,8 +52,11 @@ export default function DashboardDesktop() {
                 abi: ABI,
                 functionName: 'bigBangBalance'
             })
-            if (bigBangBalance) setBigBang(formatEther(bigBangBalance) * 100 / 1000)
-            const dataParse = data.map((a) => {
+            if (bigBangBalance){
+                 setBigBang(dataParse[2] * 10000000000000000000 / 200)
+                 setBigBangPrice(bigBangBalance)
+                }
+                 const dataParse = data.map((a) => {
                 return formatEther(a)
             })
 
@@ -278,7 +282,7 @@ export default function DashboardDesktop() {
                         <Box className="timer">
                             <TimeCounter date={date} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} />
                         </Box>
-                        <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
+                        <Display data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
                                 <Box className="bar" style={{ height: `${bigBang}%` }}></Box>
