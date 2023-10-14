@@ -295,19 +295,19 @@ export default function DashboardDesktop() {
                             <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
                                 <h2>${jackpotData && jackpotData[3] && jackpotData[3]}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
-                                    <p>10 min</p>
+                                    <p>10 mins</p>
                                 </Box>
                             </Box>
                             <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='10' onClick={() => SelectedButton("10", jackpotData[9])}>
                                 <h2>${jackpotData && jackpotData[9] && jackpotData[9]}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
-                                    <p>5 min</p>
+                                    <p>5 mins</p>
                                 </Box>
                             </Box>
                             <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='20' onClick={() => SelectedButton("20", jackpotData[10])}>
                                 <h2>${jackpotData && jackpotData[10] && jackpotData[10]}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
-                                    <p>2.5 min</p>
+                                    <p>2.5 mins</p>
                                 </Box>
                             </Box>
                         </Box>
