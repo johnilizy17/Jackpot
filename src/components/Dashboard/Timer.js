@@ -91,13 +91,15 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
 
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
         if (distance < 0) {
+            
+            setDate(date+1)
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
 
             if (DownDate > 0 && jackInfo.status === false && reward) {
                 setReward(false)
                 setLoading2(false)
                 setTimeout(() => {
-                    setDate('date')
+                    setDate(date+1)
                 }, 13000)
                 const hash = await getUserApprove(ABI, contractAddress)
             }
