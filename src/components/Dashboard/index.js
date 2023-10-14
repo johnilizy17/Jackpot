@@ -212,7 +212,7 @@ export default function DashboardDesktop() {
                 abi: ABI,
                 functionName: 'bombMaxNum'
             })
-            if (formatEther(number) * 1000000000000000000 === 200) {
+            if (formatEther(number) * 1000000000000000000 === dataParse[2] * 1000000000000000000) {
                 setName("bomb")
             }
             setJackpotData(dataParse)

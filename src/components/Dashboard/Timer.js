@@ -109,11 +109,15 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     }, [date])
 
     useEffect(() => {
-        setRefresh(!refresh)
-        if (DownDate && refresh) {
+        if (DownDate ) {
             Timing2()
         }
     }, [refresh])
+
+    
+    setInterval(() => {
+        setRefresh(!refresh)
+    },1000)
 
     return (
         <>
