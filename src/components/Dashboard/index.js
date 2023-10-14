@@ -297,8 +297,8 @@ export default function DashboardDesktop() {
                             </Box>
                         </Box>
                         <Box className="bets">
-                            <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
-                                <h2>${jackpotData && jackpotData[3] && jackpotData[3] * 1000000000000000000}</h2>
+                            <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='5' onClick={() => SelectedButton("5", jackpotData[4])}>
+                                <h2>${jackpotData && jackpotData[4] && jackpotData[4]}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>10 min</p>
                                 </Box>
