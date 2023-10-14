@@ -87,6 +87,9 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
 
         var distance = DownDate - Math.floor(now / 1000);
         // Time calculations for days, hours, minutes and seconds
+       if(distance < 15){
+       setDisable(true)
+       }
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
         var minutes = Math.floor((distance % (60 * 60)) / (60));
         var seconds = Math.floor((distance % (60)));
