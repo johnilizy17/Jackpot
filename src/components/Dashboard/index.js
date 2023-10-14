@@ -30,6 +30,7 @@ export default function DashboardDesktop() {
     const [amount, setAmount] = useState(false);
     const [loading2, setLoading2] = useState(true);
     const [bigBang, setBigBang] = useState(0)
+    const [disable, setDisable] = useState(false)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -102,7 +103,7 @@ export default function DashboardDesktop() {
 
 
     async function SelectedButton(e, a) {
-
+        if (!disable) {
         var element2 = document.getElementById("5");
         element2.style.background = ("#1f1c4a");
 
@@ -120,9 +121,11 @@ export default function DashboardDesktop() {
         } else {
             setMintApproval(false)
         }
-
-        onOpen()
-        await CheckAllowance()
+            onOpen()
+            await CheckAllowance()
+        } else {
+            toast({ position: "top-right", title: "Disable", description: "Jackpot has been disabled untill the timer rans out", status: "error", isClosable: true });
+        }
     }
 
     async function ApprovalButton() {
@@ -241,7 +244,7 @@ export default function DashboardDesktop() {
 
     return (
         <>
-            <Center pos="fixed" zIndex="3000" display={loading2?"none":"fixed"} bg="#2b202036" left="0px" top="0px" h="100vh" w="100vw" >
+            <Center pos="fixed" zIndex="3000" display={loading2 ? "none" : "fixed"} bg="#2b202036" left="0px" top="0px" h="100vh" w="100vw" >
                 < Spinner size="xl" color="#fff" />
             </Center>
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
@@ -265,7 +268,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter date={date} setLoading2={setLoading2} setName={setName} setDate={setDate} />
+                            <TimeCounter date={date} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} />
                         </Box>
                         <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
@@ -279,26 +282,26 @@ export default function DashboardDesktop() {
                         <Box className="minor-bar">
                             <Box className="labels">
                                 <p>Normal</p>
-                                <p>${jackpotData[0]?JSON.parse(jackpotData[0]).toFixed(2):0}/$10k</p>
+                                <p>${jackpotData[0] ? JSON.parse(jackpotData[0]).toFixed(2) : 0}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
                                 <Box className="bar" style={{ width: percentage }}></Box>
                             </Box>
                         </Box>
                         <Box className="bets">
-                            <Box className="bet" id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
-                                <h2>${jackpotData && jackpotData[3] && jackpotData[3]*1000000000000000000}</h2>
+                            <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
+                                <h2>${jackpotData && jackpotData[3] && jackpotData[3] * 1000000000000000000}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>10 min</p>
                                 </Box>
                             </Box>
-                            <Box className="bet" id='10' onClick={() => SelectedButton("10", jackpotData[9])}>
+                            <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='10' onClick={() => SelectedButton("10", jackpotData[9])}>
                                 <h2>${jackpotData && jackpotData[9] && jackpotData[9]}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>5 min</p>
                                 </Box>
                             </Box>
-                            <Box className="bet" id='20' onClick={() => SelectedButton("20", jackpotData[10])}>
+                            <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='20' onClick={() => SelectedButton("20", jackpotData[10])}>
                                 <h2>${jackpotData && jackpotData[10] && jackpotData[10]}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined">timer</i>
                                     <p>2.5 min</p>

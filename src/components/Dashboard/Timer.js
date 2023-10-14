@@ -7,7 +7,7 @@ import ABI from '@/utils/ABI'
 import { formatEther } from 'viem'
 import { useAccount } from 'wagmi'
 
-export default function TimeCounter({ date, setName, setDate, setLoading2 }) {
+export default function TimeCounter({ date, setName, setDate, setLoading2, setDisable }) {
 
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
@@ -33,12 +33,17 @@ export default function TimeCounter({ date, setName, setDate, setLoading2 }) {
                 abi: ABI,
                 functionName: 'startJackpotTime',
             })
-            
+
             const startData = formatEther(data) * 1000000000000000000
             setJackInfo(data2[datalength])
             let now = new Date().getTime()
             var distance = startData - Math.floor(now / 1000);
             const timingData = distance >= 1 ? startData : endData
+            if(distance >= 1){
+                setDisable(true)
+            } else {
+                setDisable(false)
+            }
             setDownDate(timingData)
             const current = datalength - 1
             if (current >= 0) {
