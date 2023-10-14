@@ -147,17 +147,12 @@ export default function DashboardDesktop() {
 
             const { hash } = await writeContract(config)
 
-            const data = await waitForTransaction({
-                hash: hash,
-            })
-
             setAllowed(amount)
             const timing = amount === 5 ? 10 : amount === 10 ? 5 : 2.5
             setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
-            await jackpotInfo()
         } catch (err) {
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
 
