@@ -123,17 +123,17 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
 
     return (
         <>
-            <Box className="time hour">
+            <Box className="time hour" cursor="pointer">
                 <h2>{NumberOfTime.hour === "00" ? NumberOfTime.hour : NumberOfTime.hour < 10 ? `0${NumberOfTime.hour}` : NumberOfTime.hour}</h2>
                 <p>Hour</p>
             </Box>
             <Box className="divide"></Box>
-            <Box className="time min">
+            <Box className="time min" cursor="pointer">
                 <h2>{NumberOfTime.hour === "00" ? NumberOfTime.hour : NumberOfTime.min < 10 ? `0${NumberOfTime.min}` : NumberOfTime.min}</h2>
                 <p>Min</p>
             </Box>
             <Box className="divide"></Box>
-            <Box className="time sec">
+            <Box className="time sec" cursor="pointer">
                 <h2>{NumberOfTime.hour === "00" ? NumberOfTime.hour : NumberOfTime.sec < 10 ? `0${NumberOfTime.sec}` : NumberOfTime.sec}</h2>
                 <p>Sec</p>
             </Box>
