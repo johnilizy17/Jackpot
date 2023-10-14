@@ -15,6 +15,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     const [DownDate, setDownDate] = useState();
     const [DownDate2, setDownDate2] = useState();
     const [reward, setReward] = useState(true)
+   const [checker, setChecker] = useState(0)
     const [jackInfo, setJackInfo] = useState({ status: true })
     const { address } = useAccount()
 
@@ -38,6 +39,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
             setJackInfo(data2[datalength])
             let now = new Date().getTime()
             var distance = startData - Math.floor(now / 1000);
+            setChecker(endData);
             const timingData = distance >= 1 ? startData : endData
             if(distance >= 1){
                 setDisable(true)
@@ -95,7 +97,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
             setDate(date+1)
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
 
-            if (DownDate > 0 && jackInfo.status === false && reward) {
+            if (DownDate > 0 && jackInfo.status === false && reward && checker === DownDate) {
                 setReward(false)
                 setLoading2(false)
                 setTimeout(() => {
