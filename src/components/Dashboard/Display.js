@@ -33,12 +33,12 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                 </Box>
             </Box>
             <Box className="view bomb-mode view-bomb"
-                style={name !== "bomb" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
+                style={name !== "bomb" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", overflow:"hidden", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title" style={{ color: "rgb(248, 200, 34)", backgroundColor: "rgb(148, 116, 5)" }}>BOMB 💥</h2><img
-                    src="../image/alpha_bomb.png" alt="Alpha365 Bomb" className="alpha-bomb"
+                    src="../image/alpha_bomb.png" alt="Alpha365 Bomb" className="alpha-bomb bomb"
                     style={{ translate: "none", rotate: "none", scale: "none", transform: "translate(0%, 0%)" }} />
                 <Box className="info" style={{ backgroundColor: "rgb(113, 93, 47)" }}>
-                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" overflow="hidden"><img  src="../image/money_bag.png" alt="" className="bomb"
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" overflow="hidden"><img  src="../image/money_bag.png" alt=""
                         style={{ width: 40, marginRight: 40, height: 40 }} />
                         <Box className="texts"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
@@ -51,7 +51,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         <Box className="texts second"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
                             <h4>Staked Amount</h4>
-                            <p className="blink_me">{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
+                            <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }}>{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img  src="../image/mesh.png" alt=""
