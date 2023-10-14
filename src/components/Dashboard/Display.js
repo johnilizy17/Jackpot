@@ -43,7 +43,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         <Box className="texts"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
                             <h4>Big Bang Balance</h4>
-                            <p>{(bigBang * 10).toFixed(2)} USDC</p>
+                            <p>{JSON.parse(bigBang).toFixed(2)} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img  src="../image/trophie.png" alt=""

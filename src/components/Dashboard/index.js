@@ -141,7 +141,7 @@ export default function DashboardDesktop() {
                 functionName: 'approve',
                 overrides: {
                     value: 0,
-                    gasLimit: 3010000
+                    gas: 3010000
                 }
             })
 
@@ -176,7 +176,7 @@ export default function DashboardDesktop() {
                 functionName: 'buyJackpot',
                 overrides: {
                     value: 0,
-                    gasLimit: 3010000
+                    gas:3010000
                 }
             })
 

@@ -40,7 +40,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
             var distance = startData - Math.floor(now / 1000);
             const timingData = distance >= 1 ? startData : endData
             if(distance >= 1){
-                setDisable(true)
+                setDisable(false)
             } else {
                 setDisable(false)
             }
