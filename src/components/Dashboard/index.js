@@ -279,7 +279,7 @@ export default function DashboardDesktop() {
                         <Box className="minor-bar">
                             <Box className="labels">
                                 <p>Normal</p>
-                                <p>${jackpotData[0]}/$10k</p>
+                                <p>${jackpotData[0]?JSON.parse(jackpotData[0]).toFixed(2):0}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
                                 <Box className="bar" style={{ width: percentage }}></Box>

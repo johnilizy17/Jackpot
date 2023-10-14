@@ -28,8 +28,13 @@ export default function TimeCounter({ date, setName, setDate, setLoading2 }) {
             })
             const datalength = data2.length - 1
             const endData = formatEther(data2[datalength].endTime) * 1000000000000000000
-            console.log(data2[datalength].startTime, "START")
-            const startData = formatEther(data2[datalength].startTime) * 1000000000000000000
+            let data = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'startJackpotTime',
+            })
+            
+            const startData = formatEther(data) * 1000000000000000000
             setJackInfo(data2[datalength])
             let now = new Date().getTime()
             var distance = startData - Math.floor(now / 1000);
