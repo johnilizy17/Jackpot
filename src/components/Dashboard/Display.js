@@ -20,7 +20,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                     </Box>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/trophie.png" alt="" />
                         <Box className="texts second" mt="20px">
-                            <h4>Staked Amount</h4>
+                            <h4>Jackpot Amount</h4>
                             <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }}>{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
                         </Box>
                     </Box>
@@ -50,7 +50,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         style={{ width: 40, marginRight: 40, height: 40 }} />
                         <Box className="texts second"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
-                            <h4>Staked Amount</h4>
+                            <h4>Jackpot Amount</h4>
                             <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }}>{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
                         </Box>
                     </Box>
