@@ -15,7 +15,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/money_bag.png" alt="" />
                         <Box className="texts" mt="20px">
                             <h4>Big Bang Balance</h4>
-                            <p >{(bigBang * 10).toFixed(2)} USDC</p>
+                            <p >{(bigBang * 1).toFixed(2)} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/trophie.png" alt="" />
