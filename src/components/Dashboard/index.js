@@ -273,8 +273,10 @@ export default function DashboardDesktop() {
                         <Box className="timer">
                             <TimeCounter date={date} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} />
                         </Box>
-                        <Display data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
-                        <Box className="bomb-bar" opacity={getCurrentJackpotInfo.length>0.1?1:0} h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
+                        <Box ml={getCurrentJackpotInfo.length>0.5?"40px":"0px"}>
+                          <Display data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
+                         </Box>
+                                <Box className="bomb-bar" opacity={getCurrentJackpotInfo.length>0.1?1:0} h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
                                 <Box className="bar" style={{ height: `${bigBang}%` }}></Box>
                             </Box>
