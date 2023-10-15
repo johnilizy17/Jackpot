@@ -1,13 +1,13 @@
 import { Box, Button, Flex } from '@chakra-ui/react';
 import React from 'react';
 
-export default function Display({ data, getCurrentJackpotInfo, name, setName, bigBang }) {
+export default function Display({ data, getCurrentJackpotInfo,  name, setName, bigBang }) {
 
     function cardTransition(id) {
     }
 
     return (
-        <Box className="view-swiper">
+        <Box className="view-swiper" ml={getCurrentJackpotInfo.length > 0.5? "":"40px"}
             <Box className="view game-over pictured view-gameover active" h="450px"
                 style={name !== "start" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title">Minor</h2>
