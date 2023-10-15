@@ -7,7 +7,7 @@ export default function Display({ data, getCurrentJackpotInfo,  name, setName, b
     }
 
     return (
-        <Box className="view-swiper" ml={getCurrentJackpotInfo.length > 0.5? "":"40px"}>
+        <Box className="view-swiper" ml={getCurrentJackpotInfo.length > 0.5? "":"20px"}>
             <Box className="view game-over pictured view-gameover active" h="450px"
                 style={name !== "start" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title">Minor</h2>
