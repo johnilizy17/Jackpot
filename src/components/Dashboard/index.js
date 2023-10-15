@@ -278,7 +278,7 @@ export default function DashboardDesktop() {
                         
                           <Display  data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
                          
-                                <Box className="bomb-bar" opacity={getCurrentJackpotInfo.length>0.1?1:0} h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
+                                <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
                                 <Box className="bar" style={{ height: `${bigBang}%` }}></Box>
                             </Box>
