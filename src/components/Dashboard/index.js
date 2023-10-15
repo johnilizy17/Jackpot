@@ -177,7 +177,7 @@ export default function DashboardDesktop() {
 
             const { hash } = await writeContract(config)
             setAllowed(amount)
-            setTImeout(()=>{
+            setTimeout(()=>{
              setDate(amount + 2)
             }, 2000)
             onClose()
