@@ -55,7 +55,6 @@ export default function DashboardDesktop() {
 
             })
 
-console.log(jackpotType, formatEther(jackpotType), "jackpot")
             setType(formatEther(jackpotType) * 1000000000000000000)
 
             const bigBangBalance = await readContract({
@@ -83,7 +82,7 @@ console.log(jackpotType, formatEther(jackpotType), "jackpot")
 
             const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
 
-            setPercentage(`${percentageStake}%`)
+            setPercentage(percentageStake)
 
         } catch (err) {
 
