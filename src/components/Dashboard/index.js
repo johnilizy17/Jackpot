@@ -296,7 +296,7 @@ export default function DashboardDesktop() {
 
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
-                                <Box className="bar" style={{ height: `${BigPercentage}%` }}></Box>
+                                <Box className="bar" style={{ height: `${BigPercentage > 99 ? 100:BigPercentage}%` }}></Box>
                             </Box>
                             <Box color="#fff" fontSize="10px">
 
