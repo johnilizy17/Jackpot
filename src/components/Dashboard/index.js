@@ -51,11 +51,11 @@ export default function DashboardDesktop() {
             const jackpotType = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                functionName: 'fetchJackpotInfo'
+                functionName: 'jackpotType'
 
             })
 
-
+console.log(jackpotType, formatEther(jackpotType), "jackpot")
             setType(formatEther(jackpotType) * 1000000000000000000)
 
             const bigBangBalance = await readContract({
