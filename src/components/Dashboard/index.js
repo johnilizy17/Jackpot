@@ -17,6 +17,7 @@ export default function DashboardDesktop() {
 
     const [display, setDisplay] = useState({ sec: "00", min: "00", hour: "00" })
     const [time, setTime] = useState(3600)
+ const [BigPercentage, setBigPercentage] = useState(0)
     const [jackpotData, setJackpotData] = useState([])
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
@@ -207,9 +208,14 @@ export default function DashboardDesktop() {
             const number = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                functionName: 'bombMaxNum'
+                args: [dataParse[2] * 1000000000000000000],
+                functionName: 'fetchJackpotBal'
             })
-            if (formatEther(number) * 1000000000000000000 === dataParse[2] * 1000000000000000000) {
+            const pec = formatEther(number[5])*1000000000000000000
+            const divider =   formatEther(number[4])*1000000000000000000
+            setBigPercentage(pec*100/divider)
+            console.log(pec)
+            if (formatEther(number[4])*1000000000000000000 <= formatEther(number[5])*1000000000000000000) {
                 setName("bomb")
             }
             setJackpotData(dataParse)
@@ -280,7 +286,7 @@ export default function DashboardDesktop() {
                          
                                 <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
-                                <Box className="bar" style={{ height: `${bigBang}%` }}></Box>
+                                <Box className="bar" style={{ height: `${BigPercentage }%` }}></Box>
                             </Box>
                             <Box color="#fff" fontSize="10px">
                             
