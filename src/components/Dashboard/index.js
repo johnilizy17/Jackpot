@@ -55,7 +55,8 @@ export default function DashboardDesktop() {
 
             })
 
-            setType(formatEther(jackpotType))
+
+            setType(formatEther(jackpotType) * 1000000000000000000)
 
             const bigBangBalance = await readContract({
                 address: contractAddress,
