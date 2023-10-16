@@ -17,7 +17,7 @@ export default function DashboardDesktop() {
 
     const [display, setDisplay] = useState({ sec: "00", min: "00", hour: "00" })
     const [time, setTime] = useState(3600)
- const [BigPercentage, setBigPercentage] = useState(0)
+    const [BigPercentage, setBigPercentage] = useState(0)
     const [jackpotData, setJackpotData] = useState([])
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
@@ -33,6 +33,7 @@ export default function DashboardDesktop() {
     const [bigBang, setBigBang] = useState(0)
     const [bigBangPrice, setBigBangPrice] = useState(0)
     const [disable, setDisable] = useState(false);
+    const [type, setType] = useState(1)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -46,6 +47,15 @@ export default function DashboardDesktop() {
                 functionName: 'fetchJackpotInfo'
 
             })
+
+            const jackpotType = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'fetchJackpotInfo'
+
+            })
+
+            setType(formatEther(jackpotType))
 
             const bigBangBalance = await readContract({
                 address: contractAddress,
@@ -172,14 +182,14 @@ export default function DashboardDesktop() {
                 functionName: 'buyJackpot',
                 overrides: {
                     value: 0,
-                    gas:3010000
+                    gas: 3010000
                 }
             })
 
             const { hash } = await writeContract(config)
             setAllowed(amount)
-            setTimeout(()=>{
-             setDate(amount + 2)
+            setTimeout(() => {
+                setDate(amount + 2)
             }, 2000)
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
@@ -211,11 +221,11 @@ export default function DashboardDesktop() {
                 args: [dataParse[2] * 1000000000000000000],
                 functionName: 'fetchJackpotBal'
             })
-            const pec = formatEther(number[5])*1000000000000000000
-            const divider =   formatEther(number[4])*1000000000000000000
-            setBigPercentage(pec*100/divider)
+            const pec = formatEther(number[5]) * 1000000000000000000
+            const divider = formatEther(number[4]) * 1000000000000000000
+            setBigPercentage(pec * 100 / divider)
             console.log(pec)
-            if (formatEther(number[4])*1000000000000000000 <= formatEther(number[5])*1000000000000000000) {
+            if (formatEther(number[4]) * 1000000000000000000 <= formatEther(number[5]) * 1000000000000000000) {
                 setName("bomb")
             }
             setJackpotData(dataParse)
@@ -240,7 +250,7 @@ export default function DashboardDesktop() {
 
             const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
 
-            setPercentage(`${percentageStake}%`)
+            setPercentage(percentageStake)
         } catch (error) {
             console.log(error)
         }
@@ -281,42 +291,42 @@ export default function DashboardDesktop() {
                         <Box className="timer">
                             <TimeCounter date={date} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} />
                         </Box>
-                        
-                          <Display  data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
-                         
-                                <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
+
+                        <Display data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
+
+                        <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
-                                <Box className="bar" style={{ height: `${BigPercentage }%` }}></Box>
+                                <Box className="bar" style={{ height: `${BigPercentage}%` }}></Box>
                             </Box>
                             <Box color="#fff" fontSize="10px">
-                            
+
                             </Box>
                         </Box>
                         <Box className="minor-bar">
                             <Box className="labels">
-                                <p>Normal</p>
+                                <p>{type === 1 ?"Normal":"Big"}</p>
                                 <p>${jackpotData[0] ? JSON.parse(jackpotData[0]).toFixed(2) : 0}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
-                                <Box className="bar" style={{ width: percentage }}></Box>
+                                <Box className="bar" style={type === 1? { width: `${percentage}%` }: { width: `${100 - percentage}%` }}></Box>
                             </Box>
                         </Box>
                         <Box className="bets">
                             <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
                                 <h2>${jackpotData && jackpotData[3] && jackpotData[3]}</h2>
-                                <Box className="subinfo"><i className="material-icons-outlined" style={{ fontSize:9}}>timer</i>
+                                <Box className="subinfo"><i className="material-icons-outlined" style={{ fontSize: 9 }}>timer</i>
                                     <p>10 mins</p>
                                 </Box>
                             </Box>
                             <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='10' onClick={() => SelectedButton("10", jackpotData[9])}>
                                 <h2>${jackpotData && jackpotData[9] && jackpotData[9]}</h2>
-                                <Box className="subinfo"><i className="material-icons-outlined" style={{ fontSize:9}}>timer</i>
+                                <Box className="subinfo"><i className="material-icons-outlined" style={{ fontSize: 9 }}>timer</i>
                                     <p>5 mins</p>
                                 </Box>
                             </Box>
                             <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='20' onClick={() => SelectedButton("20", jackpotData[10])}>
                                 <h2>${jackpotData && jackpotData[10] && jackpotData[10]}</h2>
-                                <Box className="subinfo"><i className="material-icons-outlined" style={{ fontSize:9}}>timer</i>
+                                <Box className="subinfo"><i className="material-icons-outlined" style={{ fontSize: 9 }}>timer</i>
                                     <p>2.5 mins</p>
                                 </Box>
                             </Box>
