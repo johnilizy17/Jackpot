@@ -85,7 +85,7 @@ export default function DashboardDesktop() {
 
             setGetCurrentJackpotInfo(getjackpot)
 
-            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
+            const percentageStake = JSON.parse(bigBangBalance)/ 10000
 
             setPercentage(percentageStake)
 
