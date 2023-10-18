@@ -309,7 +309,7 @@ export default function DashboardDesktop() {
                         </Box>
                         <Box className="minor-bar">
                             <Box className="labels">
-                                <p>{type === 1 ?"Normal":"Big"}</p>
+                                <p>{"Big Bang"}</p>
                                 <p>${bigBang ? JSON.parse(bigBang).toFixed(2) : 0}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
