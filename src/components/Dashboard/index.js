@@ -62,12 +62,17 @@ export default function DashboardDesktop() {
                 abi: ABI,
                 functionName: 'bigBangBalance'
             })
+            const bombBalance = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'bombBalance'
+            })
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
             if (bigBangBalance) {
-                setBigBang(dataParse[2] * 100000000000000000000 / 200)
-                setBigBangPrice(formatEther(bigBangBalance))
+                setBigBang(formatEther(bombBalance))
+                setBigBangPrice(formatEther(bombBalance))
             }
             setJackpotData(dataParse)
 
@@ -305,7 +310,7 @@ export default function DashboardDesktop() {
                         <Box className="minor-bar">
                             <Box className="labels">
                                 <p>{type === 1 ?"Normal":"Big"}</p>
-                                <p>${jackpotData[0] ? JSON.parse(jackpotData[0]).toFixed(2) : 0}/$10k</p>
+                                <p>${bigBang ? JSON.parse(bigBang).toFixed(2) : 0}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
                                 <Box className="bar" style={type === 1? { width: `${percentage}%` }: { width: `${100 - percentage}%` }}></Box>
