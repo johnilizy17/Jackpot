@@ -313,7 +313,7 @@ export default function DashboardDesktop() {
                                 <p>${bigBang ? JSON.parse(bigBang).toFixed(2) : 0}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
-                                <Box className="bar" style={type === 1? { width: `${percentage}%` }: { width: `${100 - percentage}%` }}></Box>
+                                <Box className="bar" style={type === 2?  { width: `${100 - percentage}%` } : { width: `${percentage}%` }}></Box>
                             </Box>
                         </Box>
                         <Box className="bets">
