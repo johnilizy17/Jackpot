@@ -85,7 +85,7 @@ export default function DashboardDesktop() {
 
             setGetCurrentJackpotInfo(getjackpot)
 
-            const percentageStake = JSON.parse(dataParse[0]*1000000000000000000) / 10000
+            const percentageStake = JSON.parse(dataParse[0]) / 10000
 
             setPercentage(percentageStake)
 
@@ -309,7 +309,7 @@ export default function DashboardDesktop() {
                         <Box className="minor-bar">
                             <Box className="labels">
                                 <p>{type === 1 ? "Normal" : "Big Bang"}</p>
-                                <p>${bigBang ? JSON.parse(bigBang).toFixed(2) : 0}/$10k</p>
+                                <p>${jackpotData[9] ? JSON.parse(jackpotData[0]).toFixed(2) : 0}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
                                 <Box className="bar" style={percentage > 100 ? { width: `100%` } : type === 1 ? { width: `${percentage}%` } : { width: `${100 - percentage}%` }}></Box>
