@@ -264,7 +264,7 @@ export default function DashboardDesktop() {
         if (address) {
             notification()
         }
-    }, 10000)
+    }, 1000)
 
 
     return (
