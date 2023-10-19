@@ -1,10 +1,14 @@
 import { Box, Button, Flex } from '@chakra-ui/react';
-import React from 'react';
+import React,{useEffect} from 'react';
 
 export default function Display({ data, getCurrentJackpotInfo, name, setName, bigBang, type }) {
 
     function cardTransition(id) {
     }
+
+    useEffect(()=>{
+        console.log(type,"type")
+    },[])
 
     return (
         <Box className="view-swiper">
