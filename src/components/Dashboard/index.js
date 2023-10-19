@@ -195,7 +195,7 @@ export default function DashboardDesktop() {
             setAllowed(amount)
             setTimeout(() => {
                 setDate(amount + 2)
-            }, 700)
+            }, 1000)
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
