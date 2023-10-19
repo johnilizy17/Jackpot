@@ -196,7 +196,7 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
             setAllowed(amount)
             onClose()
-            const newTime = new Date(new Date().getTime() + 60000);
+            const newTime = new Date(new Date().getTime() + date*60000);
             setDownDate(Math.floor(newTime.getTime()/1000));
             setTimeout(()=>{
                 setDate(date+1)
@@ -255,12 +255,12 @@ export default function DashboardDesktop() {
                 }
             })
             setGetCurrentJackpotInfo(getjackpot)
-            setValue([formatEther(number[1])*1000000000000000000, formatEther(number[6])*1000000000000000000])
+            setValue([formatEther(number[1]), formatEther(number[6])])
              if(type ===1){
-            const percentageStake = formatEther(number[1]) * 1000000000000000000/ formatEther(number[6]) * 1000000000000000000
+            const percentageStake = formatEther(number[1]) * 100/ formatEther(number[6])
             setPercentage(percentageStake)
              } else {
-            const percentageStake = formatEther(number[2]) * 1000000000000000000/ formatEther(number[6]) * 1000000000000000000
+            const percentageStake = formatEther(number[2]) * 100/ formatEther(number[6]) 
             setPercentage(percentageStake)
              }
         } catch (error) {
