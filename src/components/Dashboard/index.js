@@ -34,6 +34,7 @@ export default function DashboardDesktop() {
     const [bigBangPrice, setBigBangPrice] = useState(0)
     const [disable, setDisable] = useState(false);
     const [type, setType] = useState(1)
+    const [DownDate, setDownDate] = useState();
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -293,7 +294,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter date={date} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
+                            <TimeCounter date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
                         </Box>
 
                         <Display data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type}  />
