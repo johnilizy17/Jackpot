@@ -1,7 +1,7 @@
 import { Box, Button, Flex } from '@chakra-ui/react';
 import React from 'react';
 
-export default function Display({ data, getCurrentJackpotInfo,  name, setName, bigBang, type }) {
+export default function Display({ data, getCurrentJackpotInfo, name, setName, bigBang, type }) {
 
     function cardTransition(id) {
     }
@@ -14,15 +14,15 @@ export default function Display({ data, getCurrentJackpotInfo,  name, setName, b
                 <Box className="info" w={["100%", "600px"]}>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/money_bag.png" alt="" />
                         <Box className="texts" mt="20px">
-                            <h4>{type === 1 ? "Minor":"Big Bang"} Jackpot Value</h4>
-                            <p  className="blink_me" style={{ color: "rgb(30, 240, 30)" }} >{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
+                            <h4>{type === 1 ? "Minor" : "Big Bang"} Jackpot Value</h4>
+                            <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }} >{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/trophie.png" alt="" />
                         <Box className="texts second" mt="20px">
                             <h4>Bomb value</h4>
                             <p>
-                            {(bigBang * 1).toFixed(2)} USDC</p>
+                                {(bigBang * 1).toFixed(2)} USDC</p>
                         </Box>
                     </Box>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/mesh.png" alt="" />
@@ -34,28 +34,25 @@ export default function Display({ data, getCurrentJackpotInfo,  name, setName, b
                 </Box>
             </Box>
             <Box className="view bomb-mode view-bomb"
-                style={name !== "bomb" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", overflow:"hidden", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
+                style={name !== "bomb" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", overflow: "hidden", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title" style={{ color: "rgb(248, 200, 34)", backgroundColor: "rgb(148, 116, 5)" }}>BOMB 💥</h2><img
                     src="../image/alpha_bomb.png" alt="Alpha365 Bomb" className="alpha-bomb bomb"
                     style={{ translate: "none", rotate: "none", scale: "none", transform: "translate(0%, 0%)" }} />
                 <Box className="info" style={{ backgroundColor: "rgb(113, 93, 47)" }}>
-                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" overflow="hidden"><img  src="../image/money_bag.png" alt=""
-                        style={{ width: 40, marginRight: 40, height: 40 }} />
-                        <Box className="texts"
-                            style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
-                            <h4>Big Bang Balance</h4>
-                            <p>{JSON.parse(bigBang).toFixed(2)} USDC</p>
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/money_bag.png" alt="" />
+                        <Box className="texts" mt="20px">
+                            <h4>{type === 1 ? "Minor" : "Big Bang"} Jackpot Value</h4>
+                            <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }} >{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
                         </Box>
                     </Box>
-                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img  src="../image/trophie.png" alt=""
-                        style={{ width: 40, marginRight: 40, height: 40 }} />
-                        <Box className="texts second"
-                            style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
-                            <h4>Jackpot Balance</h4>
-                            <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }}>{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/trophie.png" alt="" />
+                        <Box className="texts second" mt="20px">
+                            <h4>Bomb value</h4>
+                            <p>
+                                {(bigBang * 1).toFixed(2)} USDC</p>
                         </Box>
                     </Box>
-                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img  src="../image/mesh.png" alt=""
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img src="../image/mesh.png" alt=""
                         style={{ width: 40, marginRight: 40, height: 40 }} />
                         <Box className="texts"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>

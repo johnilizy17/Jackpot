@@ -15,7 +15,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     const [DownDate, setDownDate] = useState();
     const [DownDate2, setDownDate2] = useState();
     const [reward, setReward] = useState(true)
-   const [checker, setChecker] = useState(0)
+    const [checker, setChecker] = useState(0)
     const [jackInfo, setJackInfo] = useState({ status: true })
     const { address } = useAccount()
 
@@ -41,7 +41,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
             var distance = startData - Math.floor(now / 1000);
             setChecker(endData)
             const timingData = distance >= 1 ? startData : endData
-            if(distance >= 1){
+            if (distance >= 1) {
                 setDisable(true)
             } else {
                 setDisable(false)
@@ -87,28 +87,33 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
 
         var distance = DownDate - Math.floor(now / 1000);
         // Time calculations for days, hours, minutes and seconds
-       if(distance < 15){
-       setDisable(true)
-       }
+        if (distance < 15) {
+            setDisable(true)
+        }
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
         var minutes = Math.floor((distance % (60 * 60)) / (60));
         var seconds = Math.floor((distance % (60)));
 
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
         if (distance < 0) {
-            
-            setDate(date+1)
+
+            setDate(date + 1)
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
 
             if (DownDate > 0 && jackInfo.status === false && reward && checker === DownDate) {
                 setReward(false)
                 setLoading2(false)
                 setTimeout(() => {
-                    setDate(date+1)
+                    setDate(date + 1)
                 }, 13000)
-                const hash = await getUserApprove(ABI, contractAddress)
-            } else if (DownDate > 0 && jackInfo.status === false && reward){
-             setDisable(false)
+                try {
+                    const hash = await getUserApprove(ABI, contractAddress)
+                } catch (err) {
+                    setDate(date + 1)
+                    setLoading2(true)
+                }
+            } else if (DownDate > 0 && jackInfo.status === false && reward) {
+                setDisable(false)
             }
         }
     }
@@ -118,15 +123,15 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     }, [date])
 
     useEffect(() => {
-        if (DownDate ) {
+        if (DownDate) {
             Timing2()
         }
     }, [refresh])
 
-    
+
     setInterval(() => {
         setRefresh(!refresh)
-    },1000)
+    }, 1000)
 
     return (
         <>

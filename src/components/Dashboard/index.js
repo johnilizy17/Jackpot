@@ -71,8 +71,8 @@ export default function DashboardDesktop() {
                 return formatEther(a)
             })
             if (bigBangBalance) {
-                setBigBang(formatEther(bombBalance))
-                setBigBangPrice(formatEther(bigBangBalance))
+                setBigBang(formatEther(bombBalance) * 1000000000000000000)
+                setBigBangPrice(formatEther(bigBangBalance) * 1000000000000000000)
             }
             setJackpotData(dataParse)
 
@@ -85,7 +85,7 @@ export default function DashboardDesktop() {
 
             setGetCurrentJackpotInfo(getjackpot)
 
-            const percentageStake = JSON.parse(formatEther(bigBangBalance))/ 10000
+            const percentageStake = JSON.parse(dataParse[0]*1000000000000000000) / 10000
 
             setPercentage(percentageStake)
 
@@ -195,7 +195,7 @@ export default function DashboardDesktop() {
             setAllowed(amount)
             setTimeout(() => {
                 setDate(amount + 2)
-            }, 500)
+            }, 700)
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
@@ -229,7 +229,6 @@ export default function DashboardDesktop() {
             const pec = formatEther(number[5]) * 1000000000000000000
             const divider = formatEther(number[4]) * 1000000000000000000
             setBigPercentage(pec * 100 / divider)
-            console.log(pec)
             if (formatEther(number[4]) * 1000000000000000000 <= formatEther(number[5]) * 1000000000000000000) {
                 setName("bomb")
             }
@@ -301,7 +300,7 @@ export default function DashboardDesktop() {
 
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
-                                <Box className="bar" style={{ height: `${BigPercentage > 99 ? 100:BigPercentage}%` }}></Box>
+                                <Box className="bar" style={{ height: `${BigPercentage > 99 ? 100 : BigPercentage}%` }}></Box>
                             </Box>
                             <Box color="#fff" fontSize="10px">
 
@@ -309,11 +308,11 @@ export default function DashboardDesktop() {
                         </Box>
                         <Box className="minor-bar">
                             <Box className="labels">
-                                <p>{"Big Bang"}</p>
+                                <p>{type === 1 ? "Normal" : "Big Bang"}</p>
                                 <p>${bigBang ? JSON.parse(bigBang).toFixed(2) : 0}/$10k</p>
                             </Box>
                             <Box className="progress-bar ">
-                                <Box className="bar" style={percentage > 100? { width: `100%` } : type === 1?  { width: `${percentage}%` } : { width: `${100 - percentage}%` }}></Box>
+                                <Box className="bar" style={percentage > 100 ? { width: `100%` } : type === 1 ? { width: `${percentage}%` } : { width: `${100 - percentage}%` }}></Box>
                             </Box>
                         </Box>
                         <Box className="bets">
