@@ -254,10 +254,13 @@ export default function DashboardDesktop() {
                 }
             })
             setGetCurrentJackpotInfo(getjackpot)
-
-            const percentageStake = JSON.parse(dataParse[0]) * 10 / 1000
-
+             if(type ===1){
+            const percentageStake = formatEther(number[1]) * 1000000000000000000/ formatEther(number[6]) * 1000000000000000000
             setPercentage(percentageStake)
+             } else {
+            const percentageStake = formatEther(number[2]) * 1000000000000000000/ formatEther(number[6]) * 1000000000000000000
+            setPercentage(percentageStake)
+             }
         } catch (error) {
             console.log(error)
         }
