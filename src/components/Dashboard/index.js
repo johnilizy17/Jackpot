@@ -71,8 +71,8 @@ export default function DashboardDesktop() {
                 return formatEther(a)
             })
             if (bigBangBalance) {
-                setBigBang(formatEther(bombBalance) * 1000000000000000000)
-                setBigBangPrice(formatEther(bigBangBalance) * 1000000000000000000)
+                setBigBang(formatEther(bombBalance) * 1)
+                setBigBangPrice(formatEther(bigBangBalance) * 1)
             }
             setJackpotData(dataParse)
 
@@ -293,7 +293,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter date={date} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} />
+                            <TimeCounter date={date} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
                         </Box>
 
                         <Display data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} />
