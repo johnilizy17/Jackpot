@@ -195,11 +195,13 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
             setAllowed(amount)
             onClose()
+            setTimeout(()=>{
+                setDate(date+1)
+            },13000)
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
-            const newTime = new Date(DownDate + date*60000);
-            setDownDate(newTime.getTime())
+            
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: err.message, status: "error", isClosable: true });
 
