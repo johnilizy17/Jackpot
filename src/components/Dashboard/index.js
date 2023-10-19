@@ -197,7 +197,7 @@ export default function DashboardDesktop() {
             setAllowed(amount)
             onClose()
             const newTime = new Date(new Date().getTime() + 60000);
-            setDownDate(newTime.getTime())
+            setDownDate(Math.floor(newTime.getTime()/1000));
             setTimeout(()=>{
                 setDate(date+1)
             },800)
