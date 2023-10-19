@@ -319,8 +319,8 @@ export default function DashboardDesktop() {
                                 <p>{type === 1 ? "Big Bang" : "Normal"}</p>
                                 <p>${type === 1 ? JSON.parse(bigBangPrice).toFixed(2) : JSON.parse(value[0]).toFixed(2) }/${value[1]}</p>
                             </Box>
-                            <Box className="progress-bar ">
-                                <Box className="bar" style={percentage > 100 ? { width: `100%` } : type === 1 ? { width: `${percentage}%` } : { width: `${100 - percentage}%` }}></Box>
+                            <Box className="progress-bar " style={{overflow:"hidden"}}>
+                                <Box className="bar" style={percentage > 100 ? { width: `100%` } : type != 1 ? { width: `${percentage}%` } : { width: `${100 - percentage}%` }}></Box>
                             </Box>
                         </Box>
                         <Box className="bets">
