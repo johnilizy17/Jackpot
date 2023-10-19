@@ -195,7 +195,7 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
             setAllowed(amount)
             onClose()
-            const newTime = new Date( new Date().getTime() + date*60000);
+            const newTime = new Date(new Date().getTime() + 60000);
             setDownDate(newTime.getTime())
             setTimeout(()=>{
                 setDate(date+1)
@@ -299,7 +299,7 @@ export default function DashboardDesktop() {
                             <TimeCounter date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
                         </Box>
 
-                        <Display data={jackpotData} bigBang={bigBangPrice} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type}  />
+                        <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type}  />
 
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
