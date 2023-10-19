@@ -7,12 +7,12 @@ import ABI from '@/utils/ABI'
 import { formatEther } from 'viem'
 import { useAccount } from 'wagmi'
 
-export default function TimeCounter({ date, setName, setDate, setLoading2, setDisable }) {
+export default function TimeCounter({ date, setName, setDate, setLoading2, setDisable, DownDate, setDownDate }) {
 
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
-    const [DownDate, setDownDate] = useState();
+    
     const [DownDate2, setDownDate2] = useState();
     const [reward, setReward] = useState(true)
     const [checker, setChecker] = useState(0)
