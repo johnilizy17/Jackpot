@@ -19,6 +19,7 @@ export default function DashboardDesktop() {
     const [time, setTime] = useState(3600)
     const [BigPercentage, setBigPercentage] = useState(0)
     const [jackpotData, setJackpotData] = useState([])
+    const [value, setValue] = useState([0,0])
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
     const [percentage, setPercentage] = useState(0)
@@ -254,6 +255,7 @@ export default function DashboardDesktop() {
                 }
             })
             setGetCurrentJackpotInfo(getjackpot)
+            setValue([formatEther(number[1])*1000000000000000000, formatEther(number[6])*1000000000000000000])
              if(type ===1){
             const percentageStake = formatEther(number[1]) * 1000000000000000000/ formatEther(number[6]) * 1000000000000000000
             setPercentage(percentageStake)
@@ -315,7 +317,7 @@ export default function DashboardDesktop() {
                         <Box className="minor-bar">
                             <Box className="labels">
                                 <p>{type === 1 ? "Big Bang" : "Normal"}</p>
-                                <p>${type === 1 ? JSON.parse(bigBangPrice).toFixed(2) : JSON.parse(bigBangPrice).toFixed(2) }/$10k</p>
+                                <p>${type === 1 ? JSON.parse(bigBangPrice).toFixed(2) : JSON.parse(value[0]).toFixed(2) }/${value[1]}</p>
                             </Box>
                             <Box className="progress-bar ">
                                 <Box className="bar" style={percentage > 100 ? { width: `100%` } : type === 1 ? { width: `${percentage}%` } : { width: `${100 - percentage}%` }}></Box>
