@@ -195,6 +195,8 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
             setAllowed(amount)
             onClose()
+            const newTime = new Date( new Date().getTime() + date*60000);
+            setDownDate(newTime.getTime())
             setTimeout(()=>{
                 setDate(date+1)
             },800)
