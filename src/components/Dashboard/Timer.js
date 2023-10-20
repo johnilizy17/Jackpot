@@ -55,6 +55,13 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                     args: [current],
                     functionName: 'getCurrentJackpotInfo',
                 })
+                let data2 = await readContract({
+                    address: contractAddress,
+                    abi: ABI,
+                    args: [current],
+                    functionName: 'getBombWinnerInfo',
+                })
+     console.log(data2)
                 const exist = data.filter((a, b) => {
                     if (a.staker === address) {
                         return true
