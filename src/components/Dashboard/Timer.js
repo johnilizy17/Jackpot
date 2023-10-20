@@ -12,11 +12,10 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
-
     const [DownDate2, setDownDate2] = useState();
     const [reward, setReward] = useState(true)
     const [checker, setChecker] = useState(0)
-    const [winnerAddress, setWinnerAddress] = useState({jackpot:"", bomob:""})
+    const [winnerAddress, setWinnerAddress] = useState({jackpot:"", bomb:""})
     const [jackInfo, setJackInfo] = useState({ status: true })
     const { address } = useAccount()
 
@@ -61,7 +60,8 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                         return true
                     }
                 })
-                const notify = localStorage.getItem(`${current}${contractAddress}`)
+                // const notify = localStorage.getItem(`${current}${contractAddress}`)
+              
                 if (notify) {
 
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
@@ -137,7 +137,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
 
     return (
         <>
-            <Center pos="fixed" top="0px" left="0px" zIndex="3000" w="100vw" h="100vh" bg="#e3cccc24">
+            <Center pos="fixed" top="0px"  left="0px" zIndex={winnerAddress.jackpot === ""?"-1":"3000"} opacity={winnerAddress.jackpot === ""? 0:5} w="100vw" h="100vh" bg="#e3cccc24">
                 <Box
                     className="view game-over pictured view-gameover active" w="350px" h="250px" pos="relative"
                     style={{ transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
@@ -152,14 +152,13 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                         <Box display="flex" w={["100%", "320px"]} mt="-50px" h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts" mt="20px">
                                 <h4> Jackpot Winner Value</h4>
-                                <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }} > USDC</p>
+                                <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }} > {winnerAddress.jackpot}</p>
                             </Box>
                         </Box>
                         <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts second" mt="20px">
                                 <h4>Bomb Winner value</h4>
-                                <p>
-                                    USDC</p>
+                                <p>{winnerAddress.bomb}</p>
                             </Box>
                         </Box>
                         <Center mb="20px">
