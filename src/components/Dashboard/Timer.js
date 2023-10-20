@@ -60,14 +60,14 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                         return true
                     }
                 })
-                // const notify = localStorage.getItem(`${current}${contractAddress}`)
+                 const notify = localStorage.getItem(`${current}${contractAddress}`)
               
                 if (notify) {
 
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
-                    localStorage.setItem(`${current}${contractAddress}`, "true")
+                 //   localStorage.setItem(`${current}${contractAddress}`, "true")
                     setLoading2(true)
-                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomob:""})
+                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:""})
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
@@ -152,7 +152,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                         <Box display="flex" w={["100%", "320px"]} mt="-50px" h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts" mt="20px">
                                 <h4> Jackpot Winner Value</h4>
-                                <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }} > {winnerAddress.jackpot}</p>
+                                <p className="blink_me" style={{ color: "rgb(30, 240, 30)", width: 300}} > {winnerAddress.jackpot}</p>
                             </Box>
                         </Box>
                         <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
@@ -162,7 +162,9 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                             </Box>
                         </Box>
                         <Center mb="20px">
-                            <Button colorScheme="green" h="40px" fontSize="12px" >
+                            <Button onClick={()=>{
+                        setWinnerAddress({jackpot:"", bomb:""})
+                            }} colorScheme="green" h="40px" fontSize="12px" >
                                 Play
                             </Button>
                         </Center>
