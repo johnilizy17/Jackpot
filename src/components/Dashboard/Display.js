@@ -12,7 +12,9 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
 
     return (
         <Box className="view-swiper">
-            <Box className="view game-over pictured view-gameover active" h="450px"
+            <Box
+                bg={type === 1? "":"gold"}
+                className="view game-over pictured view-gameover active" h="450px"
                 style={name !== "start" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title">{type === 1 ? "Minor" : "Big Bang"}</h2>
                 <Box className="info" w={["100%", "600px"]}>
