@@ -55,13 +55,13 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                     args: [current],
                     functionName: 'getCurrentJackpotInfo',
                 })
-                let data2 = await readContract({
+                let data3 = await readContract({
                     address: contractAddress,
                     abi: ABI,
                     args: [current],
                     functionName: 'getBombWinnerInfo',
                 })
-     console.log(data2)
+     
                 const exist = data.filter((a, b) => {
                     if (a.staker === address) {
                         return true
@@ -74,7 +74,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
                  //   localStorage.setItem(`${current}${contractAddress}`, "true")
                     setLoading2(true)
-                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:""})
+                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data3 && data3.length && data3[data3.length - 1].winner? data3[data3.length - 1].winner:""})
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
