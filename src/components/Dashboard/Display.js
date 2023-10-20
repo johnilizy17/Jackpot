@@ -75,7 +75,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                     <Box className="splash-text" >
                         <Box
                             style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(3, 3)", opacity: 0.1, top: "50%" }}>
-                            <p>You are out of</p>
+                            <p>You are out of</p> 
                         </Box>
                         <Box className="prize-Box"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "skew(-30deg, 0deg)" }}>
