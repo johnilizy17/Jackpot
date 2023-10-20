@@ -32,7 +32,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/mesh.png" alt="" />
                         <Box className="texts" mt="20px">
                             <h4>Information</h4>
-                            <p>Participants: {[...new Set(getCurrentJackpotInfo)].length}<br />Bets: {getCurrentJackpotInfo.length}</p>
+                            <p>Bets: {getCurrentJackpotInfo.length}</p>
                         </Box>
                     </Box>
                 </Box>
@@ -61,7 +61,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         <Box className="texts"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
                             <h4>Information</h4>
-                            <p>Participants:  {[...new Set(getCurrentJackpotInfo)].length}<br />Bets: {getCurrentJackpotInfo.length}</p>
+                            <p>Bets: {getCurrentJackpotInfo.length}</p>
                         </Box>
                     </Box>
                 </Box>
