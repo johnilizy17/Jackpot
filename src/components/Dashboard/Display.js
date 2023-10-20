@@ -61,7 +61,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         <Box className="texts"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
                             <h4>Information</h4>
-                            <p>Participants: {getCurrentJackpotInfo.length}<br />Bets: {getCurrentJackpotInfo.length}</p>
+                            <p>Participants:  {[...new Set(getCurrentJackpotInfo)].length}<br />Bets: {getCurrentJackpotInfo.length}</p>
                         </Box>
                     </Box>
                 </Box>
