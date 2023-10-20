@@ -259,11 +259,10 @@ export default function DashboardDesktop() {
              if(type != 1){
             const percentageStake = formatEther(number[1]) * 100/ formatEther(number[6])*1
             setPercentage(percentageStake)
-             console.log(formatEther(number[1]), "percentage")
+           
              } else {
             const percentageStake = formatEther(number[2]) * 100/ formatEther(number[6])*1
             setPercentage(percentageStake)
-            console.log(formatEther(number[2]), "percentage 2")
              }
         } catch (error) {
             console.log(error)
