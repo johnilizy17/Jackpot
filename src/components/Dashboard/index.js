@@ -198,7 +198,7 @@ export default function DashboardDesktop() {
             setDownDate(Math.floor(newTime.getTime()/1000));
             setTimeout(()=>{
                 setDate(date+1)
-            },800)
+            },2000)
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
