@@ -215,6 +215,7 @@ export default function DashboardDesktop() {
 
     async function notification() {
         try {
+             await jackpotInfo();
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
