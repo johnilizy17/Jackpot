@@ -1,4 +1,4 @@
-import { Box, Center } from '@chakra-ui/react';
+import { Box, Center, IconButton } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { readContract, readContracts } from '@wagmi/core'
 import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core'
@@ -137,11 +137,17 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
         <>
             <Center pos="fixed" top="0px" left="0px" zIndex="3000" w="100vw" h="100vh" bg="#e3cccc24">
                 <Box
-                    className="view game-over pictured view-gameover active" w="350px" h="400px" pos="relative"
+                    className="view game-over pictured view-gameover active" w="350px" h="250px" pos="relative"
                     style={{ transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                     <h2 className="title">Winner</h2>
-                    <Box className="info" w={["100%", "350px"]}>
-                        <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
+                 
+                    <Box className="info" w={["100%", "350px"]} pos="relative">
+                    <Box w="30px" className="title" pos="aboslute" right="-120px" top="-100px" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                        </svg>
+                    </Box>
+                        <Box display="flex" w={["100%", "320px"]} mt="-50px" h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts" mt="20px">
                                 <h4> Jackpot Winner Value</h4>
                                 <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }} > USDC</p>
