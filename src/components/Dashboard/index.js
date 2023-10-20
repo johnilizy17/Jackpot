@@ -87,9 +87,7 @@ export default function DashboardDesktop() {
 
             setGetCurrentJackpotInfo(getjackpot)
 
-            const percentageStake = JSON.parse(dataParse[0]) / 10000
-
-            setPercentage(percentageStake)
+            
 
         } catch (err) {
 
@@ -274,7 +272,7 @@ export default function DashboardDesktop() {
         if (address) {
             notification()
         }
-    }, 1000)
+    }, 10000)
 
 
     return (
