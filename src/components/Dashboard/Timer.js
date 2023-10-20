@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { readContract, readContracts } from '@wagmi/core'
 import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core'
@@ -12,7 +12,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
-    
+
     const [DownDate2, setDownDate2] = useState();
     const [reward, setReward] = useState(true)
     const [checker, setChecker] = useState(0)
@@ -135,6 +135,28 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
 
     return (
         <>
+            <Center pos="fixed" top="0px" left="0px" zIndex="3000" w="100vw" h="100vh" bg="#e3cccc24">
+                <Box
+                    className="view game-over pictured view-gameover active" w="350px" h="400px" pos="relative"
+                    style={{ transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
+                    <h2 className="title">Winner</h2>
+                    <Box className="info" w={["100%", "350px"]}>
+                        <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
+                            <Box className="texts" mt="20px">
+                                <h4> Jackpot Winner Value</h4>
+                                <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }} > USDC</p>
+                            </Box>
+                        </Box>
+                        <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
+                            <Box className="texts second" mt="20px">
+                                <h4>Bomb Winner value</h4>
+                                <p>
+                                    USDC</p>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
+            </Center>
             <Box className="time hour" cursor="pointer">
                 <h2>{NumberOfTime.hour === "00" ? NumberOfTime.hour : NumberOfTime.hour < 10 ? `0${NumberOfTime.hour}` : NumberOfTime.hour}</h2>
                 <p>Hour</p>

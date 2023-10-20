@@ -1,19 +1,19 @@
 import { Box, Button, Flex } from '@chakra-ui/react';
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 export default function Display({ data, getCurrentJackpotInfo, name, setName, bigBang, type }) {
 
     function cardTransition(id) {
     }
 
-    useEffect(()=>{
-        console.log(type,"type")
-    },[])
+    useEffect(() => {
+        console.log(type, "type")
+    }, [])
 
     return (
         <Box className="view-swiper">
             <Box
-                bg={type === 1? "":"gold"}
+                bg={type === 1 ? "" : "gold"}
                 className="view game-over pictured view-gameover active" h="450px"
                 style={name !== "start" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title">{type === 1 ? "Minor" : "Big Bang"}</h2>
@@ -77,7 +77,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                     <Box className="splash-text" >
                         <Box
                             style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(3, 3)", opacity: 0.1, top: "50%" }}>
-                            <p>You are out of</p> 
+                            <p>You are out of</p>
                         </Box>
                         <Box className="prize-Box"
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "skew(-30deg, 0deg)" }}>
