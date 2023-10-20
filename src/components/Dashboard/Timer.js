@@ -1,4 +1,4 @@
-import { Box, Center, IconButton } from '@chakra-ui/react';
+import { Box, Button, Center, IconButton } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { readContract, readContracts } from '@wagmi/core'
 import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core'
@@ -16,6 +16,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     const [DownDate2, setDownDate2] = useState();
     const [reward, setReward] = useState(true)
     const [checker, setChecker] = useState(0)
+    const [winnerAddress, setWinnerAddress] = useState({jackpot:"", bomob:""})
     const [jackInfo, setJackInfo] = useState({ status: true })
     const { address } = useAccount()
 
@@ -66,6 +67,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
                     localStorage.setItem(`${current}${contractAddress}`, "true")
                     setLoading2(true)
+                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomob:""})
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
@@ -140,13 +142,13 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                     className="view game-over pictured view-gameover active" w="350px" h="250px" pos="relative"
                     style={{ transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                     <h2 className="title">Winner</h2>
-                 
+
                     <Box className="info" w={["100%", "350px"]} pos="relative">
-                    <Box w="30px" className="title" pos="aboslute" right="-120px" top="-100px" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                        </svg>
-                    </Box>
+                        <Box w="30px" className="title" pos="aboslute" right="-120px" top="-100px" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                            </svg>
+                        </Box>
                         <Box display="flex" w={["100%", "320px"]} mt="-50px" h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts" mt="20px">
                                 <h4> Jackpot Winner Value</h4>
@@ -160,6 +162,11 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                                     USDC</p>
                             </Box>
                         </Box>
+                        <Center mb="20px">
+                            <Button colorScheme="green" h="40px" fontSize="12px" >
+                                Play
+                            </Button>
+                        </Center>
                     </Box>
                 </Box>
             </Center>
