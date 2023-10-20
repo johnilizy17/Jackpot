@@ -158,7 +158,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                         <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts second" mt="20px">
                                 <h4>Bomb Winner value</h4>
-                                <p>{winnerAddress.bomb}</p>
+                                <p style={{width:300}}>{winnerAddress.bomb === ""? "Winner in progress": winnerAddress.bomb}</p>
                             </Box>
                         </Box>
                         <Center mb="20px">
