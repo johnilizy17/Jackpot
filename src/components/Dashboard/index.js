@@ -77,6 +77,8 @@ export default function DashboardDesktop() {
                 setBigBang(bigCurrentPercentage)
               const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0]*20/100)
                 setBigBangPrice(bombCurrentPercentage)
+           const percentageStake =  bombCurrentPercentage * 100/ formatEther(number[6])*1
+            setPercentage(percentageStake)
             }
             setJackpotData(dataParse)
 
@@ -257,14 +259,6 @@ export default function DashboardDesktop() {
             })
             setGetCurrentJackpotInfo(getjackpot)
             setValue([formatEther(number[1]), formatEther(number[6])])
-             if(type != 1){
-            const percentageStake =  bigBang * 100/ formatEther(number[6])*1
-            setPercentage(percentageStake)
-           
-             } else {
-            const percentageStake = bigBang * 100/ formatEther(number[6])*1
-            setPercentage(percentageStake)
-             }
         } catch (error) {
             console.log(error)
         }
