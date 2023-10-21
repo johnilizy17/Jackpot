@@ -258,11 +258,11 @@ export default function DashboardDesktop() {
             setGetCurrentJackpotInfo(getjackpot)
             setValue([formatEther(number[1]), formatEther(number[6])])
              if(type != 1){
-            const percentageStake = formatEther(number[1]) * 100/ formatEther(number[6])*1
+            const percentageStake =  bigBang * 100/ formatEther(number[6])*1
             setPercentage(percentageStake)
            
              } else {
-            const percentageStake = formatEther(number[2]) * 100/ formatEther(number[6])*1
+            const percentageStake = bigBang * 100/ formatEther(number[6])*1
             setPercentage(percentageStake)
              }
         } catch (error) {
