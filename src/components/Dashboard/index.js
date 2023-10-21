@@ -73,9 +73,9 @@ export default function DashboardDesktop() {
                 return formatEther(a)
             })
             if (bigBangBalance) {
-                const bigCurrentPercentage = formatEther(bombBalance) + (dataParse[0]*50/100)
+                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0]*50/100)
                 setBigBang(bigCurrentPercentage)
-              const bombCurrentPercentage = formatEther(bigBangBalance) + (dataParse[0]*20/100)
+              const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0]*20/100)
                 setBigBangPrice(bombCurrentPercentage)
             }
             setJackpotData(dataParse)
