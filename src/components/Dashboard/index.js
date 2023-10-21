@@ -72,13 +72,19 @@ export default function DashboardDesktop() {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
+            const number = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                args: [dataParse[2] * 1000000000000000000],
+                functionName: 'fetchJackpotBal'
+            })
             if (bigBangBalance) {
-                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0]*50/100)
-                setBigBang(bigCurrentPercentage)
-              const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0]*20/100)
-                setBigBangPrice(bombCurrentPercentage)
-           const percentageStake =  bombCurrentPercentage * 100/ formatEther(number[6])*1
-            setPercentage(percentageStake)
+               const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0]*50/100)
+               setBigBang(bigCurrentPercentage)
+               const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0]*20/100)
+               setBigBangPrice(bombCurrentPercentage)
+               const percentageStake =  bombCurrentPercentage * 100/ formatEther(number[6])*1
+               setPercentage(percentageStake)
             }
             setJackpotData(dataParse)
 
