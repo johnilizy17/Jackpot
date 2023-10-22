@@ -34,7 +34,36 @@ export default function Content() {
                     timer countdown is over and the first bet is
                     made
                 </Box>
-            </Box>
+    <Box>
+                    The big jackpot is activated when it reaches a
+certain number of USDC as a prize or when a
+certain number of bets have been placed in
+the normal jackpot.
+    </Box>
+    <Box>
+Let's assume it activates when it reaches 10k
+USDC:
+    </Box>
+    <Box>
+when the normal jackpot ends and you deposit
+your 20% into the big jackpot and this is equal
+to or greater than 10k the normal jackpots are
+suspended. the big jackpot timer will count
+down for 12 h.
+    </Box>
+    <Box>
+When it reaches 0 and the first bet is placed
+the jackpot starts.
+                        </Box>
+    <Box>
+The methods of betting and winnings are the
+same as those of the normal jackpot.
+When the big jackpot ends the normal jackpot
+timer will count down for 12 h. and when it
+reaches 0 and the first bet is made the normal
+jackpots start again (read normal jackpot)    
+                        </Box>
+    </Box>
 
             <Box h="200px" />
         </Box>
