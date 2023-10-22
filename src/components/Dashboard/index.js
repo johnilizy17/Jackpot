@@ -35,6 +35,7 @@ export default function DashboardDesktop() {
     const [bigBangPrice, setBigBangPrice] = useState(0)
     const [disable, setDisable] = useState(false);
     const [type, setType] = useState(1)
+   const [stake, setStake] = useState("0x24B558864F562E3e8c481069752b1626bdd4e01A")
     const [DownDate, setDownDate] = useState();
     const toast = useToast();
 
@@ -310,7 +311,7 @@ export default function DashboardDesktop() {
                             <TimeCounter date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
                         </Box>
 
-                        <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type}  />
+                        <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type} staker={stake} />
 
                         <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
