@@ -60,7 +60,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                     address: contractAddress,
                     abi: ABI,
                     args: [current],
-                    functionName: 'getBombWinnerInfo',
+                    functionName: 'getAllBombWinnerInfo',
                 })
      
                 const exist = data.filter((a, b) => {
