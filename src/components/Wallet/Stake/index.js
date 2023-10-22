@@ -63,7 +63,7 @@ export default function Stake({ setStaking, setToggle }) {
                                 <td data-label="Winneer Address">{a.staker}</td>
                                 <td data-label="PARTICIPANTS SHARE">${formatEther(a.jackpotShare) * 1000000000000000000}</td>
                                 <td data-label="Amount">${formatEther(a.amountStaked)}</td>
-                                <td data-label="Winning Status">{JSON.stringify(a.win)}</td>
+                                <td data-label="Big Jackpot Share>{formatEther(a.bigJackpotShare)}</td>
                             </tr>
                         ))
                         }
