@@ -21,14 +21,10 @@ export default function Stake({ setStaking, setToggle }) {
                 functionName: 'getAllJackpot'
 
             })
+    
+            console.log(data)
             
-            const dataParse = data.map((a) => {
-                return formatEther(a)
-            })
-
-            console.log(dataParse)
-            
-            setFetch(dataParse)
+            setFetch(data)
             
         } catch (err) {
             alert(err.message)
