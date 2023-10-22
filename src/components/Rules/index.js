@@ -63,6 +63,26 @@ timer will count down for 12 h. and when it
 reaches 0 and the first bet is made the normal
 jackpots start again (read normal jackpot)    
                         </Box>
+    
+    <Center fontWeight="800" fontSize="16px">Bomb Price </Center>
+<Box>
+    The BOMB prize is a prize that is awarded
+randomly during a normal jackpot and reloads
+with the split of the normal jackpot prizes.
+It will be random for the user while we will set
+that it will have a logic or every tot bets, but
+the users will not know it.
+                        </Box>
+    <Box>
+When the BOMB is triggered the background
+of that jackpog will change color.
+                        </Box>
+    <Box>
+Once the normal jackpot is over, 50% of the
+bomb prize will be given randomly to one of
+the participants of that normal jackpot who is
+not the jackpot winner.
+                        </Box>
     </Box>
 
             <Box h="200px" />
