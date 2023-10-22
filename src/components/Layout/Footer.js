@@ -105,20 +105,29 @@ export default function Footer() {
                 <Center flexDir="column" mt="40px" color="#fff">
                     <Box fontWeight="800" fontSize="24px">FIND US ON SOCIAL</Box>
                     <Flex mt="10px">
+        <Link href="">
                         <IconButton background="transparent" mr="5px">
                             <BsTwitter />
                         </IconButton>
+        </Link>
+        <Link href="">
                         <IconButton background="transparent" mr="5px">
                             <BsTelegram />
                         </IconButton>
-                        <IconButton background="transparent" mr="5px">
+        </Link>
+        <Link href="">
+        <IconButton background="transparent" mr="5px">
                             <BsDiscord />
                         </IconButton>
-                        <IconButton background="transparent" mr="5px">
+        </Link>
+        <Link href="">
+        <IconButton background="transparent" mr="5px">
                             <BsFacebook />
                         </IconButton>
-                    </Flex>
-                    <Center flexWrap="wrap">
+        </Link>
+        </Flex>
+              
+        <Center flexWrap="wrap">
 
                         <Box mt="10px" mr="10px">
                             Features
