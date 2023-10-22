@@ -18,7 +18,7 @@ export default function Stake({ setStaking, setToggle }) {
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                functionName: 'getAllStakes'
+                functionName: 'getAllJackpot'
 
             })
             console.log(data)
