@@ -103,7 +103,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
              toast({ position: "top-right", title: "Stake button disactivate Error", description: "any timer less than 10 seconds all button is activated", status: "error", isClosable: true });
             }
         }else{
-        setDisable(true)
+        setDisable(false)
         }
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
         var minutes = Math.floor((distance % (60 * 60)) / (60));
