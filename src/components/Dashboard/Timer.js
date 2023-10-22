@@ -44,9 +44,9 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
             const timingData = distance >= 1 ? startData : endData
             if (distance >= 1) {
                 setDisable(true)
-            } else {
-                setDisable(false)
-            }
+            } 
+                
+            
             setDownDate(timingData)
             const current = datalength - 1
             if (current >= 0) {
