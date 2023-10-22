@@ -153,7 +153,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
         <>
             <Center pos="fixed" top="0px"  left="0px" zIndex={winnerAddress.jackpot === ""?"-1":"3000"} opacity={winnerAddress.jackpot === ""? 0:5} w="100vw" h="100vh" bg="#e3cccc24">
                 <Box
-                    className="view game-over pictured view-gameover active" w="350px" h="250px" pos="relative"
+                    className="view game-over pictured view-gameover active" w="350px" h="300px" pos="relative"
                     style={{ transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                     <h2 className="title">Winner</h2>
 
@@ -165,13 +165,13 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                         </Box>
                         <Box display="flex" w={["100%", "320px"]} mt="-50px" h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts" mt="20px">
-                                <h4> Jackpot Winner Value</h4>
+                                <h4> Jackpot Winner Wallet</h4>
                                 <p className="blink_me" style={{ color: "rgb(30, 240, 30)", width: 300}} > {winnerAddress.jackpot}</p>
                             </Box>
                         </Box>
                         <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts second" mt="-10px">
-                                <h4>Bomb Winner value</h4>
+                                <h4>Bomb Winner Wallet</h4>
                                 <p style={{width:300}}>{winnerAddress.bomb === ""? "Winner in progress": winnerAddress.bomb}</p>
                             </Box>
                         </Box>
