@@ -105,22 +105,22 @@ export default function Footer() {
                 <Center flexDir="column" mt="40px" color="#fff">
                     <Box fontWeight="800" fontSize="24px">FIND US ON SOCIAL</Box>
                     <Flex mt="10px">
-        <Link href="">
+        <Link href="https://twitter.com/Alpha365Finance">
                         <IconButton background="transparent" mr="5px">
                             <BsTwitter />
                         </IconButton>
         </Link>
-        <Link href="">
+        <Link href="https://t.me/alpha365official">
                         <IconButton background="transparent" mr="5px">
                             <BsTelegram />
                         </IconButton>
         </Link>
-        <Link href="">
+        <Link href="https://instagram.com/alpha365finance?igshid=MzNlNGNkZWQ4Mg==">
         <IconButton background="transparent" mr="5px">
                             <BsDiscord />
                         </IconButton>
         </Link>
-        <Link href="">
+        <Link href="https://www.facebook.com/profile.php?id=100094498805790&mibextid=ZbWKwL">
         <IconButton background="transparent" mr="5px">
                             <BsFacebook />
                         </IconButton>
