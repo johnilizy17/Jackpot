@@ -34,6 +34,9 @@ export default function Content() {
                     timer countdown is over and the first bet is
                     made
                 </Box>
+                        <Box fontSize="24px" mt="20px" mb="10px">
+                Big Jackpot
+            </Box>
     <Box>
                     The big jackpot is activated when it reaches a
 certain number of USDC as a prize or when a
@@ -64,7 +67,9 @@ reaches 0 and the first bet is made the normal
 jackpots start again (read normal jackpot)    
                         </Box>
     
-    <Center fontWeight="800" fontSize="16px">Bomb Price </Center>
+    <Box fontSize="24px" mt="20px" mb="10px>
+                Bomb Prize
+            </Box>
 <Box>
     The BOMB prize is a prize that is awarded
 randomly during a normal jackpot and reloads
