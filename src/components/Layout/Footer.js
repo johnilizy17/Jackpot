@@ -128,17 +128,22 @@ export default function Footer() {
         </Flex>
               
         <Center flexWrap="wrap">
-
+                   <Link href="/rule">
                         <Box mt="10px" mr="10px">
-                            Features
+                            Rule
                         </Box>
-                        <Box mt="10px" mr="10px">
-                            How it works
+        </Link>  
+        <Link href="history">
+        <Box mt="10px" mr="10px">
+                            History
                         </Box>
-                        <Box mt="10px" mr="10px">
-                            Token info
+        </Link>     
+        <Link href="/contact">
+        <Box mt="10px" mr="10px">
+                          Contact us 
                         </Box>
-                        <Link href="/about">
+        </Link>     
+        <Link href="/about">
                             <Box mt="10px" mr="10px">
                                 About us
                             </Box>
