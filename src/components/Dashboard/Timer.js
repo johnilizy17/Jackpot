@@ -99,7 +99,9 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
         // Time calculations for days, hours, minutes and seconds
         if (distance < 15) {
             toast({ position: "top-right", title: "Stake button disactivate Error", description: "any timer less than 10 seconds all button is activated", status: "error", isClosable: true });
+            if(distance>12){
             setDisable(true)
+            }
         }
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
         var minutes = Math.floor((distance % (60 * 60)) / (60));
