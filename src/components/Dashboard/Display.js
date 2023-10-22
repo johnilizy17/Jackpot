@@ -34,7 +34,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         <Box className="texts" mt="20px">
                             <h4>Information</h4>
                             <p>Bets: {getCurrentJackpotInfo.length}</p>
-                            <p>Last staker: {staker}</p>
+                            <p>Last staker: {getCurrentJackpotInfo.length>0.5? getCurrentJackpotInfo[getCurrentJackpotInfo.length-1].staker: staker}</p>
                         </Box>
                     </Box>
                 </Box>
