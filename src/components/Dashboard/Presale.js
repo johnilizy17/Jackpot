@@ -80,7 +80,7 @@ export default function Footer() {
                     <Box mb="20px">JACKPOT INFO</Box>
                 </Box>
                 <Box>Participants: {jackpotData[8] && jackpotData[8].result && jackpotData[8].result.length}</Box>
-                <Box>  Duration: 5 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
+                <Box>  Duration: 10 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
                 <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && jackpotData[8].result && formatEther(jackpotData[7].result)}) </Box>
                 <Box mt="20px">
                     <Box>REWARD DISTRIBUTION</Box>
@@ -91,7 +91,7 @@ export default function Footer() {
                         </Box>
                         <Box mr="10px" mt="10px">2. {jackpotData[4] && jackpotData[8].result && formatEther(jackpotData[4].result) * 1000000000000000000}% BIG JACKPOT</Box>
                         <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result) * 1000000000000000000}% MARKETING</Box>
-                        <Box mr="10px" mt="10px">4. {jackpotData[1] && jackpotData[8].result && jackpotData[0].result}% BOMB PRIZ</Box>
+                        <Box mr="10px" mt="10px">4. 10% BOMB PRIZ</Box>
                     </Flex>
                 </Box>
             </Box>
@@ -105,31 +105,45 @@ export default function Footer() {
                 <Center flexDir="column" mt="40px" color="#fff">
                     <Box fontWeight="800" fontSize="24px">FIND US ON SOCIAL</Box>
                     <Flex mt="10px">
+        <Link href="https://twitter.com/Alpha365Finance">
                         <IconButton background="transparent" mr="5px">
                             <BsTwitter />
                         </IconButton>
+        </Link>
+        <Link href="https://t.me/alpha365official">
                         <IconButton background="transparent" mr="5px">
                             <BsTelegram />
                         </IconButton>
-                        <IconButton background="transparent" mr="5px">
+        </Link>
+        <Link href="https://instagram.com/alpha365finance?igshid=MzNlNGNkZWQ4Mg==">
+        <IconButton background="transparent" mr="5px">
                             <BsDiscord />
                         </IconButton>
-                        <IconButton background="transparent" mr="5px">
+        </Link>
+        <Link href="https://www.facebook.com/profile.php?id=100094498805790&mibextid=ZbWKwL">
+        <IconButton background="transparent" mr="5px">
                             <BsFacebook />
                         </IconButton>
-                    </Flex>
-                    <Center flexWrap="wrap">
-
+        </Link>
+        </Flex>
+              
+        <Center flexWrap="wrap">
+                   <Link href="/rule">
                         <Box mt="10px" mr="10px">
-                            Features
+                            Rule
                         </Box>
-                        <Box mt="10px" mr="10px">
-                            How it works
+        </Link>  
+        <Link href="history">
+        <Box mt="10px" mr="10px">
+                            History
                         </Box>
-                        <Box mt="10px" mr="10px">
-                            Token info
+        </Link>     
+        <Link href="/contact">
+        <Box mt="10px" mr="10px">
+                          Contact us 
                         </Box>
-                        <Link href="/about">
+        </Link>     
+        <Link href="/about">
                             <Box mt="10px" mr="10px">
                                 About us
                             </Box>
