@@ -22,7 +22,7 @@ export default function Stake({ setStaking, setToggle }) {
 
             })
     
-            console.log(data)
+            console.log(data[0])
             
             setFetch(data)
             
