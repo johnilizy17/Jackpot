@@ -241,7 +241,11 @@ export default function DashboardDesktop() {
             })
             const pec = formatEther(number[5]) * 1000000000000000000
             const divider = formatEther(number[4]) * 1000000000000000000
+           if(type === 1){
             setBigPercentage(pec * 100 / divider)
+           }else{
+            setBigPercentage(0)
+           }
             if (formatEther(number[4]) * 1000000000000000000 <= formatEther(number[5]) * 1000000000000000000) {
                 setName("bomb")
             }
