@@ -34,7 +34,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         <Box className="texts" mt="10px">
                             <h4>Information</h4>
                             <p>Bets: {getCurrentJackpotInfo.length}</p>
-                            <p style={{width:100, marginTop:5}}>Last staker: {getCurrentJackpotInfo.length>0.5? getCurrentJackpotInfo[getCurrentJackpotInfo.length-1].staker: staker}</p>
+                            <p style={{width:150, marginTop:5}}>Last staker: {getCurrentJackpotInfo.length>0.5? getCurrentJackpotInfo[getCurrentJackpotInfo.length-1].staker: staker}</p>
                         </Box>
                     </Box>
                 </Box>
@@ -64,7 +64,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                             style={{ translate: "none", rotate: "none", scale: "none", opacity: 1, transform: "translate(0%, 0%)" }}>
                             <h4>Information</h4>
                             <p>Bets: {getCurrentJackpotInfo.length}</p>
-                       <p style={{width:260}}>Last staker: {getCurrentJackpotInfo.length>0.5? getCurrentJackpotInfo[getCurrentJackpotInfo.length-1].staker: staker}</p>
+                       <p style={{width:150}}>Last staker: {getCurrentJackpotInfo.length>0.5? getCurrentJackpotInfo[getCurrentJackpotInfo.length-1].staker: staker}</p>
                       </Box>
                     </Box>
                 </Box>
