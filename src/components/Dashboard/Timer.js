@@ -1,4 +1,4 @@
-import { Box, Button, Center, IconButton } from '@chakra-ui/react';
+import { Box, Button, Center, IconButton, useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { readContract, readContracts } from '@wagmi/core'
 import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core'
@@ -18,7 +18,8 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     const [winnerAddress, setWinnerAddress] = useState({jackpot:"", bomb:""})
     const [jackInfo, setJackInfo] = useState({ status: true })
     const { address } = useAccount()
-
+    const toast = useToast();
+    
     async function Timing() {
         try {
 
