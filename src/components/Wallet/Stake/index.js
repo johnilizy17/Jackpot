@@ -25,6 +25,8 @@ export default function Stake({ setStaking, setToggle }) {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
+
+            console.log(dataParse)
             
             setFetch(dataParse)
             
