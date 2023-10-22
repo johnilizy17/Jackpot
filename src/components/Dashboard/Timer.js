@@ -44,9 +44,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
             const timingData = distance >= 1 ? startData : endData
             if (distance >= 1) {
                 setDisable(true)
-            } 
-                
-            
+            }           
             setDownDate(timingData)
             const current = datalength - 1
             if (current >= 0) {
@@ -102,9 +100,8 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
             if(distance>12){
              toast({ position: "top-right", title: "Stake button disactivate Error", description: "any timer less than 10 seconds all button is activated", status: "error", isClosable: true });
             }
-        }else{
-        setDisable(false)
         }
+        
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
         var minutes = Math.floor((distance % (60 * 60)) / (60));
         var seconds = Math.floor((distance % (60)));
