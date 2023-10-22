@@ -118,6 +118,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
                 setLoading2(false)
                 setTimeout(() => {
                     setDate(date + 1)
+                    setLoading2(true)
                 }, 13000)
                 try {
                     const hash = await getUserApprove(ABI, contractAddress)
