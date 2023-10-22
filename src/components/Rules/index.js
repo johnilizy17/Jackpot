@@ -67,7 +67,7 @@ reaches 0 and the first bet is made the normal
 jackpots start again (read normal jackpot)    
                         </Box>
     
-    <Box fontSize="24px" mt="20px" mb="10px>
+    <Box fontSize="24px" mt="20px" mb="10px">
                 Bomb Prize
             </Box>
 <Box>
@@ -81,13 +81,13 @@ the users will not know it.
     <Box>
 When the BOMB is triggered the background
 of that jackpog will change color.
-                        </Box>
-    <Box>
+</Box>
+ <Box>
 Once the normal jackpot is over, 50% of the
 bomb prize will be given randomly to one of
 the participants of that normal jackpot who is
 not the jackpot winner.
-                        </Box>
+ </Box>
     </Box>
 
             <Box h="200px" />
