@@ -1,7 +1,7 @@
 import { Box, Button, Flex } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 
-export default function Display({ data, getCurrentJackpotInfo, name, setName, bigBang, type }) {
+export default function Display({ data, getCurrentJackpotInfo, name, setName, bigBang, type, staker}) {
 
     function cardTransition(id) {
     }
@@ -34,6 +34,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         <Box className="texts" mt="20px">
                             <h4>Information</h4>
                             <p>Bets: {getCurrentJackpotInfo.length}</p>
+                            <p>Last staker: {staker}</p>
                         </Box>
                     </Box>
                 </Box>
