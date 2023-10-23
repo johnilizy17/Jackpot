@@ -22,7 +22,7 @@ export default function Stake({ setStaking, setToggle }) {
 
             })  
             
-            const mapped data.map((a)=>{
+            const mapped = data.map((a)=>{
                 return a
             })
             
