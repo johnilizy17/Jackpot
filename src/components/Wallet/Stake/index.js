@@ -59,7 +59,12 @@ export default function Stake({ setStaking, setToggle }) {
                         </tr>
                     </thead>
                     <tbody>
-                     
+                      {fetch.map((a, b) => (
+                           <tr>
+                          <td>hdfhf</td>
+                          </tr>
+                        ))
+                        }
                     </tbody>
                 </table>
 
