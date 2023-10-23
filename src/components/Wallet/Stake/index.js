@@ -22,11 +22,11 @@ export default function Stake({ setStaking, setToggle }) {
 
             })  
             
-            formatEther(data).map((a)=>{
-                console.log(a, "edited")
+            const mapped data.map((a)=>{
+                return a
             })
             
-         // setFetch(data)        
+          setFetch([...mapped])        
         } catch (err) {
             alert(err.message)
         }
