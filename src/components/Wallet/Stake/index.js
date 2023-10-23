@@ -23,7 +23,7 @@ export default function Stake({ setStaking, setToggle }) {
             })  
             
             data.map((a)=>{
-                console.log(a)
+                console.log(a, "edited")
             })
             
          // setFetch(data)        
