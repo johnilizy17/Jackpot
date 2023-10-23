@@ -97,7 +97,7 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
         // Time calculations for days, hours, minutes and seconds
         if (distance < 15) {
           setDisable(true)
-            if(distance>12){
+            if(distance>14.9){
              toast({ position: "top-right", title: "Stake button disactivate Error", description: "any timer less than 10 seconds all button is activated", status: "error", isClosable: true });
             }
         }
