@@ -20,7 +20,8 @@ export default function Stake({ setStaking, setToggle }) {
                 abi: ABI,
                 functionName: 'getAllJackpot'
 
-            })            
+            })  
+            console.log(data[0])
             setFetch(data)           
         } catch (err) {
             alert(err.message)
