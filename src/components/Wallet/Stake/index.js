@@ -22,8 +22,8 @@ export default function Stake({ setStaking, setToggle }) {
 
             })  
             
-            data.map((a)=>{
-                console.log(JSON.parse(a), "edited")
+            formatEther(data).map((a)=>{
+                console.log(a, "edited")
             })
             
          // setFetch(data)        
