@@ -64,7 +64,7 @@ export default function Stake({ setStaking, setToggle }) {
                           <td scope="row" data-label="id">{formatEther(a.id) * 1000000000000000000}</td>
                            <td data-label="Jackpot Name">{a.name}</td>
                            <td data-label="Winneer Address">{a.winner}</td>        
-                               <td data-label="Status" stlye={ a.winner === address? {color:"green"}:{color:"red"}}>{a.status == true? "in process" : a.winner === address? "You Won" : "You Loss"}</td>
+                               <td data-label="Status" style={ a.winner === address? {color:"green"}:{color:"red"}}>{a.status == false? "in process" : a.winner === address? "You Won" : "You Loss"}</td>
                                    
 
                                
