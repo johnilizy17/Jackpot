@@ -21,8 +21,8 @@ export default function Stake({ setStaking, setToggle }) {
                 functionName: 'getAllJackpot'
 
             })  
-            console.log(data[0])
-            setFetch(data)           
+            console.log(data[0][0])
+       //     setFetch(data)        
         } catch (err) {
             alert(err.message)
         }
