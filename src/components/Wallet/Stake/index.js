@@ -26,7 +26,7 @@ export default function Stake({ setStaking, setToggle }) {
                 return a
             })
             
-          setFetch([...mapped])        
+          console.log([...mapped])        
         } catch (err) {
             alert(err.message)
         }
