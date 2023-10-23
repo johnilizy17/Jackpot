@@ -108,9 +108,7 @@ export default function DashboardDesktop() {
         }
     }
 
-    useEffect(() => {
-        setRefresh(!refresh)
-        
+    useEffect(() => {      
         jackpotInfo()
         notification()
     }, [date, address])
@@ -129,6 +127,7 @@ export default function DashboardDesktop() {
     useEffect(() => {
         if (address) {
             CheckAllowance()
+            notification()
         }
     }, [address, refresh])
 
@@ -278,9 +277,7 @@ export default function DashboardDesktop() {
     }
 
     setInterval(() => {
-        if (address) {
-            notification()
-        }
+        setRefresh(!refresh)
     }, 1000)
 
 
