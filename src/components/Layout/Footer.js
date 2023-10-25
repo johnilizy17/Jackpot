@@ -10,6 +10,7 @@ import { formatEther } from 'viem'
 
 export default function Footer() {
     const [jackpotData, setJackpotData] = useState([])
+    const [type, setType] = useState(1)
 
     async function jackpotInfo() {
         try {
@@ -62,6 +63,15 @@ export default function Footer() {
                 ]
             })
             console.log(data)
+            const jackpotType = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'jackpotType'
+
+            })
+
+            setType(formatEther(jackpotType) * 1000000000000000000)
+
             setJackpotData(data)
         } catch (err) {
             console.log(err)
@@ -86,11 +96,14 @@ export default function Footer() {
                     <Box>REWARD DISTRIBUTION</Box>
                     <Flex flexWrap="wrap" flexDir='column'>
                         <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
-                        <Box mr="10px" mt="10px">
-                            2. {jackpotData[3] && jackpotData[8].result && formatEther(jackpotData[3].result) * 1000000000000000000}% NEXT NORMAL JACKPOT
-                        </Box>
+                       { type != 1? 
+                           <Box mr="10px" mt="10px">
+                            2. 10% NEXT NORMAL JACKPOT
+                        </Box> :
                         <Box mr="10px" mt="10px">2. 10% BIG JACKPOT</Box>
-                        <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result) * 1000000000000000000}% MARKETING</Box>
+                       }
+                      <Box mr="10px" mt="10px">2. 30% Alpha Vault</Box>
+                       <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result) * 1000000000000000000}% MARKETING</Box>
                         <Box mr="10px" mt="10px">4. 10% BOMB PRIZ</Box>
                     </Flex>
                 </Box>
