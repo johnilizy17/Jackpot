@@ -42,10 +42,10 @@ export default function DashboardDesktop() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
    useEffect(()=>{
-       if(display){
+       if(disable){
         toast({ position: "top-right", title: "Stake button disactivate Error", description: "any timer less than 10 seconds all button is activated", status: "error", isClosable: true });
         }
-       },[display])
+       },[disable])
     
     async function jackpotInfo() {
         try {
