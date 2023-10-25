@@ -37,7 +37,8 @@ export default function DashboardDesktop() {
     const [type, setType] = useState(1)
    const [stake, setStake] = useState("0x24B558864F562E3e8c481069752b1626bdd4e01A")
     const [DownDate, setDownDate] = useState();
-    const toast = useToast();
+    const [timeRefresh, setTimeRefresh] = useState(false)
+   const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -227,7 +228,7 @@ export default function DashboardDesktop() {
             const newTime = new Date(new Date().getTime() + date*60000);
             setDownDate(Math.floor(newTime.getTime()/1000));
             setTimeout(()=>{
-                setDate(date+1)
+                setTimeRefresh(!timeRefresh)
             },2000)
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
@@ -283,7 +284,7 @@ export default function DashboardDesktop() {
                     const notify = localStorage.getItem(`${dataParse[2]}${b}`)
                     if (!notify) {
                         localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
-                        setDate(date + 2)
+                        setTimeRefresh(!timeRefresh)
                         toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
                     }
                 }
@@ -326,7 +327,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
+                            <TimeCounter timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
                         </Box>
 
                         <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type} staker={stake} />
