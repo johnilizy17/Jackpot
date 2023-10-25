@@ -140,9 +140,9 @@ export default function TimeCounter({ date, setName, setDate, setLoading2, setDi
     }, [refresh])
 
 
-    setInterval(() => {
-        setRefresh(!refresh)
-    }, 1000)
+    //setInterval(() => {
+   //     setRefresh(!refresh)
+  //  }, 1000)
 
     return (
         <>
