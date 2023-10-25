@@ -175,7 +175,7 @@ export default function Header() {
                         </Link>
                         <Box pos="absolute" bottom="10px">
                            
-                            <Link href="/about">
+                            <Link href="https://medium.com/@alpha365Official">
 
                                 <Center justifyContent="space-between" w="250px" mb="20px">
                                     <Text
@@ -190,21 +190,7 @@ export default function Header() {
                                     </Text>
                                 </Center>
                             </Link>
-                            <Link href="/contact">
-
-                                <Center justifyContent="space-between" w="250px" mb="20px">
-                                    <Text
-                                        fontSize="14.56px"
-                                        lineHeight="25px"
-                                        color="#fff"
-                                        fontWeight="700"
-                                        cursor="pointer"
-                                        onClick={onToggle}
-                                    >
-                                        Contact
-                                    </Text>
-                                </Center>
-                            </Link>
+                            
                             {userAddress.length > 1 ?
                                 <Menu mt="20px">
                                     {({ isOpen }) => (
