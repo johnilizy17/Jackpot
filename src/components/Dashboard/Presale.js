@@ -89,9 +89,9 @@ export default function Footer() {
                         <Box mr="10px" mt="10px">
                             2. {jackpotData[3] && jackpotData[8].result && formatEther(jackpotData[3].result) * 1000000000000000000}% NEXT NORMAL JACKPOT
                         </Box>
-                        <Box mr="10px" mt="10px">2. {jackpotData[4] && jackpotData[8].result && formatEther(jackpotData[4].result) * 1000000000000000000}% BIG JACKPOT</Box>
+                        <Box mr="10px" mt="10px">2. {jackpotData[4] && jackpotData[3].result && formatEther(jackpotData[3].result) * 1000000000000000000}% BIG JACKPOT</Box>
                         <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result) * 1000000000000000000}% MARKETING</Box>
-                        <Box mr="10px" mt="10px">4. 10% BOMB PRIZ</Box>
+                        <Box mr="10px" mt="10px">4. 20% BOMB PRIZ</Box>
                     </Flex>
                 </Box>
             </Box>
@@ -138,12 +138,8 @@ export default function Footer() {
                             History
                         </Box>
         </Link>     
-        <Link href="/contact">
-        <Box mt="10px" mr="10px">
-                          Contact us 
-                        </Box>
-        </Link>     
-        <Link href="/about">
+        
+        <Link href="https://medium.com/@alpha365Official">
                             <Box mt="10px" mr="10px">
                                 About us
                             </Box>
