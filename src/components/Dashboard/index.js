@@ -322,7 +322,7 @@ export default function DashboardDesktop() {
                         </Box>
                         <Box className="minor-bar">
                             <Box className="labels">
-                                <p>{ type === 1? "Big Bang": "Minor</p>
+                                <p>{ type === 1? "Big Bang": "Minor"}</p>
                                 <p>${type ===1 ? bigBangPrice.toFixed(2)`/$${value[1]}`:bigBangPrice.toFixed(2) }</p>
                             </Box>
                             <Box className="progress-bar " style={{overflow:"hidden"}}>
