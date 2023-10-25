@@ -43,7 +43,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                     </Box>
                 </Box>
             </Box>
-            <Box className="view bomb-mode view-bomb"
+            <Box className="view bomb-mode view-bomb" h="550px"
                 style={name !== "bomb" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", overflow: "hidden", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title" style={{ color: "rgb(248, 200, 34)", backgroundColor: "rgb(148, 116, 5)" }}>BOMB 💥</h2><img
                     src="../image/alpha_bomb.png" alt="Alpha365 Bomb" className="alpha-bomb bomb"
@@ -74,7 +74,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                 </Box>
             </Box>
 
-            <Box className="view game-over pictured  view-gameover active" h="450px"
+            <Box className="view game-over pictured  view-gameover active" h="550px"
                 style={name !== "loss" ? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title" style={{ marginTop: -60 }}>GAMEOVER</h2>
                 <Box className="info" style={{ top: "-40px", width: "140%", height: '500px' }}><img src="../image/coin_stack.png" alt="treasure chest" className="chest popping"
