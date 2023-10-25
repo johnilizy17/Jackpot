@@ -30,7 +30,8 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                                 {(bigBang * 1).toFixed(2)} USDC</p>
                         </Box>
                     </Box>
-                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/mesh.png" alt="" />
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" >
+                    <img style={{ width: 40, marginRight: 40, height: 40, marginTop:-80}} src="../image/mesh.png" alt="" />
                         <Box className="texts" mt="10px">
                             <h4>Information</h4>
                             <p>Bets: {getCurrentJackpotInfo.length}</p>
