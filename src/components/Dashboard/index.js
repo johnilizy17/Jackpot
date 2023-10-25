@@ -76,6 +76,12 @@ export default function DashboardDesktop() {
                 abi: ABI,
                 functionName: 'bombBalance'
             })
+
+            const  normalBalance = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'normalBalance'
+            })
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
@@ -85,12 +91,18 @@ export default function DashboardDesktop() {
                 args: [dataParse[2] * 1000000000000000000],
                 functionName: 'fetchJackpotBal'
             })
-            if (bigBangBalance) {
+            if (bigBangBalance && type === 1) {
                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0]*50/100)
                setBigBang(bigCurrentPercentage)
-               const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0]*20/100)
+               const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0]*10/100)
                setBigBangPrice(bombCurrentPercentage)
                const percentageStake =  bombCurrentPercentage * 100/ formatEther(number[6])*1
+               setPercentage(percentageStake)
+            } else if( type != 1){
+              setBigBang(0)
+                const bombCurrentPercentage = JSON.parse(formatEther(normalBalance)) + (dataParse[0]*10/100)
+               setBigBangPrice(bombCurrentPercentage)
+                const percentageStake =  bombCurrentPercentage * 100/ formatEther(number[6])*1
                setPercentage(percentageStake)
             }
             setJackpotData(dataParse)
@@ -247,6 +259,7 @@ export default function DashboardDesktop() {
                 args: [dataParse[2] * 1000000000000000000],
                 functionName: 'fetchJackpotBal'
             })
+            
             const pec = formatEther(number[5]) * 1000000000000000000
             const divider = formatEther(number[4]) * 1000000000000000000
            if(type === 1){
