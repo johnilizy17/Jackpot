@@ -13,7 +13,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
     return (
         <Box className="view-swiper">
             <Box
-                className="view game-over pictured view-gameover active" h="450px"
+                className="view game-over pictured view-gameover active" h="550px"
                 style={name !== "start" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title">{type === 1 ? "Minor" : "Big Bang"}</h2>
                 <Box className="info" style={type === 1 ? {} : {background:"green"}} w={["100%", "600px"]}>
@@ -35,7 +35,10 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                             <h4>Information</h4>
                             <p>Bets: {getCurrentJackpotInfo.length}</p>
                             <p style={{width:150, marginTop:5}}>Last staker: {getCurrentJackpotInfo.length>0.5? getCurrentJackpotInfo[getCurrentJackpotInfo.length-1].staker: staker}</p>
-                        </Box>
+                       <p style={{width:150, marginTop:5}}> 
+  The buttons are deactivated when the timer is at 10 sec 
+    </p>
+    </Box>
                     </Box>
                 </Box>
             </Box>
