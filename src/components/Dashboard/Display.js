@@ -30,13 +30,13 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                                 {(bigBang * 1).toFixed(2)} USDC</p>
                         </Box>
                     </Box>
-                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/mesh.png" alt="" />
+                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="start" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/mesh.png" alt="" />
                         <Box className="texts" mt="10px">
                             <h4>Information</h4>
                             <p>Bets: {getCurrentJackpotInfo.length}</p>
                             <p style={{width:150, marginTop:5}}>Last staker: {getCurrentJackpotInfo.length>0.5? getCurrentJackpotInfo[getCurrentJackpotInfo.length-1].staker: staker}</p>
                        <p style={{width:150, marginTop:5}}> 
-  The buttons are deactivated when the timer is at 10 sec 
+ timer: The buttons are deactivated when the timer is at 10 sec 
     </p>
     </Box>
                     </Box>
