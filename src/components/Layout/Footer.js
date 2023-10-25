@@ -98,9 +98,9 @@ export default function Footer() {
                         <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
                        { type != 1? 
                            <Box mr="10px" mt="10px">
-                            2. 10% NEXT NORMAL JACKPOT
+                            2. 10% NEXT MINOR JACKPOT
                         </Box> :
-                        <Box mr="10px" mt="10px">2. 10% BIG JACKPOT</Box>
+                        <Box mr="10px" mt="10px">2. 10% NEXT BIG JACKPOT</Box>
                        }
                       <Box mr="10px" mt="10px">2. 35% Alpha Vault</Box>
                        <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result) * 1000000000000000000}% MARKETING</Box>
