@@ -23,7 +23,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                             <p className="blink_me" style={{ color: "rgb(30, 240, 30)" }} >{data[0] ? JSON.parse(data[0]).toFixed(2) : 0} USDC</p>
                         </Box>
                     </Box>
-                    <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/trophie.png" alt="" />
+                    <Box display="flex" w={["100%", "500px"]} h="70px" marginTop="-20px" alignItems="center" p="20px" pt="10px" ><img style={{ width: 40, marginRight: 40, height: 40 }} src="../image/trophie.png" alt="" />
                         <Box className="texts second" mt="10px">
                             <h4>Bomb value</h4>
                             <p>
@@ -31,7 +31,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                         </Box>
                     </Box>
                     <Box display="flex" w={["100%", "500px"]} h="70px" alignItems="center" p="20px" pt="10px" >
-                    <img style={{ width: 40, marginRight: 40, height: 40, marginBottom:80}} src="../image/mesh.png" alt="" />
+                    <img style={{ width: 40, marginRight: 40, height: 40, marginBottom:120}} src="../image/mesh.png" alt="" />
                         <Box className="texts" mt="10px">
                             <h4>Information</h4>
                             <p>Bets: {getCurrentJackpotInfo.length}</p>
