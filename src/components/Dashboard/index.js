@@ -331,7 +331,7 @@ export default function DashboardDesktop() {
 
                         <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type} staker={stake} />
 
-                        <Box className="bomb-bar" h="450px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
+                        <Box className="bomb-bar" h="550px"><img src="../image/alpha_bomb.png" alt="" className="bang" />
                             <Box className="progress-bar vertical">
                                 <Box className="bar" style={{ height: `${BigPercentage > 99 ? 100 : BigPercentage}%` }}></Box>
                             </Box>
