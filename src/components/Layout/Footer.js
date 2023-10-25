@@ -138,12 +138,8 @@ export default function Footer() {
                             History
                         </Box>
         </Link>     
-        <Link href="/contact">
-        <Box mt="10px" mr="10px">
-                          Contact us 
-                        </Box>
-        </Link>     
-        <Link href="/about">
+        
+        <Link href="https://medium.com/@alpha365Official">
                             <Box mt="10px" mr="10px">
                                 About us
                             </Box>
