@@ -295,9 +295,9 @@ export default function DashboardDesktop() {
         }
     }
 
-    setInterval(() => {
-        setRefresh(!refresh)
-    }, 1000)
+  //  setInterval(() => {
+  //      setRefresh(!refresh)
+ //   }, 1000)
 
 
     return (
