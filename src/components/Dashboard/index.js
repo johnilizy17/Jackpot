@@ -92,6 +92,7 @@ export default function DashboardDesktop() {
                 args: [dataParse[2] * 1000000000000000000],
                 functionName: 'fetchJackpotBal'
             })
+            alert("here")
             if (bigBangBalance && type === 1) {
                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0]*50/100)
                setBigBang(bigCurrentPercentage)
