@@ -205,7 +205,7 @@ export default function DashboardDesktop() {
             setLoading(false)
         } catch (err) {
             toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
-
+onClose()
             setLoading(false)
         }
     }
