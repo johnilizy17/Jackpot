@@ -86,7 +86,8 @@ export default function DashboardDesktop() {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
-            const id =(dataParse[2] * 1000000000000000000).fixed(0)
+            const numberSetting = dataParse[2] * 1000000000000000000
+            const id = numberSetting.toFixed(0)
             const number = await readContract({
                 address: contractAddress,
                 abi: ABI,
