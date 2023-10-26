@@ -58,7 +58,8 @@ export default function DashboardDesktop() {
 
             })
 
- alert("here")           const jackpotType = await readContract({
+ alert("here")        
+     const jackpotType = await readContract({
                 address: contractAddress,
                 abi: ABI,
                 functionName: 'jackpotType'
