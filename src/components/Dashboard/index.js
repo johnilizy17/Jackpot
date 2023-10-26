@@ -124,7 +124,7 @@ export default function DashboardDesktop() {
 
         } catch (err) {
 
-            toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
+         //   toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
 
             console.log(err)
         }
@@ -204,7 +204,7 @@ export default function DashboardDesktop() {
             setMintApproval(true)
             setLoading(false)
         } catch (err) {
-            toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
+            toast({ position: "top-right", title: "Approved Error", description: "approval is processing give it some seconds", status: "error", isClosable: true });
 
             setLoading(false)
         }
