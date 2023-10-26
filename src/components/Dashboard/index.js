@@ -86,11 +86,11 @@ export default function DashboardDesktop() {
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
-            alert(dataParse[2])
+            
             const number = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                args: [1],
+                args: [JSON.strigfly(dataParse[2] * 1000000000000000000)],
                 functionName: 'fetchJackpotBal'
             })
             alert("here 1")
