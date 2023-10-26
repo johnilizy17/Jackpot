@@ -204,7 +204,7 @@ export default function DashboardDesktop() {
             setMintApproval(true)
             setLoading(false)
         } catch (err) {
-            toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
+            toast({ position: "top-right", title: "Approved Error", description: "Approval error try again", status: "error", isClosable: true });
 
             setLoading(false)
         }
