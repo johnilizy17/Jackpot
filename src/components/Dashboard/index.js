@@ -90,7 +90,7 @@ export default function DashboardDesktop() {
             const number = await readContract({
                 address: contractAddress,
                 abi: ABI,
-                args: [dataParse[2] * 1000000000000000000],
+                args: [1],
                 functionName: 'fetchJackpotBal'
             })
             alert("here 1")
