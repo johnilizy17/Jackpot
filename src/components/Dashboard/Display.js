@@ -94,7 +94,7 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                     <Button color="#fff" bg="#F8C822" mr="20px">  Play Again </Button>
                 </Flex>
             </Box>
-            <Box className="view game-over pictured view-gameover active" h="450px"
+            <Box className="view game-over pictured view-gameover active" h="550px"
                 style={name !== "win" ? { transform: "scale(0.7, 0.7)", translate: "none", rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(-0.2px, -0.2px)", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
                 <h2 className="title" style={{ marginTop: -60 }}>CASHOUT</h2>
                 <Flex mt="510px" w="140%">
