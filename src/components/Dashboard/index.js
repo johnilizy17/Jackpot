@@ -38,7 +38,8 @@ export default function DashboardDesktop() {
    const [stake, setStake] = useState("0x24B558864F562E3e8c481069752b1626bdd4e01A")
     const [DownDate, setDownDate] = useState();
     const [timeRefresh, setTimeRefresh] = useState(false)
-   const toast = useToast();
+  const [minuterSetter, setminuterSetter] useStatr(0)
+    const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -199,6 +200,7 @@ export default function DashboardDesktop() {
 
             setAllowed(amount)
             const timing = amount == 5 ? 10 : amount == 10 ? 5 : 2.5
+            setminuterSetter(timing)
             setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
@@ -228,8 +230,9 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
             setAllowed(amount)
             onClose()
-            const newTime = new Date(new Date().getTime() + date*60000);
-            setDownDate(Math.floor(newTime.getTime()/1000));
+            const newTime = new Date(new Date().getTime() + minuterSetter*60000);
+           const dividedTime = Math.floor(newTime.getTime()/1000)
+            setDownDate(dividedTime);
             setTimeout(()=>{
              jackpotInfo()
              notification()
