@@ -307,9 +307,9 @@ onClose()
         }
     }
 
-   setInterval(() => {
-        setRefresh(!refresh)
-    }, 5000)
+ //  setInterval(() => {
+  //      setRefresh(!refresh)
+ //   }, 5000)
 
 
     return (
