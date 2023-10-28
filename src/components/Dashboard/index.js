@@ -250,11 +250,13 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
             setAllowed(amount)
            // Find the distance between now and the count down date
+           if(hash){
            let now = startTimer
 
             setStartTimer(now)
             
             setDownDate(now + minuterSetter);
+            }
             setTimeout(()=>{
              jackpotInfo()
              notification()
