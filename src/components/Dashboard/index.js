@@ -249,7 +249,7 @@ export default function DashboardDesktop() {
 
             const { hash } = await writeContract(config)
             setAllowed(amount)
-            onClose()
+            
             let currentTimestamp = await readContract({
                 address: contractAddress,
                 abi: ABI,
@@ -266,7 +266,7 @@ export default function DashboardDesktop() {
              jackpotInfo()
              notification()
             },900) 
-            
+            onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
