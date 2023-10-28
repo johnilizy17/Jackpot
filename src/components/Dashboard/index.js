@@ -249,15 +249,8 @@ export default function DashboardDesktop() {
 
             const { hash } = await writeContract(config)
             setAllowed(amount)
-            
-            let currentTimestamp = await readContract({
-                address: contractAddress,
-                abi: ABI,
-                functionName: 'getCurretTimestamp',
-            });
-        
            // Find the distance between now and the count down date
-           let now = formatEther(currentTimestamp) * 1000000000000000000
+           let now = startTimer
 
             setStartTimer(now)
             

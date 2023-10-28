@@ -103,7 +103,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         if (distance < 15) {
           setDisable(true)
         }
-        
+       console.log(startTimer)  
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
         var minutes = Math.floor((distance % (60 * 60)) / (60));
         var seconds = Math.floor((distance % (60)));
@@ -142,10 +142,15 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
 let DateObj = new Date();
  
     useEffect(() => {
-     setRefresh(!refresh)
+    //  setRefresh(!refresh)
+   
     if (DownDate) {
    console.log(DateObj.getSeconds(), "seconds")
         Timing2()
+     }else{
+        let now = startTimer
+        const newTime = now + 1
+        setStartTimer(newTime);
      }
     }, [DateObj.getSeconds()])
     
