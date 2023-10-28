@@ -7,7 +7,7 @@ import ABI from '@/utils/ABI'
 import { formatEther } from 'viem'
 import { useAccount } from 'wagmi'
 
-export default function TimeCounter({ timeRefresh, date, setName, setDate, setLoading2, setDisable, DownDate, setDownDate }) {
+export default function TimeCounter({ timeRefresh, startTimer, date, setName, setDate, setLoading2, setDisable, DownDate, setDownDate }) {
 
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
@@ -96,15 +96,9 @@ export default function TimeCounter({ timeRefresh, date, setName, setDate, setLo
     }
 
     async function Timing2() {
-        // Update the count down every 1 second
-        let currentTimestamp = await readContract({
-                address: contractAddress,
-                abi: ABI,
-                functionName: 'getCurretTimestamp',
-            });
-        
+
         // Find the distance between now and the count down date
-        let now = formatEther(currentTimestamp) * 1000000000000000000
+        let now = startTimer
 
         var distance = DownDate - now;
         // Time calculations for days, hours, minutes and seconds
