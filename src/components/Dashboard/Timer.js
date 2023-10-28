@@ -139,17 +139,14 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
     }, [date, timeRefresh])
 
     
+let DateObj = new Date('October 15, 1996 05:35:32');
+ 
     useEffect(() => {
         
-    }, [refresh])
-
-
-  const interval = setInterval(() => {
-   if (DownDate) {
+    if (DownDate) {
       Timing2()
-   }
-  }, 1000);
-  clearInterval(interval);
+     }
+    }, [DateObj.getSeconds()])
     
     return (
         <>
