@@ -144,7 +144,8 @@ let DateObj = new Date();
     useEffect(() => {
      setRefresh(!refresh)
     if (DownDate) {
-      Timing2()
+   console.log(DateObj.getSeconds(), "seconds")
+        Timing2()
      }
     }, [DateObj.getSeconds()])
     
