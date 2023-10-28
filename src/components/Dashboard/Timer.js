@@ -142,7 +142,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
 let DateObj = new Date('October 15, 1996 05:35:32');
  
     useEffect(() => {
-        
+     setRefresh(!refresh)
     if (DownDate) {
       Timing2()
      }
