@@ -99,7 +99,7 @@ export default function DashboardDesktop() {
             })
         
             if (bigBangBalance && type === 1) {
-               const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0]*50/100)
+               const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0]*10/100)
                setBigBang(bigCurrentPercentage)
                const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0]*10/100)
                setBigBangPrice(bombCurrentPercentage)
