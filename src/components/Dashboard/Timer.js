@@ -142,16 +142,15 @@ console.log("hell")
 
     
     useEffect(() => {
-        if (DownDate) {
-            
-        }
+        
     }, [refresh])
 
 
 useEffect(() => {
   const interval = setInterval(() => {
-    Timing2()
-      
+   if (DownDate) {
+      Timing2()
+   }
   }, 1000);
   return () => clearInterval(interval);
 }, []);
