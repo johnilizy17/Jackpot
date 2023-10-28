@@ -199,7 +199,7 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
 
             setAllowed(amount)
-            const timing = amount == 5 ? 10 : amount == 10 ? 5 : 2.5
+            const timing = amount == 5 ? 600 : amount == 10 ? 300 : 150
             setminuterSetter(timing)
             setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
@@ -230,9 +230,16 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
             setAllowed(amount)
             onClose()
-            const newTime = new Date(new Date().getTime() + minuterSetter*60000);
-           const dividedTime = Math.floor(newTime.getTime()/1000)
-            setDownDate(dividedTime);
+            let currentTimestamp = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'getCurretTimestamp',
+            });
+        
+           // Find the distance between now and the count down date
+           let now = formatEther(currentTimestamp) * 1000000000000000000
+
+            setDownDate(now + minuterSetter);
             setTimeout(()=>{
              jackpotInfo()
              notification()
