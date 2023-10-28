@@ -151,7 +151,7 @@ console.log("hell")
       Timing2()
    }
   }, 1000);
-  return () => clearInterval(interval);
+  clearInterval(interval);
     
     return (
         <>
