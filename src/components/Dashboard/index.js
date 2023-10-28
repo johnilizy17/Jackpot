@@ -86,17 +86,6 @@ export default function DashboardDesktop() {
                 functionName: 'normalBalance'
             })
 
-            let currentTimestamp = await readContract({
-                address: contractAddress,
-                abi: ABI,
-                functionName: 'getCurretTimestamp',
-            });
-        
-           // Find the distance between now and the count down date
-           let now = formatEther(currentTimestamp) * 1000000000000000000
-
-           setStartTimer(now)
-            
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
@@ -144,6 +133,24 @@ export default function DashboardDesktop() {
         }
     }
 
+    async function currentTimer(){
+
+            let currentTimestamp = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'getCurretTimestamp',
+            });
+        
+           // Find the distance between now and the count down date
+           let now = formatEther(currentTimestamp) * 1000000000000000000
+
+           setStartTimer(now)
+            
+    }
+
+    useEffect(()=>{
+        currentTimer()
+    },[])
     useEffect(() => {      
         jackpotInfo()
         notification()
@@ -252,6 +259,8 @@ export default function DashboardDesktop() {
            // Find the distance between now and the count down date
            let now = formatEther(currentTimestamp) * 1000000000000000000
 
+            setStartTimer(now)
+            
             setDownDate(now + minuterSetter);
             setTimeout(()=>{
              jackpotInfo()
@@ -315,6 +324,7 @@ export default function DashboardDesktop() {
                     const notify = localStorage.getItem(`${dataParse[2]}${b}`)
                     if (!notify) {
                         localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
+                        currentTimer()
                         setTimeRefresh(!timeRefresh)
                         toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
                     }
