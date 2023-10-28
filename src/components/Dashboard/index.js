@@ -38,7 +38,7 @@ export default function DashboardDesktop() {
    const [stake, setStake] = useState("0x24B558864F562E3e8c481069752b1626bdd4e01A")
     const [DownDate, setDownDate] = useState();
     const [timeRefresh, setTimeRefresh] = useState(false)
-  const [minuterSetter, setminuterSetter] useState(0)
+  const [minuterSetter, setminuterSetter] = useState(0)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
