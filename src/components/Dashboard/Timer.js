@@ -110,7 +110,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         var minutes = Math.floor((distance % (60 * 60)) / (60));
         var seconds = Math.floor((distance % (60)));
         const newTime = now - 1
-        setStartTimer
+        setStartTimer(newTime);
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
         if (distance < 0) {
 
