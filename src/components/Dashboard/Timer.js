@@ -146,14 +146,12 @@ console.log("hell")
     }, [refresh])
 
 
-useEffect(() => {
   const interval = setInterval(() => {
    if (DownDate) {
       Timing2()
    }
   }, 1000);
   return () => clearInterval(interval);
-}, [[]]);
     
     return (
         <>
