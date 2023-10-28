@@ -96,7 +96,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
     }
 
     async function Timing2() {
-
+console.log("hell")
         // Find the distance between now and the count down date
         let now = startTimer
 
@@ -143,14 +143,15 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
     
     useEffect(() => {
         if (DownDate) {
-            Timing2()
+            
         }
     }, [refresh])
 
 
 useEffect(() => {
   const interval = setInterval(() => {
-    setRefresh(!refresh)
+    Timing2()
+      
   }, 1000);
   return () => clearInterval(interval);
 }, []);
