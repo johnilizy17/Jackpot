@@ -89,14 +89,12 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
                     }
                 }
             }
-
         } catch (err) {
             console.log(err.message)
         }
     }
 
     async function Timing2() {
-console.log("hell")
         // Find the distance between now and the count down date
         let now = startTimer
 
