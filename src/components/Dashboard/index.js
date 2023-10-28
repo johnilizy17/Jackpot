@@ -35,11 +35,12 @@ export default function DashboardDesktop() {
     const [bigBangPrice, setBigBangPrice] = useState(0)
     const [disable, setDisable] = useState(false);
     const [type, setType] = useState(1)
-   const [stake, setStake] = useState("0x24B558864F562E3e8c481069752b1626bdd4e01A")
+    const [stake, setStake] = useState("0x24B558864F562E3e8c481069752b1626bdd4e01A")
     const [DownDate, setDownDate] = useState();
     const [timeRefresh, setTimeRefresh] = useState(false)
-  const [minuterSetter, setminuterSetter] = useState(0)
-    const toast = useToast();
+    const [minuterSetter, setminuterSetter] = useState(0)
+   const [startTimer, setStartTimer] = useState(0)
+   const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -84,6 +85,18 @@ export default function DashboardDesktop() {
                 abi: ABI,
                 functionName: 'normalBalance'
             })
+
+            let currentTimestamp = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'getCurretTimestamp',
+            });
+        
+           // Find the distance between now and the count down date
+           let now = formatEther(currentTimestamp) * 1000000000000000000
+
+           setStartTimer(now)
+            
             const dataParse = data.map((a) => {
                 return formatEther(a)
             })
@@ -251,7 +264,7 @@ export default function DashboardDesktop() {
             
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: "approval is processing give it some seconds", status: "error", isClosable: true });
-onClose()
+            onClose()
             setLoading(false)
         }
     }
@@ -345,7 +358,7 @@ onClose()
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
+                            <TimeCounter startTimer={startTimer} timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
                         </Box>
 
                         <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type} staker={stake} />
