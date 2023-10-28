@@ -89,11 +89,16 @@ export default function TimeCounter({ timeRefresh, date, setName, setDate, setLo
 
     async function Timing2() {
         // Update the count down every 1 second
-
+        let currentTimestamp = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'getCurretTimestamp',
+            });
+        
         // Find the distance between now and the count down date
-        let now = new Date().getTime()
+        let now = formatEther(currentTimestamp) * 1000000000000000000
 
-        var distance = DownDate - Math.floor(now / 1000);
+        var distance = DownDate - now;
         // Time calculations for days, hours, minutes and seconds
         if (distance < 15) {
           setDisable(true)
