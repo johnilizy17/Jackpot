@@ -38,15 +38,16 @@ export default function TimeCounter({ timeRefresh, date, setName, setDate, setLo
 
             const startData = formatEther(data) * 1000000000000000000
             setJackInfo(data2[datalength])
-                    address: contractAddress,
+            let currentTimestamp = await readContract({
+                address: contractAddress,
                 abi: ABI,
                 functionName: 'getCurretTimestamp',
             });
         
-        // Find the distance between now and the count down date
-        let now = formatEther(currentTimestamp) * 1000000000000000000
+           // Find the distance between now and the count down date
+           let now = formatEther(currentTimestamp) * 1000000000000000000
 
-            var distance = startData - Math.floor(now / 1000);
+            var distance = startData - now ;
             setChecker(endData)
             const timingData = distance >= 1 ? startData : endData
             if (distance >= 1) {
