@@ -147,12 +147,9 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         }
     }, [refresh])
 
-useEffect(()=>{
-    setInterval(() => {
+setInterval(() => {
      setRefresh(!refresh)
     }, 1000)
-},[])
-
 
     return (
         <>
