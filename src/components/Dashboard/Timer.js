@@ -147,10 +147,14 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         }
     }, [refresh])
 
-setInterval(() => {
-     setRefresh(!refresh)
-    }, 1000)
 
+useEffect(() => {
+  const interval = setInterval(() => {
+    setRefresh(!refresh)
+  }, 1000);
+  return () => clearInterval(interval);
+}, []);
+    
     return (
         <>
             <Center pos="fixed" top="0px"  left="0px" zIndex={winnerAddress.jackpot === ""?"-1":"3000"} opacity={winnerAddress.jackpot === ""? 0:5} w="100vw" h="100vh" bg="#e3cccc24">
