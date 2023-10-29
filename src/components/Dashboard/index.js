@@ -259,6 +259,7 @@ export default function DashboardDesktop() {
             setDownDate(now + minuterSetter);
             }
             setTimeout(()=>{
+             currentTimer()
              jackpotInfo()
              notification()
                setTimeRefresh(!timeRefresh)
