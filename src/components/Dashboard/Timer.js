@@ -149,7 +149,7 @@ let DateObj = new Date();
  
     useEffect(() => {
     //  setRefresh(!refresh)
-   
+   console.log("start");
     if (DownDate) {
         Timing2()
      }else{
