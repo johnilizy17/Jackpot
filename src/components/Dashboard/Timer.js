@@ -154,7 +154,7 @@ let DateObj = new Date();
     let seconds = d.getSeconds()
     
    if(seconds != timeStamp){
-      console.log("start", seconds); 
+      
     if (DownDate) {
         Timing2()
      }else{
