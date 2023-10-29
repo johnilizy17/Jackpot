@@ -115,10 +115,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         var seconds = Math.floor((distance % (60)));
         const newTime = now + 1
         setStartTimer(newTime);
-        
-        
-        setNumberOfTime({ hour: "01", min: "00", sec: "00" })
-    
+        setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
         if (distance < 0) {
 
             setDate(date + 1)
