@@ -150,8 +150,10 @@ let DateObj = new Date();
  
     useEffect(() => {
  setRefresh(!refresh)
-    const dating = new Date.getSeconds()
-   console.log("start", dating);
+    const d = new Date()
+let seconds = d.getSeconds()
+
+   console.log("start", seconds);
         
     if (DownDate) {
         Timing2()
