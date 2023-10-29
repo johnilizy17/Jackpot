@@ -116,11 +116,9 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         const newTime = now + 1
         setStartTimer(newTime);
         
-        if(distance == NaN){
-        setNumberOfTime({ hour: "00", min: "00", sec: "00" })
-        }else{
-         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-        }
+        
+        setNumberOfTime({ hour: "01", min: "00", sec: "00" })
+    
         if (distance < 0) {
 
             setDate(date + 1)
