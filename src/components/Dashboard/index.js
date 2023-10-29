@@ -258,11 +258,9 @@ export default function DashboardDesktop() {
             
             setDownDate(now + minuterSetter);
             }
-            setTimeout(()=>{
-             currentTimer()
+            setTimeout(()=>{  
              jackpotInfo()
-             notification()
-               setTimeRefresh(!timeRefresh)
+             notification()      
             },900) 
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
