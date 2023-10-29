@@ -9,7 +9,8 @@ import { useAccount } from 'wagmi'
 
 export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, date, setName, setDate, setLoading2, setDisable, DownDate, setDownDate }) {
 
-    const [timeSteamp, setTimeSteamp] = useState(1696822534000)
+    const [timeSteamp, setTimeSteamp] = useState(0)
+    const [timeStamp, setTimeStamp] = useState(0)
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
     const [DownDate2, setDownDate2] = useState(false);
@@ -149,7 +150,8 @@ let DateObj = new Date();
  
     useEffect(() => {
  setRefresh(!refresh)
-   console.log("start");
+    const dating = new Date()
+   console.log("start", dating);
         
     if (DownDate) {
         Timing2()
