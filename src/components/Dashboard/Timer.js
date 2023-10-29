@@ -150,7 +150,7 @@ let DateObj = new Date();
  
     useEffect(() => {
  setRefresh(!refresh)
-    const dating = new Date()
+    const dating = new Date.getSeconds()
    console.log("start", dating);
         
     if (DownDate) {
