@@ -152,8 +152,8 @@ let DateObj = new Date();
  
     const d = new Date()
     let seconds = d.getSeconds()
-    setTimeStamp(seconds)
-   if(seconds){
+    
+   if(seconds != timeStamp){
       console.log("start", seconds); 
     if (DownDate) {
         Timing2()
@@ -163,6 +163,7 @@ let DateObj = new Date();
         setStartTimer(newTime);
      }
         }
+        setTimeStamp(seconds)
      setRefresh(!refresh)
     }, [refresh])
     
