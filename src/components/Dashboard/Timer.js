@@ -148,8 +148,9 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
 let DateObj = new Date();
  
     useEffect(() => {
-    //  setRefresh(!refresh)
+ setRefresh(!refresh)
    console.log("start");
+        
     if (DownDate) {
         Timing2()
      }else{
@@ -157,7 +158,7 @@ let DateObj = new Date();
         const newTime = now + 1
         setStartTimer(newTime);
      }
-    }, [DateObj.getSeconds()])
+    }, [refresh])
     
     return (
         <>
