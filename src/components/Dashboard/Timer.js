@@ -116,15 +116,13 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         const newTime = now + 1
         setStartTimer(newTime);
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-        if(distance <1){
-            setNumberOfTime({ hour: "00", min: "00", sec: "00" })
-        }
-        if (distance < 0 && !starting) {
+        
+        if (distance < 0) {
 
             setDate(date + 1)
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
 
-            if (DownDate > 0 && jackInfo.status === false && reward && checker === DownDate) {
+            if (DownDate > 0 && endDate != 0 && jackInfo.status === false && reward && checker === DownDate) {
                 setReward(false)
                 setLoading2(false)
                 setTimeout(() => {
@@ -153,7 +151,7 @@ let DateObj = new Date();
     useEffect(() => {
     //  setRefresh(!refresh)
    
-    if (DownDate != false && endDate != 0) {
+    if (DownDate != false) {
         Timing2()
      }else{
         let now = startTimer
