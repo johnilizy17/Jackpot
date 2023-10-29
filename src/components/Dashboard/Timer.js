@@ -10,7 +10,8 @@ import { useAccount } from 'wagmi'
 export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, date, setName, setDate, setLoading2, setDisable, DownDate, setDownDate }) {
 
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
-    const [refresh, setRefresh] = useState(false)
+    const [time, setTime] = useState(3600)
+     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
     const [DownDate2, setDownDate2] = useState(false);
     const [reward, setReward] = useState(true)
@@ -109,7 +110,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         if (distance < 15) {
           setDisable(true)
         }
-       console.log(distance)  
+         
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
         var minutes = Math.floor((distance % (60 * 60)) / (60));
         var seconds = Math.floor((distance % (60)));
@@ -145,19 +146,22 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
     }, [date, timeRefresh])
 
     
-let DateObj = new Date();
+
  
     useEffect(() => {
- setRefresh(!refresh)
-   console.log("start");
-        
+     setRefresh(!refresh)
+       let DateObj = new Date(); 
+      setTime(DataObj.getSeconds) 
+        if(DataObj.getSeconds != time){
+            console.log("start")
     if (DownDate) {
-        Timing2()
+        Timing2() 
      }else{
         let now = startTimer
         const newTime = now + 1
         setStartTimer(newTime);
      }
+    }
     }, [refresh])
     
     return (
