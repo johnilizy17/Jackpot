@@ -152,9 +152,16 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
      setRefresh(!refresh)
        let DateObj = new Date()
         const sec = DataObj.getSeconds()
-        setTime(sec) 
+        console.log(sec) 
         if(sec != time){
-            
+         console.log("start")
+         if (DownDate) {
+              Timing2() 
+             }else{
+              let now = startTimer
+               const newTime = now + 1
+                setStartTimer(newTime);
+              }   
          }
     }, [refresh])
     
