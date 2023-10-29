@@ -333,16 +333,10 @@ export default function DashboardDesktop() {
         }
     }
 
-useEffect(()=>{   
-    console.log("here")
-    const d = new Date()
-    let seconds = d.getSeconds()
-    console.log(seconds)
-   if(seconds != timeStamp){
+setInterval(()=>{   
+    console.log("here")    
        setRefresh(!refresh)
-     }
-        setTimeStamp(seconds)
-    }, [timeStamp])
+    }, 5000)
     
     return (
         <>
