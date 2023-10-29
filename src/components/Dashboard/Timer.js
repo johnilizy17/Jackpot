@@ -153,7 +153,7 @@ let DateObj = new Date();
     useEffect(() => {
     //  setRefresh(!refresh)
    
-    if (DownDate != false) {
+    if (DownDate) {
         Timing2()
      }else{
         let now = startTimer
