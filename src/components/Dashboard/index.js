@@ -336,6 +336,7 @@ export default function DashboardDesktop() {
 useEffect(()=>{   
     const d = new Date()
     let seconds = d.getSeconds()/10
+    console.log(seconds)
    if(seconds.toFixed(0) != timeStamp){
        setRefresh(!refresh)
      }
