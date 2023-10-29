@@ -12,10 +12,11 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
     const [timeSteamp, setTimeSteamp] = useState(1696822534000)
     const [refresh, setRefresh] = useState(false)
     const [NumberOfTime, setNumberOfTime] = useState({ hour: "00", min: "00", sec: "00" })
-    const [DownDate2, setDownDate2] = useState();
+    const [DownDate2, setDownDate2] = useState(false);
     const [reward, setReward] = useState(true)
     const [checker, setChecker] = useState(0)
     const [winnerAddress, setWinnerAddress] = useState({jackpot:"", bomb:""})
+    const [starting, setStarting] = useState(false)
     const [jackInfo, setJackInfo] = useState({ status: true })
     const { address } = useAccount()
     const toast = useToast();
@@ -50,9 +51,13 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
             var distance = startData - now ;
             setChecker(endData)
             const timingData = distance >= 1 ? startData : endData
+          
             if (distance >= 1) {
                 setDisable(true)
-            }           
+                setStarting(true)
+            }else{
+             setStarting(false)
+            }
             setDownDate(timingData)
             const current = datalength - 1
             if (current >= 0) {
@@ -110,7 +115,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         const newTime = now + 1
         setStartTimer(newTime);
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-        if (distance < 0) {
+        if (distance < 0 && !starting) {
 
             setDate(date + 1)
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
@@ -144,7 +149,7 @@ let DateObj = new Date();
     useEffect(() => {
     //  setRefresh(!refresh)
    
-    if (DownDate) {
+    if (DownDate != false) {
         Timing2()
      }else{
         let now = startTimer
