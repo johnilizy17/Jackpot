@@ -145,7 +145,6 @@ let DateObj = new Date();
     //  setRefresh(!refresh)
    
     if (DownDate) {
-   console.log(DateObj.getSeconds(), "seconds")
         Timing2()
      }else{
         let now = startTimer
