@@ -335,12 +335,12 @@ export default function DashboardDesktop() {
 
 useEffect(()=>{   
     const d = new Date()
-    let seconds = d.getSeconds()/10
+    let seconds = d.getSeconds()
     console.log(seconds)
-   if(seconds.toFixed(0) != timeStamp){
+   if(seconds != timeStamp){
        setRefresh(!refresh)
      }
-        setTimeStamp(seconds.toFixed(0))
+        setTimeStamp(seconds)
     }, [timeStamp])
     
     return (
