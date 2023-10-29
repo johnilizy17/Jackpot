@@ -150,7 +150,7 @@ export default function DashboardDesktop() {
 
     useEffect(()=>{
         currentTimer()
-    },[])
+    },[timeRefresh]])
     useEffect(() => {      
         jackpotInfo()
         notification()
@@ -333,9 +333,13 @@ export default function DashboardDesktop() {
         }
     }
 
-   setInterval(() => {
+let DateObj = new Date();
+let timerCounting = DateObj.getSeconds()/10
+
+   useEffect(() =>{
+      console.log("counting")
        setRefresh(!refresh)
-   }, 5000)
+   }, [timerCounting.toFixed(0)])
 
 
     return (
