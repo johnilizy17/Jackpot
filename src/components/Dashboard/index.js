@@ -150,7 +150,7 @@ export default function DashboardDesktop() {
 
     useEffect(()=>{
         currentTimer()
-    },[timeRefresh]])
+    },[timeRefresh])
     useEffect(() => {      
         jackpotInfo()
         notification()
@@ -339,7 +339,7 @@ let timerCounting = DateObj.getSeconds()/10
    useEffect(() =>{
       console.log("counting")
        setRefresh(!refresh)
-   }, [timerCounting])
+   }, [timerCounting.toFixed(0)])
 
 
     return (
