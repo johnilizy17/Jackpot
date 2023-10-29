@@ -19,7 +19,7 @@ export default function DashboardDesktop() {
     const [time, setTime] = useState(3600)
     const [BigPercentage, setBigPercentage] = useState(0)
     const [jackpotData, setJackpotData] = useState([])
-    const [value, setValue] = useState([0,0])
+    const [value, setValue] = useState([0, 0])
     const [mintApproval, setMintApproval] = useState(false)
     const [allowed, setAllowed] = useState(0)
     const [percentage, setPercentage] = useState(0)
@@ -40,17 +40,18 @@ export default function DashboardDesktop() {
     const [timeRefresh, setTimeRefresh] = useState(false)
     const [minuterSetter, setminuterSetter] = useState(0)
     const [startTimer, setStartTimer] = useState(0)
-    const [timeStamp, setTimeStamp] = useState(89)
+    const [timeStamp, setTimeStamp] = useState(false)
+    const [tracker, setTracker]= useState(56)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-   useEffect(()=>{
-       if(disable){
-        toast({ position: "top-right", title: "Stake button disactivate Error", description: "All button is deactivated for the now", status: "error", isClosable: true });
+    useEffect(() => {
+        if (disable) {
+            toast({ position: "top-right", title: "Stake button disactivate Error", description: "All button is deactivated for the now", status: "error", isClosable: true });
         }
-       },[disable])
-    
+    }, [disable])
+
     async function jackpotInfo() {
         try {
 
@@ -81,7 +82,7 @@ export default function DashboardDesktop() {
                 functionName: 'bombBalance'
             })
 
-            const  normalBalance = await readContract({
+            const normalBalance = await readContract({
                 address: contractAddress,
                 abi: ABI,
                 functionName: 'normalBalance'
@@ -98,20 +99,20 @@ export default function DashboardDesktop() {
                 args: [id],
                 functionName: 'fetchJackpotBal'
             })
-        
+
             if (bigBangBalance && type === 1) {
-               const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0]*10/100)
-               setBigBang(bigCurrentPercentage)
-               const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0]*10/100)
-               setBigBangPrice(bombCurrentPercentage)
-               const percentageStake =  bombCurrentPercentage * 100/ formatEther(number[6])*1
-               setPercentage(percentageStake)
-            } else if( type != 1){
-              setBigBang(0)
-                const bombCurrentPercentage = JSON.parse(formatEther(normalBalance)) + (dataParse[0]*10/100)
-               setBigBangPrice(bombCurrentPercentage)
-                const percentageStake =  bombCurrentPercentage * 100/ formatEther(number[6])*1
-               setPercentage(percentageStake)
+                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0] * 10 / 100)
+                setBigBang(bigCurrentPercentage)
+                const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0] * 10 / 100)
+                setBigBangPrice(bombCurrentPercentage)
+                const percentageStake = bombCurrentPercentage * 100 / formatEther(number[6]) * 1
+                setPercentage(percentageStake)
+            } else if (type != 1) {
+                setBigBang(0)
+                const bombCurrentPercentage = JSON.parse(formatEther(normalBalance)) + (dataParse[0] * 10 / 100)
+                setBigBangPrice(bombCurrentPercentage)
+                const percentageStake = bombCurrentPercentage * 100 / formatEther(number[6]) * 1
+                setPercentage(percentageStake)
             }
             setJackpotData(dataParse)
 
@@ -124,35 +125,35 @@ export default function DashboardDesktop() {
 
             setGetCurrentJackpotInfo(getjackpot)
 
-            
+
 
         } catch (err) {
 
-         //   toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
+            //   toast({ position: "top-right", title: "Approved Error", description: err.message, status: "error", isClosable: true });
 
             console.log(err)
         }
     }
 
-    async function currentTimer(){
+    async function currentTimer() {
 
-            let currentTimestamp = await readContract({
-                address: contractAddress,
-                abi: ABI,
-                functionName: 'getCurretTimestamp',
-            });
-        
-           // Find the distance between now and the count down date
-           let now = formatEther(currentTimestamp) * 1000000000000000000
+        let currentTimestamp = await readContract({
+            address: contractAddress,
+            abi: ABI,
+            functionName: 'getCurretTimestamp',
+        });
 
-           setStartTimer(now)
-            
+        // Find the distance between now and the count down date
+        let now = formatEther(currentTimestamp) * 1000000000000000000
+
+        setStartTimer(now)
+
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         currentTimer()
-    },[])
-    useEffect(() => {      
+    }, [])
+    useEffect(() => {
         jackpotInfo()
         notification()
     }, [date, address, timeRefresh])
@@ -250,23 +251,23 @@ export default function DashboardDesktop() {
 
             const { hash } = await writeContract(config)
             setAllowed(amount)
-           // Find the distance between now and the count down date
-           if(hash){
-           let now = startTimer
+            // Find the distance between now and the count down date
+            if (hash) {
+                let now = startTimer
 
-            setStartTimer(now)
-            
-            setDownDate(now + minuterSetter);
+                setStartTimer(now)
+
+                setDownDate(now + minuterSetter);
             }
-            setTimeout(()=>{  
-             jackpotInfo()
-             notification()      
-            },900) 
+            setTimeout(() => {
+                jackpotInfo()
+                notification()
+            }, 900)
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
             setMintApproval(false)
             setLoading(false)
-            
+
         } catch (err) {
             toast({ position: "top-right", title: "Stake Error", description: "approval is processing give it some seconds", status: "error", isClosable: true });
             onClose()
@@ -277,7 +278,7 @@ export default function DashboardDesktop() {
 
     async function notification() {
         try {
-             await jackpotInfo();
+            await jackpotInfo();
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
@@ -289,21 +290,21 @@ export default function DashboardDesktop() {
             })
             const numberSetting = dataParse[2] * 1000000000000000000
             const id = numberSetting.toFixed(0)
-            
+
             const number = await readContract({
                 address: contractAddress,
                 abi: ABI,
                 args: [id],
                 functionName: 'fetchJackpotBal'
             })
-            
+
             const pec = formatEther(number[5]) * 1000000000000000000
             const divider = formatEther(number[4]) * 1000000000000000000
-           if(type === 1){
-            setBigPercentage(pec * 100 / divider)
-           }else{
-            setBigPercentage(0)
-           }
+            if (type === 1) {
+                setBigPercentage(pec * 100 / divider)
+            } else {
+                setBigPercentage(0)
+            }
             if (formatEther(number[4]) * 1000000000000000000 <= formatEther(number[5]) * 1000000000000000000) {
                 setName("bomb")
             }
@@ -333,11 +334,20 @@ export default function DashboardDesktop() {
         }
     }
 
-setInterval(()=>{   
-    console.log("here")    
-       setRefresh(!refresh)
-    }, 10000)
-    
+    useEffect(() => {
+        const d = new Date()
+        let seconds = d.getSeconds()
+       let tenTimer = seconds/10
+       const digimal = tenTimer.toFixed(0)
+        if(digimal != tracker){
+            setRefresh(!refresh)
+            console.log("here",digimal )
+        }
+        setTracker(digimal)
+         setTimeStamp(!timeStamp)
+        
+    }, [timeStamp])
+
     return (
         <>
             <Center pos="fixed" zIndex="3000" display={loading2 ? "none" : "fixed"} bg="#2b202036" left="0px" top="0px" h="100vh" w="100vw" >
@@ -364,7 +374,7 @@ setInterval(()=>{
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter setStartTimer={setStartTimer} startTimer={startTimer} timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type}/>
+                            <TimeCounter setStartTimer={setStartTimer} startTimer={startTimer} timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type} />
                         </Box>
 
                         <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type} staker={stake} />
@@ -379,10 +389,10 @@ setInterval(()=>{
                         </Box>
                         <Box className="minor-bar">
                             <Box className="labels">
-                                <p>{ type === 1? "Big Bang": "Minor"}</p>
-                                <p>${type ===1 ? `${bigBangPrice.toFixed(2)}/$${value[1]}`:bigBangPrice.toFixed(2) }</p>
+                                <p>{type === 1 ? "Big Bang" : "Minor"}</p>
+                                <p>${type === 1 ? `${bigBangPrice.toFixed(2)}/$${value[1]}` : bigBangPrice.toFixed(2)}</p>
                             </Box>
-                            <Box className="progress-bar " style={{overflow:"hidden"}}>
+                            <Box className="progress-bar " style={{ overflow: "hidden" }}>
                                 <Box className="bar" style={percentage > 100 ? { width: `100%` } : type != 1 ? { width: `100%` } : { width: `${percentage}%` }}></Box>
                             </Box>
                         </Box>
