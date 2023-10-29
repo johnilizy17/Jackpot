@@ -115,11 +115,9 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         const newTime = now + 1
         setStartTimer(newTime);
         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-        if(distance <0){
+        if(distance <1){
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
         }
-        if (distance < 0 && !starting) {
-
             setDate(date + 1)
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
 
