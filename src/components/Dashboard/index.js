@@ -40,7 +40,7 @@ export default function DashboardDesktop() {
     const [timeRefresh, setTimeRefresh] = useState(false)
     const [minuterSetter, setminuterSetter] = useState(0)
     const [startTimer, setStartTimer] = useState(0)
-    const [timeStamp, setTimeStamp] = useState(0)
+    const [timeStamp, setTimeStamp] = useState(89)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -334,6 +334,7 @@ export default function DashboardDesktop() {
     }
 
 useEffect(()=>{   
+    console.log("here")
     const d = new Date()
     let seconds = d.getSeconds()
     console.log(seconds)
