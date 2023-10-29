@@ -115,10 +115,12 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         var seconds = Math.floor((distance % (60)));
         const newTime = now + 1
         setStartTimer(newTime);
-        setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
-        if(distance){
+        
+        if(distance == "NaN"){
         setNumberOfTime({ hour: "00", min: "00", sec: "00" })
-        }       
+        }else {
+         setNumberOfTime({ hour: hours, min: minutes, sec: seconds })
+        }
         if (distance < 0) {
 
             setDate(date + 1)
