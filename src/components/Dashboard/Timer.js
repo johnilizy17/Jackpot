@@ -150,9 +150,10 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
  
     useEffect(() => {
      setRefresh(!refresh)
-       let DateObj = new Date(); 
-      setTime(DataObj.getSeconds) 
-        if(DataObj.getSeconds != time){
+       let DateObj = new Date();
+        cons sec = DataObj.getSeconds()
+        setTime(sec) 
+        if(sec != time){
             console.log("start")
     if (DownDate) {
         Timing2() 
