@@ -339,7 +339,7 @@ let timerCounting = DateObj.getSeconds()/10
    useEffect(() =>{
       console.log("counting")
        setRefresh(!refresh)
-   }, [timerCounting.toFixed(0)])
+   }, [timerCounting])
 
 
     return (
