@@ -118,6 +118,8 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         if(distance <1){
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
         }
+        if (distance < 0 && !starting) {
+
             setDate(date + 1)
             setNumberOfTime({ hour: "00", min: "00", sec: "00" })
 
