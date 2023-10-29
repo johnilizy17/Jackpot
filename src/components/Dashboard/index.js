@@ -336,7 +336,7 @@ export default function DashboardDesktop() {
 setInterval(()=>{   
     console.log("here")    
        setRefresh(!refresh)
-    }, 5000)
+    }, 10000)
     
     return (
         <>
