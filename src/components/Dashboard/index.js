@@ -43,9 +43,7 @@ export default function DashboardDesktop() {
    const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-setTimeout(()=>{
-    console.log("hell")
-},5000) 
+
    useEffect(()=>{
        if(disable){
         toast({ position: "top-right", title: "Stake button disactivate Error", description: "All button is deactivated for the now", status: "error", isClosable: true });
@@ -335,15 +333,9 @@ setTimeout(()=>{
         }
     }
 
-let DateObj = new Date();
-let timerCounting = DateObj.getSeconds()/10
-
-   useEffect(() =>{
-      console.log("counting")
-       setRefresh(!refresh)
-   }, [timerCounting.toFixed(0)])
-
-
+setTimeout(()=>{
+    setRefresh(!refresh)
+},5000) 
     return (
         <>
             <Center pos="fixed" zIndex="3000" display={loading2 ? "none" : "fixed"} bg="#2b202036" left="0px" top="0px" h="100vh" w="100vw" >
