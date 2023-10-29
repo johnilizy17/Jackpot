@@ -109,7 +109,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
         if (distance < 15) {
           setDisable(true)
         }
-       console.log(startTimer)  
+       console.log(distance)  
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
         var minutes = Math.floor((distance % (60 * 60)) / (60));
         var seconds = Math.floor((distance % (60)));
