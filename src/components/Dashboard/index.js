@@ -150,7 +150,7 @@ export default function DashboardDesktop() {
 
     useEffect(()=>{
         currentTimer()
-    },[timeRefresh])
+    },[])
     useEffect(() => {      
         jackpotInfo()
         notification()
