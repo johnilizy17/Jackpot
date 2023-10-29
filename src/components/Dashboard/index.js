@@ -39,8 +39,9 @@ export default function DashboardDesktop() {
     const [DownDate, setDownDate] = useState();
     const [timeRefresh, setTimeRefresh] = useState(false)
     const [minuterSetter, setminuterSetter] = useState(0)
-   const [startTimer, setStartTimer] = useState(0)
-   const toast = useToast();
+    const [startTimer, setStartTimer] = useState(0)
+    const [timeStamp, setTimeStamp] = useState(0)
+    const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -333,9 +334,15 @@ export default function DashboardDesktop() {
         }
     }
 
-setTimeout(()=>{
-    setRefresh(!refresh)
-},5000) 
+useEffect(()=>{   
+    const d = new Date()
+    let seconds = d.getSeconds()/10
+   if(seconds.toFixed(0) != timeStamp){
+       setRefresh(!refresh)
+     }
+        setTimeStamp(seconds.toFixed(0))
+    }, [timeStamp])
+    
     return (
         <>
             <Center pos="fixed" zIndex="3000" display={loading2 ? "none" : "fixed"} bg="#2b202036" left="0px" top="0px" h="100vh" w="100vw" >
