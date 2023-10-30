@@ -219,7 +219,7 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
 
             setAllowed(amount)
-            const timing = amount == 5 ? 600 : amount == 10 ? 300 : 170
+            const timing = amount == 5 ? 570 : amount == 10 ? 270 : 150
             setminuterSetter(timing)
             setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
@@ -233,13 +233,7 @@ export default function DashboardDesktop() {
 
     async function stakeButton() {
         try {
-            if (hash) {
-                let now = startTimer
 
-                setStartTimer(now)
-
-                setDownDate(now + minuterSetter);
-            }
             setLoading(true)
             const config = await prepareWriteContract({
                 address: contractAddress,
@@ -255,7 +249,13 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
             setAllowed(amount)
             // Find the distance between now and the count down date
+            if (hash) {
+                let now = startTimer
 
+                setStartTimer(now)
+
+                setDownDate(now + minuterSetter);
+            }
             setTimeout(() => {
                 jackpotInfo()
                 notification()
@@ -349,9 +349,9 @@ export default function DashboardDesktop() {
 
     }, [timeStamp])
 
-    useEffect(() => {
+    useEffect(()=>{
         notification()
-    }, [])
+    },[])
 
     return (
         <>
