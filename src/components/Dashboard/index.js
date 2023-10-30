@@ -219,7 +219,7 @@ export default function DashboardDesktop() {
             const { hash } = await writeContract(config)
 
             setAllowed(amount)
-            const timing = amount == 5 ? 570 : amount == 10 ? 270 : 150
+            const timing = amount == 5 ? 567 : amount == 10 ? 267 : 147
             setminuterSetter(timing)
             setDate(timing)
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
