@@ -41,7 +41,7 @@ export default function DashboardDesktop() {
     const [minuterSetter, setminuterSetter] = useState(0)
     const [startTimer, setStartTimer] = useState(0)
     const [timeStamp, setTimeStamp] = useState(false)
-    const [tracker, setTracker]= useState(56)
+    const [tracker, setTracker] = useState(56)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -155,7 +155,6 @@ export default function DashboardDesktop() {
     }, [])
     useEffect(() => {
         jackpotInfo()
-        notification()
     }, [date, address, timeRefresh])
 
     async function CheckAllowance() {
@@ -172,9 +171,8 @@ export default function DashboardDesktop() {
     useEffect(() => {
         if (address) {
             CheckAllowance()
-            notification()
         }
-    }, [address, refresh])
+    }, [address])
 
 
     async function SelectedButton(e, a) {
@@ -197,7 +195,6 @@ export default function DashboardDesktop() {
                 setMintApproval(false)
             }
             onOpen()
-            await CheckAllowance()
         } else {
             toast({ position: "top-right", title: "Disable", description: "Jackpot has been disabled untill the timer rans out", status: "error", isClosable: true });
         }
@@ -316,13 +313,16 @@ export default function DashboardDesktop() {
             })
             const jackputNumber = getjackpot.length - 1
             getjackpot.map((a, b) => {
-                if (a.staker !== address && b === jackputNumber) {
+
+                if (b === jackputNumber) {
                     const notify = localStorage.getItem(`${dataParse[2]}${b}`)
                     if (!notify) {
                         localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
                         currentTimer()
                         setTimeRefresh(!timeRefresh)
-                        toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
+                        if (a.staker !== address) {
+                            toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
+                        }
                     }
                 }
             })
@@ -336,17 +336,20 @@ export default function DashboardDesktop() {
     useEffect(() => {
         const d = new Date()
         let seconds = d.getSeconds()
-       let tenTimer = seconds/10
-       const digimal = tenTimer.toFixed(0)
-        if(digimal != tracker){
+        let tenTimer = seconds / 10
+        const digimal = tenTimer.toFixed(0)
+        if (digimal != tracker) {
+            CheckAllowance()
             notification()
-            setRefresh(!refresh)
-            console.log("here",digimal )
         }
         setTracker(digimal)
-         setTimeStamp(!timeStamp)
-        
+        setTimeStamp(!timeStamp)
+
     }, [timeStamp])
+
+    useEffect(()=>{
+        notification()
+    },[])
 
     return (
         <>
