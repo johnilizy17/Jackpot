@@ -58,6 +58,9 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
                 setDisable(true)
                 setStarting(true)
             }else{
+                if(now<endData){
+                    setDisable(false)
+                }
              setStarting(false)
             }
             setDownDate(timingData)
