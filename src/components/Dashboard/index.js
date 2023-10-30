@@ -339,6 +339,7 @@ export default function DashboardDesktop() {
        let tenTimer = seconds/10
        const digimal = tenTimer.toFixed(0)
         if(digimal != tracker){
+            notification()
             setRefresh(!refresh)
             console.log("here",digimal )
         }
