@@ -153,7 +153,7 @@ let DateObj = new Date();
     const d = new Date()
     let seconds = d.getSeconds()
     
-   if(seconds != timeStamp){
+   if(seconds != timeStamp && startTimer != 0){
       
     if (DownDate) {
         Timing2()
