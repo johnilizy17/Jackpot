@@ -176,6 +176,7 @@ export default function DashboardDesktop() {
 
 
     async function SelectedButton(e, a) {
+        await CheckAllowance()
         if (!disable) {
             var element2 = document.getElementById("5");
             element2.style.background = ("#1f1c4a");
@@ -275,6 +276,8 @@ export default function DashboardDesktop() {
 
     async function notification() {
         try {
+            currentTimer()
+            setTimeRefresh(!timeRefresh)
             await jackpotInfo();
             const data = await readContract({
                 address: contractAddress,
@@ -312,15 +315,13 @@ export default function DashboardDesktop() {
                 args: [id],
                 functionName: 'getCurrentJackpotInfo'
             })
+
             const jackputNumber = getjackpot.length - 1
             getjackpot.map((a, b) => {
-
                 if (b === jackputNumber) {
                     const notify = localStorage.getItem(`${dataParse[2]}${b}`)
                     if (!notify) {
                         localStorage.setItem(`${dataParse[2]}${b}`, a.staker)
-                        currentTimer()
-                        setTimeRefresh(!timeRefresh)
                         if (a.staker !== address) {
                             toast({ position: "top-right", title: "Staked", description: `${a.staker} successfully staked $${formatEther(a.amountStaked)}`, status: "success", isClosable: true });
                         }
