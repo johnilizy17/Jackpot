@@ -27,7 +27,7 @@ export default function DashboardDesktop() {
     const [refresh, setRefresh] = useState(false)
     const { address } = useAccount()
     const [loading, setLoading] = useState(false)
-    const [name, setName] = useState("bombwinner");
+    const [name, setName] = useState("start");
     const [getCurrentJackpotInfo, setGetCurrentJackpotInfo] = useState([]);
     const [amount, setAmount] = useState(false);
     const [loading2, setLoading2] = useState(true);

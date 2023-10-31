@@ -118,32 +118,32 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
 
             </Box>
             <Box>
-            <Box className="view bomb-mode view-bomb" h="450px"
-                style={name !== "bombwinner" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", overflow: "hidden", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
-                <h2 className="title" style={{ color: "rgb(248, 200, 34)", backgroundColor: "rgb(148, 116, 5)" }}>BOMB 💥</h2><img
-                    src="../image/alpha_bomb.png" alt="Alpha365 Bomb" className="alpha-bomb bomb"
-                    style={{ translate: "none", rotate: "none", scale: "none", transform: "translate(0%, 0%)" }} />
-               
-                <Box className="info" style={{ backgroundColor: "rgb(113, 93, 47)" }}>
-                    <Box className="splash-text" >
-                        <Box
-                            style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(5, 5)", opacity: 0.1, top: "50%" }}>
-                            <p>You Win</p>
-                        </Box>
-                        <Box className="prize-Box"
-                            style={{ translate: "none", color:"#fff", marginTop:100, rotate: "none", scale: "none", opacity: 1, transform: "skew(-30deg, 0deg)" }}>
-                            <p className="prize" style={{fontSize:24}}>You are the BOMB Winner</p>
+                <Box className="view bomb-mode view-bomb" h="450px"
+                    style={name !== "bombwinner" ? { rotate: "none", scale: "none", opacity: 0, zIndex: 0 } : { transform: "scale(0px, 0px)", overflow: "hidden", translate: "none", rotate: "none", scale: "none", zIndex: 1, opacity: 5 }}>
+                    <h2 className="title" style={{ color: "rgb(248, 200, 34)", backgroundColor: "rgb(148, 116, 5)" }}>BOMB 💥</h2><img
+                        src="../image/alpha_bomb.png" alt="Alpha365 Bomb" className="alpha-bomb bomb"
+                        style={{ translate: "none", rotate: "none", scale: "none", transform: "translate(0%, 0%)" }} />
+
+                    <Box className="info" style={{ backgroundColor: "rgb(113, 93, 47)" }}>
+                        <Box className="splash-text" >
+                            <Box
+                                style={{ translate: "none", rotate: "none", scale: "none", transform: "rotate(50deg) skew(-30deg, 0deg) scale(5, 5)", opacity: 0.1, top: "50%" }}>
+                                <p>You Win</p>
+                            </Box>
+                            <Box className="prize-Box"
+                                style={{ translate: "none", color: "#fff", marginTop: 100, rotate: "none", scale: "none", opacity: 1, transform: "skew(-30deg, 0deg)" }}>
+                                <p className="prize" style={{ fontSize: 24 }}>You are the BOMB Winner</p>
+                            </Box>
                         </Box>
                     </Box>
                 </Box>
-             <Flex mt="710px" w="140%">
-                    <Button color="#fff" bg="#F8C822" mr="20px" onClick={() => setName('start')}>
-                        Play Again </Button>
-                </Flex>
-                </Box>
-                </Box>
+                
+                    <Flex position='absolute' top="480px" w="140%">
+                        <Button color="#fff" bg="#F8C822" mr="20px" onClick={() => setName('start')}>
+                            Play Again </Button>
+                    </Flex>
             </Box>
 
-        </Box>
+        </Box >
     )
 }

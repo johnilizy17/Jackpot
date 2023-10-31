@@ -84,6 +84,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
                     }
                 })
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
+                 const notify2 = localStorage.getItem(`${current}${contractAddress}bomb`)
               
                 if (notify) {
 
@@ -96,6 +97,10 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
                         setName("win")
                     } else {
                         setName("loss")
+                    }
+                    if(data3[data3.length - 1].winnerAddress === address && !notify2){
+                        setName("bombwinner")
+                        localStorage.setItem(`${current}${contractAddress}bomb`, "true")
                     }
                 }
             }
