@@ -41,6 +41,7 @@ export default function DashboardDesktop() {
     const [minuterSetter, setminuterSetter] = useState(0)
     const [startTimer, setStartTimer] = useState(0)
     const [timeStamp, setTimeStamp] = useState(false)
+    const [disableRefresher, setDisableRefresher] = useState(true)
     const [tracker, setTracker] = useState(56)
     const toast = useToast();
 
@@ -256,10 +257,14 @@ export default function DashboardDesktop() {
 
                 setDownDate(now + minuterSetter);
             }
+            setDisableRefresher(false)
             setTimeout(() => {
                 jackpotInfo()
                 notification()
             }, 900)
+            setTimeout(()=>{
+                setDisableRefresher(true)
+            },10000)
             currentTimer()
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
@@ -276,8 +281,10 @@ export default function DashboardDesktop() {
 
     async function notification() {
         try {
-            currentTimer()
-            setTimeRefresh(!timeRefresh)
+            if (disableRefresher) {
+                currentTimer()
+                setTimeRefresh(!timeRefresh)
+            }
             await jackpotInfo();
             const data = await readContract({
                 address: contractAddress,
@@ -349,9 +356,9 @@ export default function DashboardDesktop() {
 
     }, [timeStamp])
 
-    useEffect(()=>{
+    useEffect(() => {
         notification()
-    },[])
+    }, [])
 
     return (
         <>
