@@ -138,10 +138,13 @@ export default function Display({ data, getCurrentJackpotInfo, name, setName, bi
                     </Box>
                 </Box>
                 
-                    <Flex position='absolute' top="480px" w="140%">
+{
+ name == "bombwinner" && 
+     <Flex position='absolute' top="480px" w="140%">
                         <Button color="#fff" bg="#F8C822" mr="20px" onClick={() => setName('start')}>
                             Play Again </Button>
                     </Flex>
+}
             </Box>
 
         </Box >
