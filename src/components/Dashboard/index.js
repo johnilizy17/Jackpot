@@ -42,6 +42,7 @@ export default function DashboardDesktop() {
     const [startTimer, setStartTimer] = useState(0)
     const [timeStamp, setTimeStamp] = useState(false)
     const [tracker, setTracker] = useState(56)
+   const [disabledTime, setDisabledTime] = useState(true)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -203,8 +204,10 @@ export default function DashboardDesktop() {
 
     async function ApprovalButton() {
         try {
+            if(disabledTime){
             setName("start")
             setLoading(true)
+            }
             const config = await prepareWriteContract({
                 address: BUSD,
                 abi: ABI_BUSD,
@@ -260,6 +263,10 @@ export default function DashboardDesktop() {
                 jackpotInfo()
                 notification()
             }, 900)
+            setDisabledTime(false)
+            setTimeout(()=>{
+                setDisabledTime(true);
+            },10000)
             currentTimer()
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
