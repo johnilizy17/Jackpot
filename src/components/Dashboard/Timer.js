@@ -197,7 +197,7 @@ let DateObj = new Date();
                                 <p className="blink_me" style={{ color: "rgb(30, 240, 30)", width: 300}} > {winnerAddress.jackpot}</p>
                             </Box>
                         </Box>
-                        <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
+                        <Box display={winnerAddress.bomb === address? "flex" : "none"} w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts second" mt="-10px">
                                 <h4>Bomb Winner Wallet</h4>
                                 <p style={{width:300}}>{winnerAddress.bomb === ""? "Winner in progress": winnerAddress.bomb}</p>
