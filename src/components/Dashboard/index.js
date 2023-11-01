@@ -204,10 +204,10 @@ export default function DashboardDesktop() {
 
     async function ApprovalButton() {
         try {
-            if(disabledTime){
+            
             setName("start")
             setLoading(true)
-            }
+            
             const config = await prepareWriteContract({
                 address: BUSD,
                 abi: ABI_BUSD,
@@ -229,9 +229,7 @@ export default function DashboardDesktop() {
             setMintApproval(true)
             setLoading(false)
            setDisabledTime(false)
-            setTimeout(()=>{
-                setDisabledTime(true);
-            },10000) 
+        
         } catch (err) {
             toast({ position: "top-right", title: "Approved Error", description: "Approval error try again", status: "error", isClosable: true });
             setLoading(false)
@@ -287,9 +285,11 @@ export default function DashboardDesktop() {
 
     async function notification() {
         try {
+            if(disabledTime){
             currentTimer()
             setTimeRefresh(!timeRefresh)
-            await jackpotInfo();
+            }
+                await jackpotInfo();
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
