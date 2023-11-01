@@ -97,7 +97,10 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
                     } else {
                         setName("loss")
                     }
-                    if(data3[data3.length - 1].winnerAddress === address && !notify2){
+                    console.log(notify2)
+                    if(notify2){
+                        
+                    } else if(data3[data3.length - 1].winnerAddress === address){
                         setName("bombwinner")
                         localStorage.setItem(`${currentBombNumber}${contractAddress}${address}`, "true")
                     }
