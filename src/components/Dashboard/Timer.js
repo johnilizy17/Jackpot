@@ -85,7 +85,8 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
                 })
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
                  const notify2 = localStorage.getItem(`${current}${contractAddress}bomb`)
-                 console.log(formatEther(data3[data3.length - 1].jackpotId),"address")
+                 const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
+                 console.log(currentBombNumber)
                 if (notify) {
 
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
