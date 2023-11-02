@@ -226,11 +226,12 @@ export default function DashboardDesktop() {
             const timing = amount == 5 ? 567 : amount == 10 ? 267 : 147
             setminuterSetter(timing)
             setDate(timing)
+          setTimeout(()=>{
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
            setDisabledTime(false)
-        
+          },2000)
         } catch (err) {
             toast({ position: "top-right", title: "Approved Error", description: "Approval error try again", status: "error", isClosable: true });
             setLoading(false)
