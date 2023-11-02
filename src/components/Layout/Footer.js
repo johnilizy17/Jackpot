@@ -92,8 +92,8 @@ export default function Footer() {
                 <Box>Participants: {jackpotData[8] && jackpotData[8].result && jackpotData[8].result.length}</Box>
                 <Box>  Duration: 10 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
                 <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && jackpotData[8].result && formatEther(jackpotData[7].result)}) </Box>
-          <Box display="flex" flexDirection={["row", "column"]}>     
-        <Box mt="20px">
+          <Box display="flex" flexDir={["column", "row"]}>     
+             <Box mt="20px">
                     <Box>NORMAL REWARD DISTRIBUTION</Box>
                     <Flex flexWrap="wrap" flexDir='column'>
                         <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
