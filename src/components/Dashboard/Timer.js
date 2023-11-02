@@ -117,7 +117,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
 
         var distance = DownDate - now;
         // Time calculations for days, hours, minutes and seconds
-        if (distance < 15) {
+        if (distance < 10) {
           setDisable(true)
         }
        console.log(distance)  
