@@ -84,7 +84,7 @@ export default function Footer() {
     }, [true])
 
     return (
-        <div className="footer_container">
+        <Box h={["1200px", "1200px"]} className="footer_container">
             <Box pos="absolute" top="0px" p="20px" zIndex="44" color="#fff" w="100vw">
                 <Box fontSize="17px" fontWeight="800">
                     <Box mb="20px">JACKPOT INFO</Box>
@@ -93,18 +93,38 @@ export default function Footer() {
                 <Box>  Duration: 10 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
                 <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && jackpotData[8].result && formatEther(jackpotData[7].result)}) </Box>
                 <Box mt="20px">
-                    <Box>REWARD DISTRIBUTION</Box>
+                    <Box>NORMAL REWARD DISTRIBUTION</Box>
                     <Flex flexWrap="wrap" flexDir='column'>
                         <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
-                       { type != 1? 
                            <Box mr="10px" mt="10px">
-                            2. 10% NEXT MINOR JACKPOT
-                        </Box> :
-                        <Box mr="10px" mt="10px">2. 10% NEXT BIG JACKPOT</Box>
-                       }
+                            2. 20% NEXT NORMAL JACKPOT
+                        </Box>
+                      <Box mr="10px" mt="10px">2. 25% MEGA JACKPOT</Box>
+                       <Box mr="10px" mt="10px">3. 5% MARKETING</Box>
+                        <Box mr="10px" mt="10px">4. 10% ACTIVE JACKPOT</Box>
+                    </Flex>
+                </Box>
+              <Box mt="20px">
+                    <Box>ACTIVE REWARD DISTRIBUTION</Box>
+                    <Flex flexWrap="wrap" flexDir='column'>
+                        <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
+                           <Box mr="10px" mt="10px">
+                            2. 10% NEXT ACTIVE JACKPOT
+                        </Box>
+                      <Box mr="10px" mt="10px">2. 25% ALPHA</Box>
+                       <Box mr="10px" mt="10px">3. 10% NORMAL JACKPOT</Box>
+                        <Box mr="10px" mt="10px">4. 5% MARKETING</Box>
+                    </Flex>
+                </Box>
+              <Box mt="20px">
+                    <Box>BOMB REWARD DISTRIBUTION</Box>
+                    <Flex flexWrap="wrap" flexDir='column'>
+                        <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
+                           <Box mr="10px" mt="10px">
+                            2. 10% NEXT BOMB JACKPOT
+                        </Box>
                       <Box mr="10px" mt="10px">2. 35% Alpha Vault</Box>
-                       <Box mr="10px" mt="10px">3. {jackpotData[2] && jackpotData[8].result && formatEther(jackpotData[2].result) * 1000000000000000000}% MARKETING</Box>
-                        <Box mr="10px" mt="10px">4. 10% BOMB PRIZ</Box>
+                       <Box mr="10px" mt="10px">4. 5% MARKETING</Box>
                     </Flex>
                 </Box>
             </Box>
@@ -161,6 +181,6 @@ export default function Footer() {
                 </Center>
                 <Box textAlign="center">  <p>&copy;2021 ALPHA | All Rights Reserved</p></Box>
             </footer>
-        </div>
+        </Box>
     )
 }
