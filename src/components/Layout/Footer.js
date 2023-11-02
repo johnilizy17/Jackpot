@@ -105,7 +105,7 @@ export default function Footer() {
                     </Flex>
                 </Box>
               <Box mt="20px">
-                    <Box>ACTIVE REWARD DISTRIBUTION</Box>
+                    <Box>BIG BANG REWARD DISTRIBUTION</Box>
                     <Flex flexWrap="wrap" flexDir='column'>
                         <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
                            <Box mr="10px" mt="10px">
