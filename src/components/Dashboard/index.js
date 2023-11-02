@@ -42,13 +42,14 @@ export default function DashboardDesktop() {
     const [startTimer, setStartTimer] = useState(0)
     const [timeStamp, setTimeStamp] = useState(false)
     const [tracker, setTracker] = useState(56)
-   const [disabledTime, setDisabledTime] = useState(true)
+    const [disabledTime, setDisabledTime] = useState(true)
+   const [alertDisabled, setAlertDisabled] = useState(true)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     useEffect(() => {
-        if (disable) {
+        if (disable && alertDisabled) {
             toast({ position: "top-right", title: "Stake button disactivate Error", description: "All button is deactivated for the now", status: "error", isClosable: true });
         }
     }, [disable])
@@ -207,7 +208,7 @@ export default function DashboardDesktop() {
             
             setName("start")
             setLoading(true)
-            
+            setAlertDisabled(false)
             const config = await prepareWriteContract({
                 address: BUSD,
                 abi: ABI_BUSD,
@@ -267,6 +268,7 @@ export default function DashboardDesktop() {
             }, 900)
             setDisabledTime(false)
             setTimeout(()=>{
+                setAlertDisabled(false)
                 setDisabledTime(true);
             },10000)
             currentTimer()
