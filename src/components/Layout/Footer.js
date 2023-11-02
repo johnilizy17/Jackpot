@@ -84,7 +84,7 @@ export default function Footer() {
     }, [true])
 
     return (
-        <Box h={["1200px", "1200px"]} className="footer_container">
+        <Box h={["1200px", "800px"]} className="footer_container">
             <Box pos="absolute" top="0px" p="20px" zIndex="44" color="#fff" w="100vw">
                 <Box fontSize="17px" fontWeight="800">
                     <Box mb="20px">JACKPOT INFO</Box>
@@ -92,7 +92,7 @@ export default function Footer() {
                 <Box>Participants: {jackpotData[8] && jackpotData[8].result && jackpotData[8].result.length}</Box>
                 <Box>  Duration: 10 mins(Min Buy: ${jackpotData[5] && jackpotData[8].result && formatEther(jackpotData[5].result)})</Box>
                 <Box> Duration: 2.5 mins(Max. Buy ${jackpotData[7] && jackpotData[8].result && formatEther(jackpotData[7].result)}) </Box>
-          <Box display="flex" flexDir={["column", "row"]}>     
+          <Box display="flex" justifyContent={["start","space-between"]} flexDir={["column", "row"]}>     
              <Box mt="20px">
                     <Box>NORMAL REWARD DISTRIBUTION</Box>
                     <Flex flexWrap="wrap" flexDir='column'>
