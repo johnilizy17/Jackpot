@@ -52,7 +52,7 @@ export default function DashboardDesktop() {
         if (disable && alertDisabled) {
             toast({ position: "top-right", title: "Stake button disactivate Error", description: "All button is deactivated for the now", status: "error", isClosable: true });
         }
-    }, [disable])
+    }, [disable, alertDisabled])
 
     async function jackpotInfo() {
         try {
