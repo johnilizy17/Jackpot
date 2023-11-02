@@ -161,14 +161,19 @@ export default function Footer() {
         </Flex>
               
         <Center flexWrap="wrap">
-                   <Link href="/rule">
+                   <Link href="https://app.alpha365.finance/swap/">
                         <Box mt="10px" mr="10px">
-                            Rule
+                            Swap
                         </Box>
         </Link>  
-        <Link href="history">
+        <Link href="https://app.alpha365.finance/vault/">
         <Box mt="10px" mr="10px">
-                            History
+                            Vault
+                        </Box>
+        </Link>     
+        <Link href="https://app.alpha365.finance/nft/">
+        <Box mt="10px" mr="10px">
+                            NFT
                         </Box>
         </Link>     
         
