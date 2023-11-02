@@ -269,7 +269,7 @@ export default function DashboardDesktop() {
             }, 900)
             setDisabledTime(false)
             setTimeout(()=>{
-                setAlertDisabled(false)
+                setAlertDisabled(true)
                 setDisabledTime(true);
             },10000)
             currentTimer()
