@@ -101,9 +101,9 @@ export default function Footer() {
                            <Box mr="10px" mt="10px">
                             2. 20% NEXT NORMAL JACKPOT
                         </Box>
-                      <Box mr="10px" mt="10px">2. 25% MEGA JACKPOT</Box>
-                       <Box mr="10px" mt="10px">3. 5% MARKETING</Box>
-                        <Box mr="10px" mt="10px">4. 10% ACTIVE JACKPOT</Box>
+                      <Box mr="10px" mt="10px">3. 25% MEGA JACKPOT</Box>
+                       <Box mr="10px" mt="10px">4. 5% MARKETING</Box>
+                        <Box mr="10px" mt="10px">5. 10% ACTIVE JACKPOT</Box>
                     </Flex>
                 </Box>
               <Box mt="20px">
@@ -113,9 +113,9 @@ export default function Footer() {
                            <Box mr="10px" mt="10px">
                             2. 10% NEXT ACTIVE JACKPOT
                         </Box>
-                      <Box mr="10px" mt="10px">2. 25% ALPHA</Box>
-                       <Box mr="10px" mt="10px">3. 10% NORMAL JACKPOT</Box>
-                        <Box mr="10px" mt="10px">4. 5% MARKETING</Box>
+                      <Box mr="10px" mt="10px">3. 25% ALPHA</Box>
+                       <Box mr="10px" mt="10px">4. 10% NORMAL JACKPOT</Box>
+                        <Box mr="10px" mt="10px">5. 5% MARKETING</Box>
                     </Flex>
                 </Box>
               <Box mt="20px">
@@ -125,7 +125,7 @@ export default function Footer() {
                            <Box mr="10px" mt="10px">
                             2. 10% NEXT BOMB JACKPOT
                         </Box>
-                      <Box mr="10px" mt="10px">2. 35% Alpha Vault</Box>
+                      <Box mr="10px" mt="10px">3. 35% Alpha Vault</Box>
                        <Box mr="10px" mt="10px">4. 5% MARKETING</Box>
                     </Flex>
                 </Box>
