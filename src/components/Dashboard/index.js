@@ -52,7 +52,7 @@ export default function DashboardDesktop() {
         if (disable && alertDisabled) {
             toast({ position: "top-right", title: "Stake button disactivate Error", description: "All button is deactivated for the now", status: "error", isClosable: true });
         }
-    }, [disable, alertDisabled])
+    }, [disable])
 
     async function jackpotInfo() {
         try {
@@ -240,7 +240,7 @@ export default function DashboardDesktop() {
 
     async function stakeButton() {
         try {
-
+         setAlertDisabled(false)
             setLoading(true)
             const config = await prepareWriteContract({
                 address: contractAddress,
@@ -252,7 +252,7 @@ export default function DashboardDesktop() {
                     gas: 3090000
                 }
             })
-
+         
             const { hash } = await writeContract(config)
             setAllowed(amount)
             // Find the distance between now and the count down date
@@ -271,7 +271,8 @@ export default function DashboardDesktop() {
             setTimeout(()=>{
                 setAlertDisabled(true)
                 setDisabledTime(true);
-            },10000)
+            },12000)
+            
             currentTimer()
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
