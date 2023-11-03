@@ -50,21 +50,21 @@ export default function Header() {
                     </IconButton>
                     <Center display={["none", "none", "none", "none", "flex"]}>
 
-                        <Link href="/">
+                        <a href="/">
                             <Box fontSize="22px" color="#9490D5" ml="-110px" mr="30px">
                                 Game
                             </Box>
-                        </Link>
-                        <Link href="/rules">
+                        </a>
+                        <a href="/rules">
                             <Box fontSize="22px" color="#9490D5" mr="30px">
                                 Rules
                             </Box>
-                        </Link>
-                        <Link href="/history">
+                        </a>
+                        <a href="/history">
                             <Box fontSize="22px" color="#9490D5" mr="50px">
                                 Winning History
                             </Box>
-                        </Link>
+                        </a>
 
                         {userAddress.length > 1 ?
                             <Menu >
