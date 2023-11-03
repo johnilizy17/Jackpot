@@ -118,7 +118,7 @@ export default function Header() {
 
                             <Divider w="270px" mt="10px" mb="40px" />
                         </Center>
-                        <Link href="/">
+                        <Link href="/" as="/">
                             <Center justifyContent="space-between" w="250px" mb="20px">
                                 <Text
                                     fontSize="14.56px"
@@ -136,7 +136,7 @@ export default function Header() {
                             </Center>
                         </Link>
 
-                        <Link href="/rules">
+                        <Link href="/rules" as="/rules">
 
                             <Center justifyContent="space-between" w="250px" mb="20px">
                                 <Text
@@ -155,7 +155,7 @@ export default function Header() {
 
                             </Center>
                         </Link>
-                        <Link href="/history">
+                        <Link href="/history" as="/history">
 
                             <Center justifyContent="space-between" w="250px" mb="20px">
                                 <Text
