@@ -101,7 +101,7 @@ export default function Footer() {
                            <Box mr="10px" mt="10px">
                             2. 20% NEXT NORMAL JACKPOT
                         </Box>
-                      <Box mr="10px" mt="10px">3. 25% Big JACKPOT</Box>
+                      <Box mr="10px" mt="10px">3. 25% BIG BANG JACKPOT</Box>
                        <Box mr="10px" mt="10px">4. 5% MARKETING</Box>
                         <Box mr="10px" mt="10px">5. 10% ACTIVE JACKPOT</Box>
                     <Box mr="10px" mt="10px">5. 10% BOMB JACKPOT</Box>
