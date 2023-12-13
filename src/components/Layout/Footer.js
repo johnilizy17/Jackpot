@@ -99,12 +99,11 @@ export default function Footer() {
                     <Flex flexWrap="wrap" flexDir='column'>
                         <Box mr="10px" mt="10px">1. {jackpotData[1] && jackpotData[8].result && formatEther(jackpotData[1].result) * 1000000000000000000}% WINNER</Box>
                            <Box mr="10px" mt="10px">
-                            2. 20% NEXT NORMAL JACKPOT
+                            2. 10% NEXT NORMAL JACKPOT
                         </Box>
                       <Box mr="10px" mt="10px">3. 25% BIG BANG JACKPOT</Box>
                        <Box mr="10px" mt="10px">4. 5% MARKETING</Box>
-                        <Box mr="10px" mt="10px">5. 10% ACTIVE JACKPOT</Box>
-                    <Box mr="10px" mt="10px">5. 10% BOMB JACKPOT</Box>
+                        <Box mr="10px" mt="10px">5. 10% BOMB JACKPOT</Box>
                   </Flex>
                 </Box>
               <Box mt="20px">
