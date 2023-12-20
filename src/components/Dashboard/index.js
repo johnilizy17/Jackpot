@@ -101,9 +101,14 @@ export default function DashboardDesktop() {
                 args: [id],
                 functionName: 'fetchJackpotBal'
             })
-
+            
+            const data2 = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'fetchJackpotInfo'
+            })
             if (bigBangBalance && type === 1) {
-                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0] * 10 / 100)
+                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0] *  formatEther(data2[8]) / 100)
                 setBigBang(bigCurrentPercentage)
                 const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0] * 10 / 100)
                 setBigBangPrice(bombCurrentPercentage)
