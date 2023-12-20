@@ -399,7 +399,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter setStartTimer={setStartTimer} name={name} startTimer={startTimer} timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type} />
+                            <TimeCounter setStartTimer={setStartTimer} name={type} startTimer={startTimer} timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type} />
                         </Box>
 
                         <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type} staker={stake} />
