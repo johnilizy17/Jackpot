@@ -325,7 +325,7 @@ export default function DashboardDesktop() {
             } else {
                 setBigPercentage(0)
             }
-            if (formatEther(number[4]) * 1000000000000000000 <= formatEther(number[5]) * 1000000000000000000) {
+            if (type == 1 && formatEther(number[4]) * 1000000000000000000 <= formatEther(number[5]) * 1000000000000000000) {
                 setName("bomb")
             }
             setJackpotData(dataParse)
