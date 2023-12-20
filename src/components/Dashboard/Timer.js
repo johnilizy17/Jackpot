@@ -102,7 +102,9 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
                         
                     } else if(data3[data3.length - 1].winnerAddress === address){
                       setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:""})
+                       if(name != "big"){
                         setName("bombwinner")
+                       }
                         localStorage.setItem(`${currentBombNumber}${contractAddress}${address}`, "true")
                     }
                 }
