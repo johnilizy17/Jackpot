@@ -108,9 +108,9 @@ export default function DashboardDesktop() {
                 functionName: 'fetchJackpotInfo'
             })
             if (bigBangBalance && type === 1) {
-                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0] *  formatEther(data2[7]) / 100)
+                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0] *  formatEther(data2[7])* 1000000000000000000 / 100)
                 setBigBang(bigCurrentPercentage)
-                const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0] * formatEther(data2[8]) / 100)
+                const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0] * formatEther(data2[8])* 1000000000000000000/ 100)
                 setBigBangPrice(bombCurrentPercentage)
                 const percentageStake = bombCurrentPercentage * 100 / formatEther(number[6]) * 1
                 setPercentage(percentageStake)
