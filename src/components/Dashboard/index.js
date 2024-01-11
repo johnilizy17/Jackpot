@@ -62,7 +62,6 @@ export default function DashboardDesktop() {
                 address: contractAddress,
                 abi: ABI,
                 functionName: 'fetchJackpotInfo'
-
             })
 
             const jackpotType = await readContract({
@@ -109,9 +108,9 @@ export default function DashboardDesktop() {
                 functionName: 'fetchJackpotInfo'
             })
             if (bigBangBalance && type === 1) {
-                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0] *  formatEther(data2[7])* 1000000000000000000 / 100)
+                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) 
                 setBigBang(bigCurrentPercentage)
-                const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0] * formatEther(data2[8])* 1000000000000000000/ 100)
+                const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance))
                 setBigBangPrice(bombCurrentPercentage)
                 const percentageStake = bombCurrentPercentage * 100 / formatEther(number[6]) * 1
                 setPercentage(percentageStake)
@@ -424,8 +423,8 @@ export default function DashboardDesktop() {
                             </Box>
                         </Box>
                         <Box className="bets">
-                            <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='5' onClick={() => SelectedButton("5", jackpotData[3])}>
-                                <h2>${jackpotData && jackpotData[3] && jackpotData[3]}</h2>
+                            <Box className="bet" style={disable ? { background: "rgb(229 123 123)" } : {}} id='5' onClick={() => SelectedButton("5", jackpotData[3]*100)}>
+                                <h2>${jackpotData && jackpotData[3] && jackpotData[3]*100}</h2>
                                 <Box className="subinfo"><i className="material-icons-outlined" style={{ fontSize: 9 }}>timer</i>
                                     <p>10 mins</p>
                                 </Box>
