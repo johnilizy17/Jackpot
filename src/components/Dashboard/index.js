@@ -116,7 +116,7 @@ export default function DashboardDesktop() {
                 setPercentage(percentageStake)
             } else if (type != 1) {
                 setBigBang(0)
-                const bombCurrentPercentage = JSON.parse(formatEther(normalBalance)) + (dataParse[0] * 10 / 100)
+                const bombCurrentPercentage = JSON.parse(formatEther(normalBalance))
                 setBigBangPrice(bombCurrentPercentage)
                 const percentageStake = bombCurrentPercentage * 100 / formatEther(number[6]) * 1
                 setPercentage(percentageStake)
