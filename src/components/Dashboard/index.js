@@ -35,7 +35,7 @@ export default function DashboardDesktop() {
     const [bigBangPrice, setBigBangPrice] = useState(0)
     const [disable, setDisable] = useState(false);
     const [type, setType] = useState(1)
-    const [stake, setStake] = useState("0x24B558864F562E3e8c481069752b1626bdd4e01A")
+    const [stake, setStake] = useState("Jackpot has not start")
     const [DownDate, setDownDate] = useState();
     const [timeRefresh, setTimeRefresh] = useState(false)
     const [minuterSetter, setminuterSetter] = useState(0)
@@ -43,12 +43,14 @@ export default function DashboardDesktop() {
     const [timeStamp, setTimeStamp] = useState(false)
     const [disableRefresher, setDisableRefresher] = useState(true)
     const [tracker, setTracker] = useState(56)
+    const [disabledTime, setDisabledTime] = useState(true)
+   const [alertDisabled, setAlertDisabled] = useState(true)
     const toast = useToast();
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     useEffect(() => {
-        if (disable) {
+        if (disable && alertDisabled) {
             toast({ position: "top-right", title: "Stake button disactivate Error", description: "All button is deactivated for the now", status: "error", isClosable: true });
         }
     }, [disable])
@@ -100,11 +102,16 @@ export default function DashboardDesktop() {
                 args: [id],
                 functionName: 'fetchJackpotBal'
             })
-
+            
+            const data2 = await readContract({
+                address: contractAddress,
+                abi: ABI,
+                functionName: 'fetchJackpotInfo'
+            })
             if (bigBangBalance && type === 1) {
-                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0] * 10 / 100)
+                const bigCurrentPercentage = JSON.parse(formatEther(bombBalance)) + (dataParse[0] *  formatEther(data2[7])* 1000000000000000000 / 100)
                 setBigBang(bigCurrentPercentage)
-                const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0] * 10 / 100)
+                const bombCurrentPercentage = JSON.parse(formatEther(bigBangBalance)) + (dataParse[0] * formatEther(data2[8])* 1000000000000000000/ 100)
                 setBigBangPrice(bombCurrentPercentage)
                 const percentageStake = bombCurrentPercentage * 100 / formatEther(number[6]) * 1
                 setPercentage(percentageStake)
@@ -204,8 +211,10 @@ export default function DashboardDesktop() {
 
     async function ApprovalButton() {
         try {
+            
             setName("start")
             setLoading(true)
+            setAlertDisabled(false)
             const config = await prepareWriteContract({
                 address: BUSD,
                 abi: ABI_BUSD,
@@ -223,9 +232,12 @@ export default function DashboardDesktop() {
             const timing = amount == 5 ? 567 : amount == 10 ? 267 : 147
             setminuterSetter(timing)
             setDate(timing)
+          setTimeout(()=>{
             toast({ position: "top-right", title: "Approved", description: "Approved successful", status: "success", isClosable: true });
             setMintApproval(true)
             setLoading(false)
+           setDisabledTime(false)
+          },2000)
         } catch (err) {
             toast({ position: "top-right", title: "Approved Error", description: "Approval error try again", status: "error", isClosable: true });
             setLoading(false)
@@ -234,7 +246,7 @@ export default function DashboardDesktop() {
 
     async function stakeButton() {
         try {
-
+         setAlertDisabled(false)
             setLoading(true)
             const config = await prepareWriteContract({
                 address: contractAddress,
@@ -246,7 +258,7 @@ export default function DashboardDesktop() {
                     gas: 3090000
                 }
             })
-
+         
             const { hash } = await writeContract(config)
             setAllowed(amount)
             // Find the distance between now and the count down date
@@ -262,9 +274,12 @@ export default function DashboardDesktop() {
                 jackpotInfo()
                 notification()
             }, 900)
+            setDisabledTime(false)
             setTimeout(()=>{
-                setDisableRefresher(true)
-            },10000)
+                setAlertDisabled(true)
+                setDisabledTime(true);
+            },12000)
+            
             currentTimer()
             onClose()
             toast({ position: "top-right", title: "Stake", description: `Successfully stake ${amount} in price`, status: "success", isClosable: true });
@@ -281,11 +296,11 @@ export default function DashboardDesktop() {
 
     async function notification() {
         try {
-            if (disableRefresher) {
-                currentTimer()
-                setTimeRefresh(!timeRefresh)
+            if(disabledTime){
+            currentTimer()
+            setTimeRefresh(!timeRefresh)
             }
-            await jackpotInfo();
+                await jackpotInfo();
             const data = await readContract({
                 address: contractAddress,
                 abi: ABI,
@@ -312,7 +327,7 @@ export default function DashboardDesktop() {
             } else {
                 setBigPercentage(0)
             }
-            if (formatEther(number[4]) * 1000000000000000000 <= formatEther(number[5]) * 1000000000000000000) {
+            if (type == 1 && formatEther(number[4]) * 1000000000000000000 <= formatEther(number[5]) * 1000000000000000000) {
                 setName("bomb")
             }
             setJackpotData(dataParse)
@@ -386,7 +401,7 @@ export default function DashboardDesktop() {
                 <section className="page">
                     <Box className="body">
                         <Box className="timer">
-                            <TimeCounter setStartTimer={setStartTimer} startTimer={startTimer} timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type} />
+                            <TimeCounter setStartTimer={setStartTimer} name={type} startTimer={startTimer} timeRefresh={timeRefresh} date={date} DownDate={DownDate} setDownDate={setDownDate} setLoading2={setLoading2} setDisable={setDisable} setName={setName} setDate={setDate} type={type} />
                         </Box>
 
                         <Display data={jackpotData} bigBang={bigBang} name={name} getCurrentJackpotInfo={getCurrentJackpotInfo} setName={setName} type={type} staker={stake} />

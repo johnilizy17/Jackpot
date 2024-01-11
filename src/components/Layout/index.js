@@ -50,21 +50,21 @@ export default function Header() {
                     </IconButton>
                     <Center display={["none", "none", "none", "none", "flex"]}>
 
-                        <Link href="/">
+                        <a href="/">
                             <Box fontSize="22px" color="#9490D5" ml="-110px" mr="30px">
                                 Game
                             </Box>
-                        </Link>
-                        <Link href="/rules">
+                        </a>
+                        <a href="/rules">
                             <Box fontSize="22px" color="#9490D5" mr="30px">
                                 Rules
                             </Box>
-                        </Link>
-                        <Link href="/history">
+                        </a>
+                        <a href="/history">
                             <Box fontSize="22px" color="#9490D5" mr="50px">
                                 Winning History
                             </Box>
-                        </Link>
+                        </a>
 
                         {userAddress.length > 1 ?
                             <Menu >
@@ -118,7 +118,7 @@ export default function Header() {
 
                             <Divider w="270px" mt="10px" mb="40px" />
                         </Center>
-                        <Link href="/">
+                        <a href="/">
                             <Center justifyContent="space-between" w="250px" mb="20px">
                                 <Text
                                     fontSize="14.56px"
@@ -134,9 +134,9 @@ export default function Header() {
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0086 6.5L8.59863 7.91L13.1786 12.5L8.59863 17.09L10.0086 18.5L16.0086 12.5L10.0086 6.5Z" fill="#C9C8EA" />
                                 </svg>
                             </Center>
-                        </Link>
+                        </a>
 
-                        <Link href="/rules">
+                        <a href="/rules">
 
                             <Center justifyContent="space-between" w="250px" mb="20px">
                                 <Text
@@ -154,8 +154,8 @@ export default function Header() {
                                 </svg>
 
                             </Center>
-                        </Link>
-                        <Link href="/history">
+                        </a>
+                        <a href="/history">
 
                             <Center justifyContent="space-between" w="250px" mb="20px">
                                 <Text
@@ -172,7 +172,7 @@ export default function Header() {
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0086 6.5L8.59863 7.91L13.1786 12.5L8.59863 17.09L10.0086 18.5L16.0086 12.5L10.0086 6.5Z" fill="#C9C8EA" />
                                 </svg>
                             </Center>
-                        </Link>
+                        </a>
                         <Box pos="absolute" bottom="10px">
                            
                             <Link href="https://medium.com/@alpha365Official">

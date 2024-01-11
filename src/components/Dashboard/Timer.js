@@ -7,7 +7,7 @@ import ABI from '@/utils/ABI'
 import { formatEther } from 'viem'
 import { useAccount } from 'wagmi'
 
-export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, date, setName, setDate, setLoading2, setDisable, DownDate, setDownDate }) {
+export default function TimeCounter({ setStartTimer, timeRefresh, name, startTimer, date, setName, setDate, setLoading2, setDisable, DownDate, setDownDate }) {
 
     const [timeSteamp, setTimeSteamp] = useState(0)
     const [timeStamp, setTimeStamp] = useState(0)
@@ -84,23 +84,28 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
                     }
                 })
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
-                 const notify2 = localStorage.getItem(`${current}${contractAddress}bomb`)
-              
+                 const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
+                 const notify2 = localStorage.getItem(`${currentBombNumber}${contractAddress}${address}`)
                 if (notify) {
 
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
                    localStorage.setItem(`${current}${contractAddress}`, "true")
                     setLoading2(true)
-                   console.log(data3[data3.length - 1],"address")
-                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:""})
+                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:""})
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
                         setName("loss")
                     }
-                    if(data3[data3.length - 1].winnerAddress === address && !notify2){
+                    
+                    if(notify2){
+                        
+                    } else if(data3[data3.length - 1].winnerAddress === address){
+                      setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:""})
+                       if(type === 1){
                         setName("bombwinner")
-                        localStorage.setItem(`${current}${contractAddress}bomb`, "true")
+                       }
+                        localStorage.setItem(`${currentBombNumber}${contractAddress}${address}`, "true")
                     }
                 }
             }
@@ -115,8 +120,11 @@ export default function TimeCounter({ setStartTimer, timeRefresh, startTimer, da
 
         var distance = DownDate - now;
         // Time calculations for days, hours, minutes and seconds
-        if (distance < 15) {
+        if (distance < 10) {
           setDisable(true)
+        }
+        if(distance < -1){
+         setDisable(false)
         }
        console.log(distance)  
         var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
@@ -169,6 +177,7 @@ let DateObj = new Date();
         let now = startTimer
         const newTime = now + 1
         setStartTimer(newTime);
+      setDisable(false)  
      }
         }
         setTimeStamp(seconds)
@@ -195,7 +204,7 @@ let DateObj = new Date();
                                 <p className="blink_me" style={{ color: "rgb(30, 240, 30)", width: 300}} > {winnerAddress.jackpot}</p>
                             </Box>
                         </Box>
-                        <Box display="flex" w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
+                        <Box display={winnerAddress.bomb === address && winnerAddress.bomb != ""? "flex" : "none"} w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts second" mt="-10px">
                                 <h4>Bomb Winner Wallet</h4>
                                 <p style={{width:300}}>{winnerAddress.bomb === ""? "Winner in progress": winnerAddress.bomb}</p>
