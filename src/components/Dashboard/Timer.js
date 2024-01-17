@@ -31,6 +31,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                 abi: ABI,
                 functionName: 'getAllJackpot',
             })
+            console.log(data2)
             const datalength = data2.length - 1
             const endData = formatEther(data2[datalength].endTime) * 1000000000000000000
             let data = await readContract({
