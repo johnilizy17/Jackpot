@@ -89,13 +89,14 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                 const sortData = data[numberExist]
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
                  const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
+                
                  const notify2 = localStorage.getItem(`${currentBombNumber}${contractAddress}${address}`)
                 if (notify) {
 
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
                    localStorage.setItem(`${current}${contractAddress}`, "true")
                     setLoading2(true)
-                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:"", type: formatEther(data[numberExist].jType)})
+                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb: data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:"", type: 1000000000000000000*formatEther(data[numberExist].jType)})
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
@@ -105,17 +106,19 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                     if(notify2){
                         
                     } else if(data3[data3.length - 1].winnerAddress === address){
-                      setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data2[datalength - 1].id == 0 && data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:"", type:formatEther(data[numberExist].jType) })
+                      setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb: data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:"", type:1000000000000000000*formatEther(data[numberExist].jType) })
                        if(type === 1){
                         setName("bombwinner")
                        }
                         localStorage.setItem(`${currentBombNumber}${contractAddress}${address}`, "true")
                     }
                 }
+                
             }
         } catch (err) {
             console.log(err.message)
         }
+        console.log(winnerAddress)
     }
 
     async function Timing2() {
@@ -208,7 +211,7 @@ let DateObj = new Date();
                                 <p className="blink_me" style={{ color: "rgb(30, 240, 30)", width: 300}} > {winnerAddress.jackpot}</p>
                             </Box>
                         </Box>
-                        <Box display={winnerAddress.bomb === address && winnerAddress.bomb != "" && winnerAddress.type == "1" ? "flex" : "none"} w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
+                        <Box display={winnerAddress.bomb === address && winnerAddress.bomb != "" && winnerAddress.type == 1? "flex" : "none"} w={["100%", "320px"]} h="70px" alignItems="center" p="20px" pt="10px" >
                             <Box className="texts second" mt="-10px">
                                 <h4>Bomb Winner Wallet</h4>
                                 <p style={{width:300}}>{winnerAddress.bomb === ""? "Winner in progress": winnerAddress.bomb}</p>
