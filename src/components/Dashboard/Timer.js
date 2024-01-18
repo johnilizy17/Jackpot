@@ -86,7 +86,8 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                     }
                 })
                 const numberExist = data.length - 1
-               console.log(formatEther(data[numberExist].jType), "number")
+                const sortData = data[numberExist]
+               console.log(sortData, "number")
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
                  const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
                  const notify2 = localStorage.getItem(`${currentBombNumber}${contractAddress}${address}`)
