@@ -33,7 +33,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
             })
             
             const datalength = data2.length - 1
-            const endData = formatEther(data2[datalength].endTime) * 1000000000000000000
+            const endData = numberExist(data2[datalength].endTime) * 1000000000000000000
             let data = await readContract({
                 address: contractAddress,
                 abi: ABI,
@@ -86,7 +86,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                     }
                 })
                 const numberExist = data.length - 1
-               console.log(data[numberExist], "number")
+               console.log(formatEther(data[numberExist].jType), "number")
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
                  const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
                  const notify2 = localStorage.getItem(`${currentBombNumber}${contractAddress}${address}`)
