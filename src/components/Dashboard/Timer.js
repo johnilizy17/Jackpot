@@ -33,7 +33,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
             })
             
             const datalength = data2.length - 1
-            const endData = numberExist(data2[datalength].endTime) * 1000000000000000000
+            const endData = formatEther(data2[datalength].endTime) * 1000000000000000000
             let data = await readContract({
                 address: contractAddress,
                 abi: ABI,
@@ -86,8 +86,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                     }
                 })
                 const numberExist = data.length - 1
-                const sortData = data[current]
-               console.log(sortData, "number")
+                const sortData = data[numberExist]
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
                  const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
                  const notify2 = localStorage.getItem(`${currentBombNumber}${contractAddress}${address}`)
@@ -106,7 +105,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                     if(notify2){
                         
                     } else if(data3[data3.length - 1].winnerAddress === address){
-                      setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data2[datalength - 1].id == 0 && data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:"", type:exist[numberExist].jType })
+                      setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data2[datalength - 1].id == 0 && data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:"", type:formatEther(data[numberExist].jType) })
                        if(type === 1){
                         setName("bombwinner")
                        }
