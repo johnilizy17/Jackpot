@@ -95,7 +95,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
                    localStorage.setItem(`${current}${contractAddress}`, "true")
                     setLoading2(true)
-                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:"", type: data[numberExist].jType})
+                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:"", type: formatEther(data[numberExist].jType)})
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
