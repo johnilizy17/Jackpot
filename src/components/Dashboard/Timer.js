@@ -86,7 +86,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                     }
                 })
                 const numberExist = exist.length - 1
-               console.log(exist[numberExist], "number")
+               console.log(exist[datalength], "number")
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
                  const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
                  const notify2 = localStorage.getItem(`${currentBombNumber}${contractAddress}${address}`)
@@ -95,7 +95,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
                    localStorage.setItem(`${current}${contractAddress}`, "true")
                     setLoading2(true)
-                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:"", type: exist[numberExist].jType})
+                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:"", type: exist[datalength].jType})
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
