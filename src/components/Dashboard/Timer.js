@@ -73,7 +73,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                     args: [current],
                     functionName: 'getCurrentJackpotInfo',
                 })
-                console.log(data)
+                
                 let data3 = await readContract({
                     address: contractAddress,
                     abi: ABI,
@@ -85,6 +85,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                         return true
                     }
                 })
+              console.log(exist)  
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
                  const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
                  const notify2 = localStorage.getItem(`${currentBombNumber}${contractAddress}${address}`)
@@ -103,7 +104,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                     if(notify2){
                         
                     } else if(data3[data3.length - 1].winnerAddress === address){
-                      setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data2[datalength - 1].id == 0 && data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:""})
+                      setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:data2[datalength - 1].id == 0 && data3 && data3[data3.length - 1].winnerAddress? data3[data3.length - 1].winnerAddress:"", type: })
                        if(type === 1){
                         setName("bombwinner")
                        }
