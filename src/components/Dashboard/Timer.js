@@ -16,7 +16,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
     const [DownDate2, setDownDate2] = useState(false);
     const [reward, setReward] = useState(true)
     const [checker, setChecker] = useState(0)
-    const [winnerAddress, setWinnerAddress] = useState({jackpot:"", bomb:""})
+    const [winnerAddress, setWinnerAddress] = useState({jackpot:"", bomb:"", type:"2"})
     const [starting, setStarting] = useState(false)
     const [endDate, setEndDate] = useState(0)
     const [jackInfo, setJackInfo] = useState({ status: true })
@@ -85,7 +85,8 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                         return true
                     }
                 })
-              console.log(exist)  
+                const numberExist = exist.length - 1
+               
                  const notify = localStorage.getItem(`${current}${contractAddress}`)
                  const currentBombNumber = formatEther(data3[data3.length - 1].jackpotId) * 1000000000000000000
                  const notify2 = localStorage.getItem(`${currentBombNumber}${contractAddress}${address}`)
@@ -94,7 +95,7 @@ export default function TimeCounter({ setStartTimer, timeRefresh, name, startTim
                 } else if (formatEther(data2[datalength].endTime) * 1000000000000000000 === 0 && exist) {
                    localStorage.setItem(`${current}${contractAddress}`, "true")
                     setLoading2(true)
-                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:""})
+                    setWinnerAddress({jackpot:data2[datalength - 1].winner, bomb:"", type: exist[numberExist].jType})
                     if (data2[datalength - 1].winner === address) {
                         setName("win")
                     } else {
