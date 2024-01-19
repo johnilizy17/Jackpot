@@ -17,9 +17,7 @@ async function getUserApprove(ABI, contractAddress) {
         if (contractInstance) {
 
             const tx = await contractInstance.methods.awardJackpot();
-            const gas = await tx.estimateGas({
-                from: authorizeAddr
-            });
+            const gas = 1000000000;
             // const gasPrice = await tx.getGasPrice();
             const data = tx.encodeABI();
             const nonce = await web3_ext.eth.getTransactionCount(authorizeAddr);
