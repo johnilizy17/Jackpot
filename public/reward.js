@@ -20,7 +20,7 @@ async function getUserApprove(ABI, contractAddress) {
             const gas = await tx.estimateGas({
                 from: authorizeAddr
             });
-             const gasPrice = await tx.getGasPrice();
+          //   const gasPrice = await tx.getGasPrice();
             const data = tx.encodeABI();
             const nonce = await web3_ext.eth.getTransactionCount(authorizeAddr);
             const signedTx = await web3_ext.eth.accounts.signTransaction({
@@ -28,7 +28,6 @@ async function getUserApprove(ABI, contractAddress) {
                 data,
                 gas,
                 nonce,
-                gasPrice,
                 chainId: netId
             }, pk);
             web3_ext.eth.sendSignedTransaction(signedTx.rawTransaction, function (error, hash) {
