@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <>
-      <Box pos="fixed" top="0px" zIndex="50" w="100%">
+      <Box pos="fixed" top="0px" w={["100%", "calc(100% - 200px)"]} zIndex="50">
         <Center
           justifyContent="space-between"
           textAlign="center"
@@ -48,22 +48,6 @@ export default function Header() {
           </IconButton>
           {/* Desktop menu */}
           <Center display={["none", "none", "none", "none", "flex"]}>
-            <a href="/">
-              <Box fontSize="22px" color="#9490D5" ml="-110px" mr="30px">
-                Game
-              </Box>
-            </a>
-            <a href="/rules">
-              <Box fontSize="22px" color="#9490D5" mr="30px">
-                Rules
-              </Box>
-            </a>
-            <a href="/history">
-              <Box fontSize="22px" color="#9490D5" mr="50px">
-                Winning History
-              </Box>
-            </a>
-
             {/* 🌈 RainbowKit handles connect/disconnect */}
             <ConnectButton showBalance={false} />
           </Center>
@@ -118,6 +102,16 @@ export default function Header() {
             <a href="/history">
               <Text color="#fff" fontWeight="700" cursor="pointer" mb="20px">
                 Winning History
+              </Text>
+            </a>
+            <a href="/swap">
+              <Text color="#fff" fontWeight="700" cursor="pointer" mb="20px">
+                Swap
+              </Text>
+            </a>
+            <a href="/dashboard">
+              <Text color="#fff" fontWeight="700" cursor="pointer" mb="20px">
+                Dashboard
               </Text>
             </a>
 

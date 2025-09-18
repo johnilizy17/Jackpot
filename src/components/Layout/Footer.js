@@ -85,7 +85,7 @@ export default function Footer() {
 
     return (
         <Box h={["1200px", "800px"]} className="footer_container">
-            <Box pos="absolute" top="0px" p="20px" zIndex="44" color="#fff" w="100vw">
+            <Box pos="absolute" top="0px" p="20px" zIndex="44" color="#fff" w={["100vw", "calc(100vw - 200px)"]}>
                 <Box fontSize="17px" fontWeight="800">
                     <Box mb="20px">JACKPOT INFO</Box>
                 </Box>
